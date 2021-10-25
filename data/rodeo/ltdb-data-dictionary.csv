@@ -1,21 +1,18 @@
 root,root2,category,definition,1970.f,1970.s,1980.f,1980.s,1990.f,1990.s,2000.f,2000.s,2010.f,2010.s
-state,state,id,,state,state,state,state,state,state,state,state,state,statea
-county,county,id,,county,county,county,county,county,county,county,county,county,countya
-tract,tract,id,,tract,tract,tract,tract,tract,tract,tract,tract,tract,tracta
-trtid,trtid,id,,TRTID10,TRTID10,TRTID10,trtid10,TRTID10,TRTID10,TRTID10,TRTID10,tractid,tractid
-,,,,,,,,,,,,,
-cbsa,cbsa,tract attribute,,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,,
+state,state,id,state,state,state,state,state,state,state,state,state,state,statea
+county,county,id,county,county,county,county,county,county,county,county,county,county,countya
+tract,tract,id,census tract,tract,tract,tract,tract,tract,tract,tract,tract,tract,tracta
+trtid,trtid,id,census tract (10 digit identifier),TRTID10,TRTID10,TRTID10,trtid10,TRTID10,TRTID10,TRTID10,TRTID10,tractid,tractid
+cbsa,cbsa,tract attribute,"A core-based statistical area (CBSA) is a U.S. geographic area defined by the Office of Management and Budget (OMB) that consists of one or more counties (or equivalents) anchored by an urban center of at least 10,000 people plus adjacent counties that are socioeconomically tied to the urban center by commuting",cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,,
 ccflag,ccflag,tract attribute,,ccflag10,ccflag10,ccflag10,ccflag10,ccflag10,ccflag10,ccflag10,ccflag10,,
-metdiv,metdiv,tract attribute,,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,,
-placefp,placefp,tract attribute,,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,,
+metdiv,metdiv,tract attribute,Metropolitan Division,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,,
+placefp,placefp,tract attribute,5-character place FIPS code,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,,
 globd,globd,tract attribute,,,,GlobD80,,GlobD90,,GlobD00,,GlobD10,
 globg,globg,tract attribute,,,,GlobG80,,GlobG90,,GlobG00,,GlobG10,
-placefp,placefp,tract attribute,,,,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,,
-cbsa,cbsa,tract attribute,,,,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,,
-metdiv,metdiv,tract attribute,,,,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,,
+placefp,placefp,tract attribute,5-character place FIPS code,,,placefp10,placefp10,placefp10,placefp10,placefp10,placefp10,,
+cbsa,cbsa,tract attribute,"A core-based statistical area (CBSA) is a U.S. geographic area defined by the Office of Management and Budget (OMB) that consists of one or more counties (or equivalents) anchored by an urban center of at least 10,000 people plus adjacent counties that are socioeconomically tied to the urban center by commuting",,,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,cbsa10,,
+metdiv,metdiv,tract attribute,Metropolitan Division,,,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,metdiv10,,
 ccflag,ccflag,tract attribute,,,,ccflag10,ccflag10,ccflag10,ccflag10,ccflag10,ccflag10,,
-,,,,,,,,,,,,,
-,,,,,,,,,,,,,
 a15asn,a15asn,age-race,"0-15 years old of Asians and Pacific Islanders (in 1980, 0-14 years old of Asians/Pacific Islanders; in 2008-12 ACS, 0-14 years old of Asian/Pacific Islander race)",,,,a15asn80,A15ASN90,,A15ASN00,,a15asn10,a15asn12
 a15blk,a15blk,age-race,"0-15 years old of black race (in 1980, 0-14 years old of black race; in 2006- 10 ACS, 0-14 years old of black race)",A15BLK70,,,a15blk80,A15BLK90,,A15BLK00,,a15blk10,a15blk12
 a15hsp,a15hsp,age-race,"0-15 years old, persons of Hispanic origins (in 1980, 0-14 years old, persons of Hispanic origin; in 2008-12 ACS, 0-14 years old, persons of Hispanic origins)",,,,a15hsp80,A15HSP90,,A15HSP00,,a15hsp10,a15hsp12

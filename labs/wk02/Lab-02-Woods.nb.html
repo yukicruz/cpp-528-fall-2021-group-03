@@ -231,27 +231,34 @@ here::i_am(&quot;cpp-528-fall-2021-group-03/labs/wk02/Lab-02-Woods.Rmd&quot;)</c
 source(&quot;utilities.R&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuaGVyZTo6aGVyZSgpXG5gYGAifQ== -->
+<pre class="r"><code>here::here()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiL1VzZXJzL2FzaWF3b29kcy9Eb2N1bWVudHMvR2l0SHViL0NQUDUyN1wiXG4ifQ== -->
+<pre><code>[1] &quot;/Users/asiawoods/Documents/GitHub/CPP527&quot;</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdG9yZSBkYXRhIGRpY3Rpb25hcnkgZmlsZSBwYXRoXG5ERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCBcImRhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2XCIgKVxuXG4jIGltcG9ydCBkYXRhIGRpY3Rpb25hcnlcbiNkZCA8LSByZWFkLmNzdiggRERfRklMRVBBVEgsIHN0cmluZ3NBc0ZhY3RvcnM9RiApXG5cbmRkIDwtIHJlYWQuY3N2KFwiL1VzZXJzL2FzaWF3b29kcy9Eb2N1bWVudHMvR2l0SHViL0NQUDUyNy9jcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9kYXRhL3JvZGVvL2x0ZGItZGF0YS1kaWN0aW9uYXJ5LmNzdlwiKVxuYGBgIn0= -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdG9yZSBkYXRhIGRpY3Rpb25hcnkgZmlsZSBwYXRoXG5ERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCBcImRhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2XCIgKVxuXG4jIGltcG9ydCBkYXRhIGRpY3Rpb25hcnlcbmRkIDwtIHJlYWQuY3N2KCBERF9GSUxFUEFUSCwgc3RyaW5nc0FzRmFjdG9ycz1GIClcbmBgYCJ9 -->
 <pre class="r"><code># store data dictionary file path
 DD_FILEPATH &lt;- here::here( &quot;data/rodeo/ltdb_data_dictionary.csv&quot; )
 
 # import data dictionary
-#dd &lt;- read.csv( DD_FILEPATH, stringsAsFactors=F )
-
-dd &lt;- read.csv(&quot;/Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03/data/rodeo/ltdb-data-dictionary.csv&quot;)</code></pre>
+dd &lt;- read.csv( DD_FILEPATH, stringsAsFactors=F )</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcmVhZC50YWJsZShmaWxlID0gZmlsZSwgaGVhZGVyID0gaGVhZGVyLCBzZXAgPSBzZXAsIHF1b3RlID0gcXVvdGUsICA6IFxuICBtb3JlIGNvbHVtbnMgdGhhbiBjb2x1bW4gbmFtZXNcbiJ9 -->
-<pre><code>Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
-  more columns than column names</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBpbiBmaWxlKGZpbGUsIFwicnRcIikgOlxuICBjYW5ub3Qgb3BlbiBmaWxlICcvVXNlcnMvYXNpYXdvb2RzL0RvY3VtZW50cy9HaXRIdWIvQ1BQNTI3L2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2JzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeVxuRXJyb3IgaW4gZmlsZShmaWxlLCBcInJ0XCIpIDogY2Fubm90IG9wZW4gdGhlIGNvbm5lY3Rpb25cbiJ9 -->
+<pre><code>Warning in file(file, &quot;rt&quot;) :
+  cannot open file &#39;/Users/asiawoods/Documents/GitHub/CPP527/data/rodeo/ltdb_data_dictionary.csv&#39;: No such file or directory
+Error in file(file, &quot;rt&quot;) : cannot open the connection</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkoIHRpZHl2ZXJzZSApCmxpYnJhcnkoIGhlcmUgKQpsaWJyYXJ5KCBwYW5kZXIgKQpoZXJlOjppX2FtKCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZCIpCmxpYnJhcnkoaGVyZSkKc291cmNlKCJ1dGlsaXRpZXMuUiIpCmBgYAoKYGBge3J9CiMgc3RvcmUgZGF0YSBkaWN0aW9uYXJ5IGZpbGUgcGF0aApERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCAiZGF0YS9yb2Rlby9sdGRiX2RhdGFfZGljdGlvbmFyeS5jc3YiICkKCiMgaW1wb3J0IGRhdGEgZGljdGlvbmFyeQojZGQgPC0gcmVhZC5jc3YoIEREX0ZJTEVQQVRILCBzdHJpbmdzQXNGYWN0b3JzPUYgKQoKZGQgPC0gcmVhZC5jc3YoIi9Vc2Vycy9hc2lhd29vZHMvRG9jdW1lbnRzL0dpdEh1Yi9DUFA1MjcvY3BwLTUyOC1mYWxsLTIwMjEtZ3JvdXAtMDMvZGF0YS9yb2Rlby9sdGRiLWRhdGEtZGljdGlvbmFyeS5jc3YiKQoKIyByZW1vdmUgdGhlIHNlY29uZCByb290IGNvbHVtbgpkZCA8LSBzZWxlY3QoIGRkLCAtcm9vdDIgKQoKIyB2aWV3IGEgc3Vic2V0IG9mIGNvbHVtbnMgCmRkWyBjKDE6NSwxNToxNyksIF0gJT4lIHBhbmRlcigpCmBgYAoK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkoIHRpZHl2ZXJzZSApCmxpYnJhcnkoIGhlcmUgKQpsaWJyYXJ5KCBwYW5kZXIgKQpoZXJlOjppX2FtKCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZCIpCmxpYnJhcnkoaGVyZSkKc291cmNlKCJ1dGlsaXRpZXMuUiIpCmBgYApgYGB7cn0KaGVyZTo6aGVyZSgpCmBgYAoKYGBge3J9CiMgc3RvcmUgZGF0YSBkaWN0aW9uYXJ5IGZpbGUgcGF0aApERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCAiZGF0YS9yb2Rlby9sdGRiX2RhdGFfZGljdGlvbmFyeS5jc3YiICkKCiMgaW1wb3J0IGRhdGEgZGljdGlvbmFyeQpkZCA8LSByZWFkLmNzdiggRERfRklMRVBBVEgsIHN0cmluZ3NBc0ZhY3RvcnM9RiApCgoKIyByZW1vdmUgdGhlIHNlY29uZCByb290IGNvbHVtbgpkZCA8LSBzZWxlY3QoIGRkLCAtcm9vdDIgKQoKIyB2aWV3IGEgc3Vic2V0IG9mIGNvbHVtbnMgCmRkWyBjKDE6NSwxNToxNyksIF0gJT4lIHBhbmRlcigpCmBgYAoK</div>
 
 
 

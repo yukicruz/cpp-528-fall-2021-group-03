@@ -11,15 +11,17 @@ here::i_am("cpp-528-fall-2021-group-03/labs/wk02/Lab-02-Woods.Rmd")
 library(here)
 source("utilities.R")
 ```
+```{r}
+here::here()
+```
 
 ```{r}
 # store data dictionary file path
 DD_FILEPATH <- here::here( "data/rodeo/ltdb_data_dictionary.csv" )
 
 # import data dictionary
-#dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
+dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
 
-dd <- read.csv("/Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03/data/rodeo/ltdb-data-dictionary.csv")
 
 # remove the second root column
 dd <- select( dd, -root2 )
