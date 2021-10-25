@@ -7,7 +7,9 @@ output: html_notebook
 library( tidyverse )
 library( here )
 library( pander )
+here::i_am("cpp-528-fall-2021-group-03/labs/wk02/Lab-02-Woods.Rmd")
 library(here)
+source("utilities.R")
 ```
 
 ```{r}

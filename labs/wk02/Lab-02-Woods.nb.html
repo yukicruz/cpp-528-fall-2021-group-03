@@ -217,11 +217,18 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSggdGlkeXZlcnNlIClcbmxpYnJhcnkoIGhlcmUgKVxubGlicmFyeSggcGFuZGVyIClcbmxpYnJhcnkoaGVyZSlcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSggdGlkeXZlcnNlIClcbmxpYnJhcnkoIGhlcmUgKVxubGlicmFyeSggcGFuZGVyIClcbmhlcmU6OmlfYW0oXCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZFwiKVxuYGBgIn0= -->
 <pre class="r"><code>library( tidyverse )
 library( here )
 library( pander )
-library(here)</code></pre>
+here::i_am(&quot;cpp-528-fall-2021-group-03/labs/wk02/Lab-02-Woods.Rmd&quot;)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaGVyZSgpIHN0YXJ0cyBhdCAvVXNlcnMvYXNpYXdvb2RzL0RvY3VtZW50cy9HaXRIdWIvQ1BQNTI3XG4ifQ== -->
+<pre><code>here() starts at /Users/asiawoods/Documents/GitHub/CPP527</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoZXJlKVxuc291cmNlKFwidXRpbGl0aWVzLlJcIilcbmBgYCJ9 -->
+<pre class="r"><code>library(here)
+source(&quot;utilities.R&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -234,16 +241,16 @@ DD_FILEPATH &lt;- here::here( &quot;data/rodeo/ltdb_data_dictionary.csv&quot; )
 # import data dictionary
 dd &lt;- read.csv( DD_FILEPATH, stringsAsFactors=F )</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBpbiBmaWxlKGZpbGUsIFwicnRcIikgOlxuICBjYW5ub3Qgb3BlbiBmaWxlICcvVXNlcnMvYXNpYXdvb2RzL2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2JzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeVxuRXJyb3IgaW4gZmlsZShmaWxlLCBcInJ0XCIpIDogY2Fubm90IG9wZW4gdGhlIGNvbm5lY3Rpb25cbiJ9 -->
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBpbiBmaWxlKGZpbGUsIFwicnRcIikgOlxuICBjYW5ub3Qgb3BlbiBmaWxlICcvVXNlcnMvYXNpYXdvb2RzL0RvY3VtZW50cy9HaXRIdWIvQ1BQNTI3L2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2JzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeVxuRXJyb3IgaW4gZmlsZShmaWxlLCBcInJ0XCIpIDogY2Fubm90IG9wZW4gdGhlIGNvbm5lY3Rpb25cbiJ9 -->
 <pre><code>Warning in file(file, &quot;rt&quot;) :
-  cannot open file &#39;/Users/asiawoods/data/rodeo/ltdb_data_dictionary.csv&#39;: No such file or directory
+  cannot open file &#39;/Users/asiawoods/Documents/GitHub/CPP527/data/rodeo/ltdb_data_dictionary.csv&#39;: No such file or directory
 Error in file(file, &quot;rt&quot;) : cannot open the connection</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkoIHRpZHl2ZXJzZSApCmxpYnJhcnkoIGhlcmUgKQpsaWJyYXJ5KCBwYW5kZXIgKQpsaWJyYXJ5KGhlcmUpCmBgYAoKYGBge3J9CiMgc3RvcmUgZGF0YSBkaWN0aW9uYXJ5IGZpbGUgcGF0aApERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCAiZGF0YS9yb2Rlby9sdGRiX2RhdGFfZGljdGlvbmFyeS5jc3YiICkKCiMgaW1wb3J0IGRhdGEgZGljdGlvbmFyeQpkZCA8LSByZWFkLmNzdiggRERfRklMRVBBVEgsIHN0cmluZ3NBc0ZhY3RvcnM9RiApCgojIHJlbW92ZSB0aGUgc2Vjb25kIHJvb3QgY29sdW1uCmRkIDwtIHNlbGVjdCggZGQsIC1yb290MiApCgojIHZpZXcgYSBzdWJzZXQgb2YgY29sdW1ucyAKZGRbIGMoMTo1LDE1OjE3KSwgXSAlPiUgcGFuZGVyKCkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkoIHRpZHl2ZXJzZSApCmxpYnJhcnkoIGhlcmUgKQpsaWJyYXJ5KCBwYW5kZXIgKQpoZXJlOjppX2FtKCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZCIpCmxpYnJhcnkoaGVyZSkKc291cmNlKCJ1dGlsaXRpZXMuUiIpCmBgYAoKYGBge3J9CiMgc3RvcmUgZGF0YSBkaWN0aW9uYXJ5IGZpbGUgcGF0aApERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCAiZGF0YS9yb2Rlby9sdGRiX2RhdGFfZGljdGlvbmFyeS5jc3YiICkKCiMgaW1wb3J0IGRhdGEgZGljdGlvbmFyeQpkZCA8LSByZWFkLmNzdiggRERfRklMRVBBVEgsIHN0cmluZ3NBc0ZhY3RvcnM9RiApCgojIHJlbW92ZSB0aGUgc2Vjb25kIHJvb3QgY29sdW1uCmRkIDwtIHNlbGVjdCggZGQsIC1yb290MiApCgojIHZpZXcgYSBzdWJzZXQgb2YgY29sdW1ucyAKZGRbIGMoMTo1LDE1OjE3KSwgXSAlPiUgcGFuZGVyKCkKYGBgCgo=</div>
 
 
 
