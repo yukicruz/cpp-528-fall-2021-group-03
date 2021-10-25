@@ -17,7 +17,9 @@ source("utilities.R")
 DD_FILEPATH <- here::here( "data/rodeo/ltdb_data_dictionary.csv" )
 
 # import data dictionary
-dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
+#dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
+
+dd <- read.csv("/Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03/data/rodeo/ltdb-data-dictionary.csv")
 
 # remove the second root column
 dd <- select( dd, -root2 )
