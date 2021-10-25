@@ -7,5 +7,20 @@ output: html_notebook
 library( tidyverse )
 library( here )
 library( pander )
+library(here)
+```
+
+```{r}
+# store data dictionary file path
+DD_FILEPATH <- here::here( "data/rodeo/ltdb_data_dictionary.csv" )
+
+# import data dictionary
+dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
+
+# remove the second root column
+dd <- select( dd, -root2 )
+
+# view a subset of columns 
+dd[ c(1:5,15:17), ] %>% pander()
 ```
 
