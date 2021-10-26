@@ -14,12 +14,13 @@ source("utilities.R")
 
 ```{r}
 # store data dictionary file path
-DD_FILEPATH <- here::here( "data/rodeo/ltdb_data_dictionary.csv" )
+DD_FILEPATH <- here::here( "rodeo/ltdb_data_dictionary.csv" )
+
 
 # import data dictionary
-#dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
+dd <- read.csv( DD_FILEPATH, stringsAsFactors=F )
 
-dd <- read.csv("/Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03/data/rodeo/ltdb-data-dictionary.csv")
+#dd <- read.csv("/Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03/data/rodeo/ltdb-data-dictionary.csv")
 
 # remove the second root column
 dd <- select( dd, -root2 )
@@ -30,5 +31,13 @@ dd[ c(1:5,15:17), ] %>% pander()
 
 ```{r}
 similar_categories("race")
+```
+
+```{r}
+descript("60 years and older")
+```
+
+```{r}
+func(70,2000)
 ```
 
