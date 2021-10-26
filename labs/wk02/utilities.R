@@ -1,15 +1,16 @@
 #Function One: Filter Variables by Theme or Group
 
-cate <- function(category){
-  
-  return(grep(category, d$category, ignore.case = T))
+similar_categories <- function(string){
+  num <- grep(string, dd$category, ignore.case = T)
+  tabl <- data.frame(dd[num,])
+  return(tabl)
 }
 
 #Function Two: Locate a Specific String
 descript <- function(description){
-  these <- grepl(description, d$description, ignore.case = T)
-  d.vec <- d[these, ]
-  return(d.vec)
+  these <- grepl(description, dd$description, ignore.case = T)
+  dd.vec <- dd[these, ]
+  return(dd.vec)
 }
 
 
