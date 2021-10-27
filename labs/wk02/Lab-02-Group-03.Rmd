@@ -1,0 +1,61 @@
+---
+title: "Lab 02 - Group 03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r, echo = T, message = F, warning = F}
+#Library
+library( tidyverse )
+library( here )
+library( pander )
+library( here )
+```
+
+```{r}
+# Data
+
+# store data dictionary file path
+DD_FILEPATH <- here::here( "data/rodeo/ltdb-data-dictionary.csv" )
+
+# import data dictionary
+dd <- read.csv( DD_FILEPATH, stringsAsFactors=F)
+
+# Longitudinal Tract Database 2010 Sample file path
+LTDB_FILEPATH <- here::here( "data/raw/ltdb_std_2010_sample.csv" )
+
+# Import Longitudinal Tract Database 2010 Sample 
+ltdb.data <- read_csv( LTDB_FILEPATH, col_names = TRUE )
+
+# Rename columns to lower case
+ltdb.data <- as.data.frame( sapply( ltdb.data, tolower ) )
+
+```
+
+```{r}
+# Load function source file
+source( "utilities.R" )
+```
+
+
+```{r}
+filter_category(dd, "race")
+```
+
+```{r}
+var_description(dd, "60 years and older")
+```
+
+```{r}
+time_period <- c("1990","2000")
+
+filter_time( dd, time_period)
+
+time_period <- c("1980")
+
+filter_time( dd, time_period)
+
+```
+
