@@ -217,127 +217,56 @@ pre code {
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSggdGlkeXZlcnNlIClcbmxpYnJhcnkoIGhlcmUgKVxubGlicmFyeSggcGFuZGVyIClcbmhlcmU6OmlfYW0oXCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZFwiKVxuYGBgIn0= -->
-<pre class="r"><code>library( tidyverse )
-library( here )
-library( pander )
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSggdGlkeXZlcnNlIClcbmBgYCJ9 -->
+<pre class="r"><code>library( tidyverse )</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiUmVnaXN0ZXJlZCBTMyBtZXRob2RzIG92ZXJ3cml0dGVuIGJ5ICdkYnBseXInOlxuICBtZXRob2QgICAgICAgICBmcm9tXG4gIHByaW50LnRibF9sYXp5ICAgICBcbiAgcHJpbnQudGJsX3NxbCAgICAgIFxu4pSA4pSAIEF0dGFjaGluZyBwYWNrYWdlcyDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIDilIAgdGlkeXZlcnNlIDEuMy4xIOKUgOKUgFxu4pyTIGdncGxvdDIgMy4zLjUgICAgIOKckyBwdXJyciAgIDAuMy40XG7inJMgdGliYmxlICAzLjEuNSAgICAg4pyTIGRwbHlyICAgMS4wLjdcbuKckyB0aWR5ciAgIDEuMS40ICAgICDinJMgc3RyaW5nciAxLjQuMFxu4pyTIHJlYWRyICAgMi4wLjIgICAgIOKckyBmb3JjYXRzIDAuNS4xXG7ilIDilIAgQ29uZmxpY3RzIOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgOKUgCB0aWR5dmVyc2VfY29uZmxpY3RzKCkg4pSA4pSAXG54IGRwbHlyOjpmaWx0ZXIoKSBtYXNrcyBzdGF0czo6ZmlsdGVyKClcbnggZHBseXI6OmxhZygpICAgIG1hc2tzIHN0YXRzOjpsYWcoKVxuIn0= -->
+<pre><code>Registered S3 methods overwritten by &#39;dbplyr&#39;:
+  method         from
+  print.tbl_lazy     
+  print.tbl_sql      
+── Attaching packages ──────────────────────────────────────────── tidyverse 1.3.1 ──
+✓ ggplot2 3.3.5     ✓ purrr   0.3.4
+✓ tibble  3.1.5     ✓ dplyr   1.0.7
+✓ tidyr   1.1.4     ✓ stringr 1.4.0
+✓ readr   2.0.2     ✓ forcats 0.5.1
+── Conflicts ─────────────────────────────────────────────── tidyverse_conflicts() ──
+x dplyr::filter() masks stats::filter()
+x dplyr::lag()    masks stats::lag()</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSggaGVyZSApXG5gYGAifQ== -->
+<pre class="r"><code>library( here )</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-output-begin eyJkYXRhIjoiaGVyZSgpIHN0YXJ0cyBhdCAvVXNlcnMvYXNpYXdvb2RzL0RvY3VtZW50cy9HaXRIdWIvQ1BQNTI3L2NwcC01MjgtZmFsbC0yMDIxLWdyb3VwLTAzXG4ifQ== -->
+<pre><code>here() starts at /Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03</code></pre>
+<!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeSggcGFuZGVyIClcbmhlcmU6OmlfYW0oXCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZFwiKVxuYGBgIn0= -->
+<pre class="r"><code>library( pander )
 here::i_am(&quot;cpp-528-fall-2021-group-03/labs/wk02/Lab-02-Woods.Rmd&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-output-begin eyJkYXRhIjoiaGVyZSgpIHN0YXJ0cyBhdCAvVXNlcnMvYXNpYXdvb2RzL0RvY3VtZW50cy9HaXRIdWIvQ1BQNTI3XG4ifQ== -->
 <pre><code>here() starts at /Users/asiawoods/Documents/GitHub/CPP527</code></pre>
 <!-- rnb-output-end -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoZXJlKVxuc291cmNlKFwidXRpbGl0aWVzLlJcIilcbmBgYCJ9 -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShoZXJlKVxuc291cmNlKFwidXRpbGl0aWVzMi5SXCIpXG5gYGAifQ== -->
 <pre class="r"><code>library(here)
-source(&quot;utilities.R&quot;)</code></pre>
+source(&quot;utilities2.R&quot;)</code></pre>
 <!-- rnb-source-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdG9yZSBkYXRhIGRpY3Rpb25hcnkgZmlsZSBwYXRoXG5ERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCBcImNwcC01MjgtZmFsbC0yMDIxLWdyb3VwLTAzL2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2XCIgKVxuXG4jIGltcG9ydCBkYXRhIGRpY3Rpb25hcnlcbmRkIDwtIHJlYWQuY3N2KCBERF9GSUxFUEFUSCwgc3RyaW5nc0FzRmFjdG9ycz1GKVxuXG4jIHJlbW92ZSB0aGUgc2Vjb25kIHJvb3QgY29sdW1uXG5kZCA8LSBzZWxlY3QoIGRkLCAtcm9vdDIgKVxuXG4jIHZpZXcgYSBzdWJzZXQgb2YgY29sdW1ucyBcbmRkWyBjKDE6NSwxNToxNyksIF0gJT4lIHBhbmRlcigpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuIyBzdG9yZSBkYXRhIGRpY3Rpb25hcnkgZmlsZSBwYXRoXG5ERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCBcImNwcC01MjgtZmFsbC0yMDIxLWdyb3VwLTAzL2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2XCIgKVxuXG5cbiMgaW1wb3J0IGRhdGEgZGljdGlvbmFyeVxuZGQgPC0gcmVhZC5jc3YoIEREX0ZJTEVQQVRILCBzdHJpbmdzQXNGYWN0b3JzPUYpXG5gYGAifQ== -->
 <pre class="r"><code># store data dictionary file path
 DD_FILEPATH &lt;- here::here( &quot;cpp-528-fall-2021-group-03/data/rodeo/ltdb_data_dictionary.csv&quot; )
 
+
 # import data dictionary
-dd &lt;- read.csv( DD_FILEPATH, stringsAsFactors=F)
-
-# remove the second root column
-dd &lt;- select( dd, -root2 )
-
-# view a subset of columns 
-dd[ c(1:5,15:17), ] %&gt;% pander()</code></pre>
+dd &lt;- read.csv( DD_FILEPATH, stringsAsFactors=F)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4gJm5ic3A7ICAgIHJvb3QgICAgICAgY2F0ZWdvcnkgICAgICAgICAgICAgICAgIGRlZmluaXRpb24gICAgICAgICAgICAgWDE5NzAuZiAgXG4tLS0tLS0tLSAtLS0tLS0tLSAtLS0tLS0tLS0tLS0tLS0tLSAtLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLSAtLS0tLS0tLS0tXG4gKioxKiogICAgc3RhdGUgICAgICAgICAgaWQgICAgICAgICAgICAgICAgICAgICAgc3RhdGUgICAgICAgICAgICAgICAgIHN0YXRlICAgXG5cbiAqKjIqKiAgICBjb3VudHkgICAgICAgICBpZCAgICAgICAgICAgICAgICAgICAgICBjb3VudHkgICAgICAgICAgICAgICAgY291bnR5ICBcblxuICoqMyoqICAgIHRyYWN0ICAgICAgICAgIGlkICAgICAgICAgICAgICAgICAgIGNlbnN1cyB0cmFjdCAgICAgICAgICAgICB0cmFjdCAgIFxuXG4gKio0KiogICAgdHJ0aWQgICAgICAgICAgaWQgICAgICAgICAgICAgIGNlbnN1cyB0cmFjdCAoMTAgZGlnaXQgICAgICAgVFJUSUQxMCAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgaWRlbnRpZmllcikgICAgICAgICAgICAgICAgICAgICAgXG5cbiAqKjUqKiAgICAgY2JzYSAgICB0cmFjdCBhdHRyaWJ1dGUgICBBIGNvcmUtYmFzZWQgc3RhdGlzdGljYWwgYXJlYSAgICAgY2JzYTEwICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKENCU0EpIGlzIGEgVS5TLiBnZW9ncmFwaGljICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhcmVhIGRlZmluZWQgYnkgdGhlIE9mZmljZSBvZiAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgTWFuYWdlbWVudCBhbmQgQnVkZ2V0IChPTUIpICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdGhhdCBjb25zaXN0cyBvZiBvbmUgb3IgbW9yZSAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGNvdW50aWVzIChvciBlcXVpdmFsZW50cykgICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhbmNob3JlZCBieSBhbiB1cmJhbiBjZW50ZXIgb2YgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgYXQgbGVhc3QgMTAsMDAwIHBlb3BsZSBwbHVzICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFkamFjZW50IGNvdW50aWVzIHRoYXQgYXJlICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBzb2Npb2Vjb25vbWljYWxseSB0aWVkIHRvIHRoZSAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVyYmFuIGNlbnRlciBieSBjb21tdXRpbmcgICAgICAgICAgICAgICBcblxuICoqMTUqKiAgIGExNWFzbiAgICAgIGFnZS1yYWNlICAgICAgICAwLTE1IHllYXJzIG9sZCBvZiBBc2lhbnMgYW5kICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBQYWNpZmljIElzbGFuZGVycyAoaW4gMTk4MCwgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAtMTQgeWVhcnMgb2xkIG9mICAgICAgICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBc2lhbnMvUGFjaWZpYyBJc2xhbmRlcnM7IGluICAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDIwMDgtMTIgQUNTLCAwLTE0IHllYXJzIG9sZCBvZiAgICAgICAgICAgIFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBBc2lhbi9QYWNpZmljIElzbGFuZGVyIHJhY2UpICAgICAgICAgICAgIFxuXG4gKioxNioqICAgYTE1YmxrICAgICAgYWdlLXJhY2UgICAgICAgIDAtMTUgeWVhcnMgb2xkIG9mIGJsYWNrIHJhY2UgICAgQTE1QkxLNzAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIChpbiAxOTgwLCAwLTE0IHllYXJzIG9sZCBvZiAgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGJsYWNrIHJhY2U7IGluIDIwMDYtIDEwIEFDUywgICAgICAgICAgICAgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgMC0xNCB5ZWFycyBvbGQgb2YgYmxhY2sgcmFjZSkgICAgICAgICAgICAgXG5cbiAqKjE3KiogICBhMTVoc3AgICAgICBhZ2UtcmFjZSAgICAgICAgIDAtMTUgeWVhcnMgb2xkLCBwZXJzb25zIG9mICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIEhpc3BhbmljIG9yaWdpbnMgKGluIDE5ODAsICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIDAtMTQgeWVhcnMgb2xkLCBwZXJzb25zIG9mICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgSGlzcGFuaWMgb3JpZ2luOyBpbiAyMDA4LTEyICAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgQUNTLCAwLTE0IHllYXJzIG9sZCwgcGVyc29ucyAgICAgICAgICAgICBcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIG9mIEhpc3BhbmljIG9yaWdpbnMpICAgICAgICAgICAgICAgICBcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cblxuVGFibGU6IFRhYmxlIGNvbnRpbnVlcyBiZWxvd1xuXG4gXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLVxuICZuYnNwOyAgIFgxOTcwLnMgICBYMTk4MC5mICAgWDE5ODAucyAgICBYMTk5MC5mICAgIFgxOTkwLnMgICBYMjAwMC5mICBcbi0tLS0tLS0tIC0tLS0tLS0tLSAtLS0tLS0tLS0gLS0tLS0tLS0tLSAtLS0tLS0tLS0tIC0tLS0tLS0tLSAtLS0tLS0tLS0tXG4gKioxKiogICAgIHN0YXRlICAgICBzdGF0ZSAgICAgc3RhdGUgICAgICBzdGF0ZSAgICAgIHN0YXRlICAgICBzdGF0ZSAgIFxuXG4gKioyKiogICAgY291bnR5ICAgIGNvdW50eSAgICAgY291bnR5ICAgICBjb3VudHkgICAgY291bnR5ICAgICBjb3VudHkgIFxuXG4gKiozKiogICAgIHRyYWN0ICAgICB0cmFjdCAgICAgdHJhY3QgICAgICB0cmFjdCAgICAgIHRyYWN0ICAgICB0cmFjdCAgIFxuXG4gKio0KiogICAgVFJUSUQxMCAgIFRSVElEMTAgICB0cnRpZDEwICAgIFRSVElEMTAgICAgVFJUSUQxMCAgIFRSVElEMTAgIFxuXG4gKio1KiogICAgY2JzYTEwICAgIGNic2ExMCAgICAgY2JzYTEwICAgICBjYnNhMTAgICAgY2JzYTEwICAgICBjYnNhMTAgIFxuXG4gKioxNSoqICAgICAgICAgICAgICAgICAgICAgICBhMTVhc244MCAgIEExNUFTTjkwICAgICAgICAgICAgIEExNUFTTjAwIFxuXG4gKioxNioqICAgICAgICAgICAgICAgICAgICAgICBhMTVibGs4MCAgIEExNUJMSzkwICAgICAgICAgICAgIEExNUJMSzAwIFxuXG4gKioxNyoqICAgICAgICAgICAgICAgICAgICAgICBhMTVoc3A4MCAgIEExNUhTUDkwICAgICAgICAgICAgIEExNUhTUDAwIFxuLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cblxuVGFibGU6IFRhYmxlIGNvbnRpbnVlcyBiZWxvd1xuXG4gXG4tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tXG4gJm5ic3A7ICAgWDIwMDAucyAgIFgyMDEwLmYgICAgWDIwMTAucyAgXG4tLS0tLS0tLSAtLS0tLS0tLS0gLS0tLS0tLS0tLSAtLS0tLS0tLS0tXG4gKioxKiogICAgIHN0YXRlICAgICBzdGF0ZSAgICAgIHN0YXRlYSAgXG5cbiAqKjIqKiAgICBjb3VudHkgICAgIGNvdW50eSAgICBjb3VudHlhICBcblxuICoqMyoqICAgICB0cmFjdCAgICAgdHJhY3QgICAgICB0cmFjdGEgIFxuXG4gKio0KiogICAgVFJUSUQxMCAgIHRyYWN0aWQgICAgdHJhY3RpZCAgXG5cbiAqKjUqKiAgICBjYnNhMTAgICAgICAgICAgICAgICAgICAgICAgICBcblxuICoqMTUqKiAgICAgICAgICAgICBhMTVhc24xMCAgIGExNWFzbjEyIFxuXG4gKioxNioqICAgICAgICAgICAgIGExNWJsazEwICAgYTE1YmxrMTIgXG5cbiAqKjE3KiogICAgICAgICAgICAgYTE1aHNwMTAgICBhMTVoc3AxMiBcbi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS1cbiJ9 -->
-<pre><code>
--------------------------------------------------------------------------------
- &amp;nbsp;    root       category                 definition             X1970.f  
--------- -------- ----------------- -------------------------------- ----------
- **1**    state          id                      state                 state   
-
- **2**    county         id                      county                county  
-
- **3**    tract          id                   census tract             tract   
-
- **4**    trtid          id              census tract (10 digit       TRTID10  
-                                              identifier)                      
-
- **5**     cbsa    tract attribute   A core-based statistical area     cbsa10  
-                                      (CBSA) is a U.S. geographic              
-                                     area defined by the Office of             
-                                      Management and Budget (OMB)              
-                                      that consists of one or more             
-                                       counties (or equivalents)               
-                                     anchored by an urban center of            
-                                      at least 10,000 people plus              
-                                       adjacent counties that are              
-                                     socioeconomically tied to the             
-                                       urban center by commuting               
-
- **15**   a15asn      age-race        0-15 years old of Asians and             
-                                      Pacific Islanders (in 1980,              
-                                           0-14 years old of                   
-                                      Asians/Pacific Islanders; in             
-                                     2008-12 ACS, 0-14 years old of            
-                                      Asian/Pacific Islander race)             
-
- **16**   a15blk      age-race        0-15 years old of black race    A15BLK70 
-                                      (in 1980, 0-14 years old of              
-                                      black race; in 2006- 10 ACS,             
-                                     0-14 years old of black race)             
-
- **17**   a15hsp      age-race         0-15 years old, persons of              
-                                       Hispanic origins (in 1980,              
-                                       0-14 years old, persons of              
-                                      Hispanic origin; in 2008-12              
-                                      ACS, 0-14 years old, persons             
-                                          of Hispanic origins)                 
--------------------------------------------------------------------------------
-
-Table: Table continues below
-
- 
------------------------------------------------------------------------
- &amp;nbsp;   X1970.s   X1980.f   X1980.s    X1990.f    X1990.s   X2000.f  
--------- --------- --------- ---------- ---------- --------- ----------
- **1**     state     state     state      state      state     state   
-
- **2**    county    county     county     county    county     county  
-
- **3**     tract     tract     tract      tract      tract     tract   
-
- **4**    TRTID10   TRTID10   trtid10    TRTID10    TRTID10   TRTID10  
-
- **5**    cbsa10    cbsa10     cbsa10     cbsa10    cbsa10     cbsa10  
-
- **15**                       a15asn80   A15ASN90             A15ASN00 
-
- **16**                       a15blk80   A15BLK90             A15BLK00 
-
- **17**                       a15hsp80   A15HSP90             A15HSP00 
------------------------------------------------------------------------
-
-Table: Table continues below
-
- 
-----------------------------------------
- &amp;nbsp;   X2000.s   X2010.f    X2010.s  
--------- --------- ---------- ----------
- **1**     state     state      statea  
-
- **2**    county     county    countya  
-
- **3**     tract     tract      tracta  
-
- **4**    TRTID10   tractid    tractid  
-
- **5**    cbsa10                        
-
- **15**             a15asn10   a15asn12 
-
- **16**             a15blk10   a15blk12 
-
- **17**             a15hsp10   a15hsp12 
-----------------------------------------</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiV2FybmluZyBpbiBmaWxlKGZpbGUsIFwicnRcIikgOlxuICBjYW5ub3Qgb3BlbiBmaWxlICcvVXNlcnMvYXNpYXdvb2RzL0RvY3VtZW50cy9HaXRIdWIvQ1BQNTI3L2NwcC01MjgtZmFsbC0yMDIxLWdyb3VwLTAzL2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2JzogTm8gc3VjaCBmaWxlIG9yIGRpcmVjdG9yeVxuRXJyb3IgaW4gZmlsZShmaWxlLCBcInJ0XCIpIDogY2Fubm90IG9wZW4gdGhlIGNvbm5lY3Rpb25cbiJ9 -->
+<pre><code>Warning in file(file, &quot;rt&quot;) :
+  cannot open file &#39;/Users/asiawoods/Documents/GitHub/CPP527/cpp-528-fall-2021-group-03/data/rodeo/ltdb_data_dictionary.csv&#39;: No such file or directory
+Error in file(file, &quot;rt&quot;) : cannot open the connection</code></pre>
 <!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
@@ -346,13 +275,6 @@ Table: Table continues below
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuc2ltaWxhcl9jYXRlZ29yaWVzKFwicmFjZVwiKVxuYGBgIn0= -->
 <pre class="r"><code>similar_categories(&quot;race&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NjksIm5jb2wiOjEzLCJzdW1tYXJ5Ijp7IkRlc2NyaXB0aW9uIjpbImRmIFs2OSDDlyAxM10iXX19LCJyZGYiOiJINHNJQUFBQUFBQUFBKzFielhQa1JoVWY3MXJXeEdDU1FHMUlrWVdvb0dyWlRUeGVqWGRYYTVOUXhYaHRka3lXaVJNdjhSWTN6WXc4VXUxWWFrWmpEN254ZGVDekNQZVFDMWVLY000L0VDNmMrSDhDVDkyUytyM1d4MGl6RHNaVkhGNUpQM1cvajM3OTY2Zld1UDN1N3BNN3EwOVdHNDNHMWNieTBsTGpxZ2EzRGUxSGo3L2YybW8wbHE4QVdHb3NONTZMcmorRlRsK0JteldRRjBEMjRvWVZ1MzNQRG4yRSt1T25DTGtoUThpZm5pRTBjNmNwc2t4c3hUS3hGY3ZFVml3VFc3Rk1Zb1hFWXBGWUxCS0xSV0t4U0N3akIxc1pPZGpLeU1GV1JnNjJNbktrRmMwT1BUc3hvdlhIOWlDeG9RMXRGcHlsb0krQks4SEswQ2Y5WmhKY2RlMVpldXZhOHJZdmIxMTVtL1RWWE04ZjJCajBNWEF4U0hTV1hTOGRydWI1UXkvVko5SDVlQlMrS3hNR2dMU2dOUHZZd2xXWlI4MUhRMTFoaEY2TTBJc1JlakZDTDBib3hRZ3hHQ0VHSThSZ2hCaUFjQ3lZSmhxemNST1pib2JTc2N6a2JHa01wNVBoMldZK01ZZHpHQ0hwZDVtaFZER1VLbTNtZWxOSFdaNU5JR1ZyWWcrYy8rT0Y4SExCL1JjaDc4NWsrbjdyYzN5Ry9iMDRkRTZDMGNRR0FnM0MxdWZUOEFWWTk4R0pjeTZQbmpWdjgzU2V0ZjJpZVZVWFAyc09ublVPNnRnUzdiUU8vY1ZzdGU4Wjd6djJKRFNDOGRBSWpvMU9WREZEdy9hSHhvRTk4STY5Z2JFZmpnRTYwT2VtNXh2dDdTMXozUURGdTNtS3R6TktieGlndEdtYVc2MzJwdEY1Y0Zpb20xRTFvb2h2eGFHRzJWRDU2NXQzS2cxTWRrdENzVnBHMnl5S1JYWlBYSDlFWGE4YkRJWVZRSktnZHhmZUhMWVBRUWNUYitUNXhTa3EwNXFYb2xLUFNaUWZaQlBVczZmZW1XTjBUcHlKTjdEOSthbktVNmd5ZjNsNkpSUEhYNG56bzVIZEtrMmM3SjY0M3JUTXVFdEVaK2dHbkpwRDhWalR5TmVVM0lqNzNjNzJLNTJzV08yMWZQTjVhU3dQU0k0NUhmSzloWWVjcTVrejVFeS9ha1BPTlY4eTVGdjVHbjdndDFJZmZQeUppeDAreXR4QkdpeGdwMlB3RmZqR3pKdTZ4bE0vbUVIWGtXTU12WEE2OGZxbnZDMjJ0QzVHWFUwcDFqSFRvT3I1c3RRVTFQTGFFZ3lvT1R3MFhTSm5ZaTNtWlM1WlN5OGhIVlI0NDlZSHBhK040MkFDTXhXY0dQRnJ5UWluOXZRME5MelFHRHBUWjNMaStjNHdNWFVuem4zc3JwS3VPZ1UxWFdhbW9KYjIzWGdLNmdTYzZMNk1GNDQ5c3oyUHJvRTNwOEhVSGhlOUg5M2dOSFJjV0JsaFZCOUQrNFNOblZiZkRzSCswSjRtMzRUcndvWkk2eHlWSks3YlFpZWxkRVcxMkpWSVNFV2RyUjg2dzJqVWFYZEQ3RnQ1SWl2VXJXK1c2Zk5CSnoxdmxQV1UxS2xpbDlTZFY0cXJYMkxzZW1iRjdmdERaYTV2bHE0aHowOEpsWHd4aU1HaGxxVFU1aTdWZGFpY1V6VytXT09hSEgzV0R6WW4zemRsNXE0cjZ5blBLbjVsNU81VGtsR0tWR2RIK1U4d01IRDhhVlRrd01iQ085bU1tWVgzdFpVc2xlOXlQNXczcU53OTd6ekgyUjF3OWFDejIrRi9sTVZZZFhOYzVyYmVWbmxSUytuRytaTjVPWit6alo2WHdXcWI2a1dzVkdaTjdvWjduc2ZzOXJ0NnRObTkrUGVveXNMYjFJMHFkaktiMXUvTzA2cXloZDJxNHJwa1EvdjZYUDFNa2J0ZnhXWHhqdmd1VlMvZUgrZlUxemVvYnAwdFkxSzdYNlVtaXQ1WE53bzk1VzJKYmhYM3puLzNmb3NxbEwzcUZOc2xyN0Y4U3RSKzhacjUrbndTeS9RMkN2Mld2VXVWK1NoNnMxN0xmZUVyUHgwMWtwL0VPdTE3TzQvZXVtOHF6M0g3VWZkeHByM1pzY3h5UGN2TTA2dDZiWFllN3BYYmY3aUg3ZXVkdy8xT1Q4S2RSNTBIeGRwRlY2M2JPVm80NUtLcnZ0L2IzZStjdTluTGN0V1B1dnVQOTJENCtRUzhiRmQ5ZCtmZzdmY0taMVBmUFNwclB2ZG9lcVhSRkt2OVY2TTgvK3ZsNHBJb1RsdUxwanVxU2dzcnE5ZVY3djdoUVdwTjFLWkM0M3F2QzBVNDB3eVBvZlptSG11OXgrK2RXNXovSzl4cWlxTVk2YmlhNGpBR3dXN0lDUGFuWndUUDNDbkMvRkFHd2RRZVA1aEJNTFhIRDJmVXpuTlRITUJBZHZnUkRJS3BYMzRNZytBeXZ6by9nQ0dKeFk5Z0lPaGkyQlRITUZEekRNT1VVSzVycHc4QjlERndNWmhKVS93OEJvVjlDbDBLWjhWalVxTDArM2xSNnI2Yjk3anBVMjNaUFhlc2wrZXFyQS9ZSUhZT2U5c213bEF6Q080ZUhoQU1kWUpnS0NZSVd5YTF4emVhQkZON2xrbnQ4WTNuZHQzOFJodEs2cGR2UUFtbWZoL3VVYjk4UTVwaVVmTnJoNUZTSDJyK3dzcnFsZGQ4R1JtditZWEdSYzNQTkl1YW4zbXM0UnhjUERmUGg5TVhIMCs5cTc3YmdlMmNuR0MrUlVXd2kyRnp0NmYwUHNKUUVyQXJPUUpnQjRNdUJwS25lbmUvOTZCRDRRNkZYUXFMT2E0clVmWjI4cUlFVnVZOWJ2YW90dXllTzliTGM4MnR2YWFKTUt4ZGdxRm1FUXpybFdCWTFBanoya3N3dGNkckw4SFVIcSs5WnQzOHhyVVgyZUcxbDJEcWw5ZGVnckZmVVh0cmh5R3AzemxhV0ZtOTh0b3JJK08xdDlDNHFMMlpabEY3TTQ4MW5JT0w1K2I1Y1ByaTQ2bDNGYlZYVGpDdnZRaDJNWXhyTDJvK3dsQVNzQ3M1RXRWZURMb1lTSjZLMmt2aERvVmRDb3M1cml0UjluYnlvaFMxTi9NNHJyMDUzWFBIZW5tdXVkK0ZiUk5oK0o0aUdMNm5DSWJ2S1lMaGV3cGgvbDFJTUxYSHZ3c0pwdmI0ZDJHN2JuN2o3MEpraDM4WEVrejk4dTlDZ3JGZm5aL1pyaDFHU24zWG5pMnNyRjVYb29QaE1qSiswcjdRdU01UGgyZWFkWDVNUFBOWXd6bTRlRzZlTDZjM0ZVNWpISEVCNHlnUEdFZkoycXdaUjFQOGl3bXlZeWwrTGNXdnBmaTFpTitFMHhoVGU0TFRHRk43Z3RNSmpqbXREa3Y4NUNGNzhaODhFSFF4akgveVFNMHpERG52SlhCdERQb1l1QmhJSGZHN0I0VjlDbDBLcGE1WUoybWpXQ2NwVk9MMjZTakZxa0ZRYVNYejRsTmJHazY2K0YxRTltVUtGNW5DUmFad2tTbGNaSlNMVGFad2pDa2NZd3JIbU1JeDhWOHJCQk9PTUpzMlU4N29qS1J0aGVINTFobWRBRWFadzN6Rk5NMTVrOUVzcnpDU1ZrYlNHcEVYL3d1YTV0c25UaGpYZ2JYNDRmSWtDSkwvakdrTzdLa3pDaWJKWHhkWGg4Nng1M3ZvREtQK3BMMTkzOXc0cGpCRWNJdTJidEhXYmRxNmpWczNUUk8zY29oYjI3UzFIYlhTQVQ0M0NXWWJ5U0RYZUxGck5KNlBCL3dpeUpkQm92L0J1d2J5RXNoWFFWNEcrUnJJS3lEWFFiNE84ZzJRVjBGdWdId2I1Q2JJTFpEWFFGNEhXUWZaQkxrRGNoL2tPeUJ2Z2p3RTJRZjVBY2hiSUk5QWVpQnZneHlBdkFQeUxzaVBRY1lnUGdnRCtRbklCQ1NLK3hUa0RPUm5JRDhIK1FYSUwwRitCZkpya04rQS9CYmtkeUMvQi9rRHlCOUJQZ0Q1RThpSElIOEcrUWprcnlCL0Eva1k1TzhnbjRMOFMyWEZZR3lIQ1N1VzBwbTNwL2JHOFFSeUNlZ3pSVVVQV01RSlVMb1NaVk5UbEpjbXlvUG5ULzFvVm9hdGdYdnFQMjFGV1Z2bHpVTFc0dXNldWw4VExxLzhPemFsSllSMy9KSG5Kd2NNdExIZGQ4WXgrQkxNUHAvOERUYngvSVRUcS9BMDNPQ0hIWk1uZzJDY1BPRmphM3oySC9SNzRRdklPUUFBIn0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["root"],"name":[1],"type":["chr"],"align":["left"]},{"label":["category"],"name":[2],"type":["chr"],"align":["left"]},{"label":["definition"],"name":[3],"type":["chr"],"align":["left"]},{"label":["X1970.f"],"name":[4],"type":["chr"],"align":["left"]},{"label":["X1970.s"],"name":[5],"type":["chr"],"align":["left"]},{"label":["X1980.f"],"name":[6],"type":["chr"],"align":["left"]},{"label":["X1980.s"],"name":[7],"type":["chr"],"align":["left"]},{"label":["X1990.f"],"name":[8],"type":["chr"],"align":["left"]},{"label":["X1990.s"],"name":[9],"type":["chr"],"align":["left"]},{"label":["X2000.f"],"name":[10],"type":["chr"],"align":["left"]},{"label":["X2000.s"],"name":[11],"type":["chr"],"align":["left"]},{"label":["X2010.f"],"name":[12],"type":["chr"],"align":["left"]},{"label":["X2010.s"],"name":[13],"type":["chr"],"align":["left"]}],"data":[{"1":"a15asn","2":"age-race","3":"0-15 years old of Asians and Pacific Islanders (in 1980, 0-14 years old of Asians/Pacific Islanders; in 2008-12 ACS, 0-14 years old of Asian/Pacific Islander race)","4":"","5":"","6":"","7":"a15asn80","8":"A15ASN90","9":"","10":"A15ASN00","11":"","12":"a15asn10","13":"a15asn12","_rn_":"15"},{"1":"a15blk","2":"age-race","3":"0-15 years old of black race (in 1980, 0-14 years old of black race; in 2006- 10 ACS, 0-14 years old of black race)","4":"A15BLK70","5":"","6":"","7":"a15blk80","8":"A15BLK90","9":"","10":"A15BLK00","11":"","12":"a15blk10","13":"a15blk12","_rn_":"16"},{"1":"a15hsp","2":"age-race","3":"0-15 years old, persons of Hispanic origins (in 1980, 0-14 years old, persons of Hispanic origin; in 2008-12 ACS, 0-14 years old, persons of Hispanic origins)","4":"","5":"","6":"","7":"a15hsp80","8":"A15HSP90","9":"","10":"A15HSP00","11":"","12":"a15hsp10","13":"a15hsp12","_rn_":"17"},{"1":"a15ntv","2":"age-race","3":"0-15 years old of Native American race (in 1980, 0-14 years old of Native American race; in 2008-12 ACS, 0-14 years old of Native American race)","4":"","5":"","6":"","7":"a15ntv80","8":"A15NTV90","9":"","10":"A15NTV00","11":"","12":"a15ntv10","13":"a15ntv12","_rn_":"18"},{"1":"a15wht","2":"age-race","3":"0-15 years old of white race (in 1980, 0-14 years old of white race; in 2006- 10 ACS, 0-14 years old of white race)","4":"A15WHT70","5":"","6":"","7":"a15wht80","8":"A15WHT90","9":"","10":"A15WHT00","11":"","12":"a15wht10","13":"a15wht12","_rn_":"19"},{"1":"a60asn","2":"age-race","3":"60 years and older of Asians and Pacific Islanders","4":"","5":"","6":"","7":"a60asn80","8":"A60ASN90","9":"","10":"A60ASN00","11":"","12":"a60asn10","13":"","_rn_":"21"},{"1":"a60blk","2":"age-race","3":"60 years and older of black race","4":"A60BLK70","5":"","6":"","7":"a60blk80","8":"A60BLK90","9":"","10":"A60BLK00","11":"","12":"a60blk10","13":"","_rn_":"22"},{"1":"a60hsp","2":"age-race","3":"60 years and older, persons of Hispanic origins","4":"","5":"","6":"","7":"a60hsp80","8":"A60HSP90","9":"","10":"A60HSP00","11":"","12":"a60hsp10","13":"","_rn_":"23"},{"1":"a60ntv","2":"age-race","3":"60 years and older of Native American race","4":"","5":"","6":"","7":"a60ntv80","8":"A60NTV90","9":"","10":"A60NTV00","11":"","12":"a60ntv10","13":"","_rn_":"24"},{"1":"a60wht","2":"age-race","3":"60 years and older of white race","4":"A60WHT70","5":"","6":"","7":"a60wht80","8":"A60WHT90","9":"","10":"A60WHT00","11":"","12":"a60wht10","13":"","_rn_":"26"},{"1":"a65asn","2":"age-race","3":"65 years and older of Asians and Pacific Islanders","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"a65asn12","_rn_":"27"},{"1":"a65blk","2":"age-race","3":"65 years and older of black race","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"a65blk12","_rn_":"28"},{"1":"a65hsp","2":"age-race","3":"65 years and older, persons of Hispanic origins","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"a65hsp12","_rn_":"29"},{"1":"a65ntv","2":"age-race","3":"65 years and older of Native American race","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"a65ntv12","_rn_":"30"},{"1":"a65wht","2":"age-race","3":"65 years and older of non-Hispanic whites","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"a65wht12","_rn_":"31"},{"1":"ageasn","2":"age-race","3":"Asian and Pacific Islander population with known age distribution","4":"","5":"","6":"","7":"ageasn80","8":"AGEASN90","9":"","10":"AGEASN00","11":"","12":"ageasn10","13":"ageasn12","_rn_":"38"},{"1":"ageblk","2":"age-race","3":"black population with known age distribution","4":"AGEBLK70","5":"","6":"","7":"ageblk80","8":"AGEBLK90","9":"","10":"AGEBLK00","11":"","12":"ageblk10","13":"ageblk12","_rn_":"39"},{"1":"agehsp","2":"age-race","3":"Hispanic population with known age distribution","4":"","5":"","6":"","7":"agehsp80","8":"AGEHSP90","9":"","10":"AGEHSP00","11":"","12":"agehsp10","13":"agehsp12","_rn_":"40"},{"1":"agentv","2":"age-race","3":"Native American population with known age distribution","4":"","5":"","6":"","7":"agentv80","8":"AGENTV90","9":"","10":"AGENTV00","11":"","12":"agentv10","13":"agentv12","_rn_":"41"},{"1":"agewht","2":"age-race","3":"white population with known age distribution","4":"AGEWHT70","5":"","6":"","7":"agewht80","8":"AGEWHT90","9":"","10":"AGEWHT00","11":"","12":"agewht10","13":"agewht12","_rn_":"42"},{"1":"asian","2":"race","3":"persons of Asian race (and Pacific Islander)","4":"ASIAN70","5":"","6":"ASIAN80","7":"","8":"ASIAN90","9":"","10":"ASIAN00","11":"","12":"asian10","13":"asian12","_rn_":"43"},{"1":"black","2":"race","3":"persons of black race","4":"BLACK70","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"","_rn_":"44"},{"1":"dapov","2":"poverty-race","3":"Asians and Pacific Islanders for whom poverty status is determined","4":"","5":"","6":"","7":"dapov80","8":"","9":"DAPOV90","10":"","11":"DAPOV00","12":"","13":"dapov12","_rn_":"50"},{"1":"dbpov","2":"poverty-race","3":"black persons for whom poverty status is determined","4":"","5":"DBPOV70","6":"","7":"dbpov80","8":"","9":"DBPOV90","10":"","11":"DBPOV00","12":"","13":"dbpov12","_rn_":"51"},{"1":"dhpov","2":"poverty-race","3":"Hispanics for whom poverty status is determined","4":"","5":"","6":"","7":"dhpov80","8":"","9":"DHPOV90","10":"","11":"DHPOV00","12":"","13":"dhpov12","_rn_":"55"},{"1":"dnapov","2":"poverty-race","3":"Native American for whom poverty status is determined","4":"","5":"","6":"","7":"dnapov80","8":"","9":"DNAPOV90","10":"","11":"DNAPOV00","12":"","13":"dnapov12","_rn_":"58"},{"1":"dwpov","2":"poverty-race","3":"white persons for whom poverty status is determined","4":"","5":"DWPOV70","6":"","7":"dwpov80","8":"","9":"DWPOV90","10":"","11":"DWPOV00","12":"","13":"dwpov12","_rn_":"60"},{"1":"haw","2":"race","3":"persons of Hawaiian race","4":"HAW70","5":"","6":"HAW80","7":"","8":"HAW90","9":"","10":"HAW00","11":"","12":"haw10","13":"haw12","_rn_":"71"},{"1":"hha","2":"demographics-race","3":"total Asian/Pacific Islander households in sample-based data","4":"","5":"","6":"","7":"hha80","8":"","9":"HHA90","10":"","11":"HHA00","12":"","13":"hha12","_rn_":"73"},{"1":"hhb","2":"demographics-race","3":"total black households in sample-based data","4":"","5":"","6":"","7":"hhb80","8":"","9":"HHB90","10":"","11":"HHB00","12":"","13":"hhb12","_rn_":"74"},{"1":"hhh","2":"demographics-race","3":"total Hispanic households in sample-based data","4":"","5":"","6":"","7":"hhh80","8":"","9":"HHH90","10":"","11":"HHH00","12":"","13":"hhh12","_rn_":"75"},{"1":"hhw","2":"demographics-race","3":"total white households in sample-based data","4":"","5":"","6":"","7":"hhw80","8":"","9":"HHW90","10":"","11":"HHW00","12":"","13":"hhw12","_rn_":"76"},{"1":"hinca","2":"income-race","3":"Median household income for Asians and Pacific Islanders","4":"","5":"","6":"","7":"hinca80","8":"","9":"HINCA90","10":"","11":"HINCA00","12":"","13":"hinca12","_rn_":"78"},{"1":"hincb","2":"income-race","3":"Median household income for blacks","4":"","5":"","6":"","7":"hincb80","8":"","9":"HINCB90","10":"","11":"HINCB00","12":"","13":"hincb12","_rn_":"79"},{"1":"hinch","2":"income-race","3":"Median household income for Hispanics","4":"","5":"","6":"","7":"hinch80","8":"","9":"HINCH90","10":"","11":"HINCH00","12":"","13":"hinch12","_rn_":"80"},{"1":"hincw","2":"income-race","3":"Median household income for whites","4":"","5":"","6":"","7":"hincw80","8":"","9":"HINCW90","10":"","11":"HINCW00","12":"","13":"hincw12","_rn_":"81"},{"1":"hisp","2":"race","3":"persons of Hispanic origin","4":"","5":"","6":"HISP80","7":"","8":"HISP90","9":"","10":"HISP00","11":"","12":"hisp10","13":"hisp12","_rn_":"82"},{"1":"india","2":"race","3":"persons of Asian Indian race","4":"INDIA70","5":"","6":"INDIA80","7":"","8":"INDIA90","9":"","10":"INDIA00","11":"","12":"india10","13":"india12","_rn_":"90"},{"1":"napov","2":"poverty-race","3":"Asians and Pacific Islanders in poverty","4":"","5":"","6":"","7":"napov80","8":"","9":"NAPOV90","10":"","11":"NAPOV00","12":"","13":"napov12","_rn_":"108"},{"1":"nbpov","2":"poverty-race","3":"blacks in poverty","4":"","5":"NBPOV70","6":"","7":"nbpov80","8":"","9":"NBPOV90","10":"","11":"NBPOV00","12":"","13":"nbpov12","_rn_":"110"},{"1":"nhblk","2":"race","3":"persons of black race, not Hispanic origin","4":"","5":"","6":"NHBLK80","7":"","8":"NHBLK90","9":"","10":"NHBLK00","11":"","12":"nhblk10","13":"nhblk12","_rn_":"112"},{"1":"nhpov","2":"poverty-race","3":"Hispanics in poverty","4":"","5":"","6":"","7":"nhpov80","8":"","9":"NHPOV90","10":"","11":"NHPOV00","12":"","13":"nhpov12","_rn_":"113"},{"1":"nhwht","2":"race","3":"persons of white race, not Hispanic origin","4":"","5":"","6":"NHWHT80","7":"","8":"NHWHT90","9":"","10":"NHWHT00","11":"","12":"nhwht10","13":"nhwht12","_rn_":"114"},{"1":"nnapov","2":"poverty-race","3":"Native Americans in poverty","4":"","5":"","6":"","7":"nnapov80","8":"","9":"NNAPOV90","10":"","11":"NNAPOV00","12":"","13":"nnapov12","_rn_":"115"},{"1":"ntv","2":"race","3":"persons of Native American race","4":"","5":"","6":"NTV80","7":"","8":"NTV90","9":"","10":"NTV00","11":"","12":"ntv10","13":"ntv12","_rn_":"117"},{"1":"nwpov","2":"poverty-race","3":"whites in poverty","4":"","5":"NWPOV70","6":"","7":"nwpov80","8":"","9":"NWPOV90","10":"","11":"NWPOV00","12":"","13":"nwpov12","_rn_":"118"},{"1":"p15asn","2":"age-race","3":"percentage of 0-15 years old of Asians and Pacific Islanders (in 1980, percentage of 0-14 years old of Asians/Pacific Islanders; in 2008-12 ACS, percentage of 0-14 years old of Asian/Pacific Islander race)","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p15asn12","_rn_":"128"},{"1":"p15blk","2":"age-race","3":"percentage of 0-15 years old of black race (in 1980, percentage of 0-14 years old of black race; in 2008-12 ACS, percentage of 0-14 years old of black race)","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p15blk12","_rn_":"129"},{"1":"p15hsp","2":"age-race","3":"percentage of 0-15 years old, persons of Hispanic origins (in 1980, percentage of 0-14 years old, persons of Hispanic origin; in 2008-12 ACS, percentage of 0-14 years old, persons of Hispanic origins)","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p15hsp12","_rn_":"130"},{"1":"p15ntv","2":"age-race","3":"percentage of 0-15 years old of Native American race (in 1980, percentage of 0-14 years old of Native American race; in 2008-12 ACS, percentage of 0-14 years old of Native American race)","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p15ntv12","_rn_":"131"},{"1":"p15wht","2":"age-race","3":"percentage of 0-15 years old of white race (in 1980, percentage of 0-14 years old of white race; in 2008-12 ACS, percentage of 0-14 years old of white race)","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p15wht12","_rn_":"132"},{"1":"p65asn","2":"age-race","3":"percentage of 65 years and older of Asians and Pacific Islanders","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p65asn12","_rn_":"136"},{"1":"p65blk","2":"age-race","3":"percentage of 65 years and older of black race","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p65blk12","_rn_":"137"},{"1":"p65hsp","2":"age-race","3":"percentage of 65 years and older, persons of Hispanic origins","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p65hsp12","_rn_":"138"},{"1":"p65ntv","2":"age-race","3":"percentage of 65 years and older of Native American race","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p65ntv12","_rn_":"139"},{"1":"p65pov","2":"age-race","3":"percentage of 65 years and older in poverty","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p65pov12","_rn_":"140"},{"1":"p65wht","2":"age-race","3":"percentage of 65 years and older of non-Hispanic whites","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"p65wht12","_rn_":"141"},{"1":"papov","2":"poverty-race","3":"percentage of Asian and Pacific Islanders in poverty","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"papov12","_rn_":"143"},{"1":"pasian","2":"race","3":"percentage of persons of Asian race (and Pacific Islander)","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pasian12","_rn_":"144"},{"1":"pbpov","2":"poverty-race","3":"percentage of blacks in poverty","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pbpov12","_rn_":"145"},{"1":"phaw","2":"race","3":"percentage of persons of Hawaiian race","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"phaw12","_rn_":"156"},{"1":"phisp","2":"race","3":"percentage of persons of Hispanic origin","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"phisp12","_rn_":"157"},{"1":"phpov","2":"poverty-race","3":"percentage of Hispanics in poverty","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"phpov12","_rn_":"158"},{"1":"pnapov","2":"poverty-race","3":"percentage of Native Americans in poverty","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pnapov12","_rn_":"172"},{"1":"pnhblk","2":"race","3":"percentage of persons of black race, not Hispanic origin","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pnhblk12","_rn_":"174"},{"1":"pnhwht","2":"race","3":"percentage of persons white, not Hispanic origin","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pnhwht12","_rn_":"175"},{"1":"pntv","2":"race","3":"percentage of persons of Native American race","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pntv12","_rn_":"176"},{"1":"pwpov","2":"poverty-race","3":"percentage of whites in poverty","4":"","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"pwpov12","_rn_":"199"},{"1":"white","2":"race","3":"persons of white race","4":"WHITE70","5":"","6":"","7":"","8":"","9":"","10":"","11":"","12":"","13":"","_rn_":"211"}],"options":{"columns":{"min":{},"max":[10],"total":[13]},"rows":{"min":[10],"max":[10],"total":[69]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
@@ -360,28 +282,18 @@ Table: Table continues below
 <!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZGVzY3JpcHQoXCI2MCB5ZWFycyBhbmQgb2xkZXJcIilcbmBgYCJ9 -->
 <pre class="r"><code>descript(&quot;60 years and older&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiWzFdIFwiYTYwYXNuXCIgXCJhNjBibGtcIiBcImE2MGhzcFwiIFwiYTYwbnR2XCIgXCJhNjB3aHRcIlxuIn0= -->
-<pre><code>[1] &quot;a60asn&quot; &quot;a60blk&quot; &quot;a60hsp&quot; &quot;a60ntv&quot; &quot;a60wht&quot;</code></pre>
-<!-- rnb-output-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuYyhkZCwgMTk5MCwgMjAxMClcbmBgYCJ9 -->
-<pre class="r"><code>func(dd, 1990, 2010)</code></pre>
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuZnVuYygxOTcwLDkwKVxuYGBgIn0= -->
+<pre class="r"><code>func(1970,90)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibnJvdyI6NCwibmNvbCI6Miwic3VtbWFyeSI6eyJEZXNjcmlwdGlvbiI6WyJkZiBbNCDDlyAyXSJdfX0sInJkZiI6Ikg0c0lBQUFBQUFBQUExMVF5MDdETUJEY3VEYlFTQzFJWFBpSlJFVmM0TllENGdNUVNMMXVVME1qakYwNURvOGJmOEtmRnRicFdnUkhzbloyMXJQanlmM3Q2cXBjbFFBd0FWa1VNRkVFUVQwKzNGWFhBRkpRVTRDRWFhd2ZkT21jUUNUUDZFZ2V5RzEvczJDczNLaWh3V0k4b0FaZ0hnZkw3NHZvQTM5MSthOW0xc3JpcSs3WVZqQjU4b2EreGJYUnllMVRvOCtFVSsvZTZ5U2VSZkVYcjg4ZEdvTmRja2hrdWNHQTlaTW5QWFg3VEhMc2RxRjFsa1FpL2hXVmlRdWZFYWU5alMvWlZNMjJ0eS9WWlRRWXhvZHZ4bGlPc0RoWWloOWVwWGpWa2JiUHJVM0JsY0cxTnR6TUtmRVF1Tjc1MW9hVWhOaXVEaTVndWxjMnppUm15QWI3WHprdVpnZ01BZ0FBIn0= -->
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["variable"],"name":[1],"type":["chr"],"align":["left"]},{"label":["year"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"hu90","2":"1990"},{"1":"ohu90","2":"1990"},{"1":"hu00","2":"2000"},{"1":"ohu00","2":"2000"}],"options":{"columns":{"min":{},"max":[10],"total":[2]},"rows":{"min":[10],"max":[10],"total":[4]},"pages":{}}}
-  </script>
-</div>
-<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkoIHRpZHl2ZXJzZSApCmxpYnJhcnkoIGhlcmUgKQpsaWJyYXJ5KCBwYW5kZXIgKQpoZXJlOjppX2FtKCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZCIpCmxpYnJhcnkoaGVyZSkKc291cmNlKCJ1dGlsaXRpZXMuUiIpCmBgYAoKYGBge3J9CiMgc3RvcmUgZGF0YSBkaWN0aW9uYXJ5IGZpbGUgcGF0aApERF9GSUxFUEFUSCA8LSBoZXJlOjpoZXJlKCAiY3BwLTUyOC1mYWxsLTIwMjEtZ3JvdXAtMDMvZGF0YS9yb2Rlby9sdGRiX2RhdGFfZGljdGlvbmFyeS5jc3YiICkKCiMgaW1wb3J0IGRhdGEgZGljdGlvbmFyeQpkZCA8LSByZWFkLmNzdiggRERfRklMRVBBVEgsIHN0cmluZ3NBc0ZhY3RvcnM9RikKCiMgcmVtb3ZlIHRoZSBzZWNvbmQgcm9vdCBjb2x1bW4KZGQgPC0gc2VsZWN0KCBkZCwgLXJvb3QyICkKCiMgdmlldyBhIHN1YnNldCBvZiBjb2x1bW5zIApkZFsgYygxOjUsMTU6MTcpLCBdICU+JSBwYW5kZXIoKQpgYGAKCmBgYHtyfQpzaW1pbGFyX2NhdGVnb3JpZXMoInJhY2UiKQpgYGAKCmBgYHtyfQpkZXNjcmlwdCgiNjAgeWVhcnMgYW5kIG9sZGVyIikKYGBgCgpgYGB7cn0KZnVuYyhkZCwgMTk5MCwgMjAxMCkKYGBgCgo=</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiUiBOb3RlYm9vayIKb3V0cHV0OiBodG1sX25vdGVib29rCi0tLQoKYGBge3J9CmxpYnJhcnkoIHRpZHl2ZXJzZSApCmxpYnJhcnkoIGhlcmUgKQpsaWJyYXJ5KCBwYW5kZXIgKQpoZXJlOjppX2FtKCJjcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9sYWJzL3drMDIvTGFiLTAyLVdvb2RzLlJtZCIpCmxpYnJhcnkoaGVyZSkKc291cmNlKCJ1dGlsaXRpZXMyLlIiKQpgYGAKCmBgYHtyfQojIHN0b3JlIGRhdGEgZGljdGlvbmFyeSBmaWxlIHBhdGgKRERfRklMRVBBVEggPC0gaGVyZTo6aGVyZSggImNwcC01MjgtZmFsbC0yMDIxLWdyb3VwLTAzL2RhdGEvcm9kZW8vbHRkYl9kYXRhX2RpY3Rpb25hcnkuY3N2IiApCgoKIyBpbXBvcnQgZGF0YSBkaWN0aW9uYXJ5CmRkIDwtIHJlYWQuY3N2KCBERF9GSUxFUEFUSCwgc3RyaW5nc0FzRmFjdG9ycz1GKQoKCiNkZCA8LSByZWFkLmNzdigiL1VzZXJzL2FzaWF3b29kcy9Eb2N1bWVudHMvR2l0SHViL0NQUDUyNy9jcHAtNTI4LWZhbGwtMjAyMS1ncm91cC0wMy9kYXRhL3JvZGVvL2x0ZGItZGF0YS1kaWN0aW9uYXJ5LmNzdiIpCgojIHJlbW92ZSB0aGUgc2Vjb25kIHJvb3QgY29sdW1uCmRkIDwtIHNlbGVjdCggZGQsIC1yb290MiApCgojIHZpZXcgYSBzdWJzZXQgb2YgY29sdW1ucyAKZGRbIGMoMTo1LDE1OjE3KSwgXSAlPiUgcGFuZGVyKCkKYGBgCgpgYGB7cn0Kc2ltaWxhcl9jYXRlZ29yaWVzKCJyYWNlIikKYGBgCgpgYGB7cn0KZGVzY3JpcHQoIjYwIHllYXJzIGFuZCBvbGRlciIpCmBgYAoKYGBge3J9CmZ1bmMoMTk3MCw5MCkKYGBgCgo=</div>
 
 
 
@@ -428,7 +340,7 @@ $(document).ready(function () {
 <!-- code folding -->
 <script>
 $(document).ready(function () {
-  window.initializeSourceEmbed("Lab-02-Woods.Rmd");
+  window.initializeSourceEmbed("Lab-02.Rmd");
   window.initializeCodeFolding("show" === "show");
 });
 </script>
