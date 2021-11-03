@@ -1,0 +1,327 @@
+---
+title: "Lab-03"
+author: "Group-03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r}
+knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+library( dplyr )
+library( knitr )
+library( pander )
+library( stargazer )
+library( scales )
+library( here )
+# set stargazer type to text for 
+# previewing in RMD docs but
+# convert to type HTML when knitting
+# (next code chunk)
+
+```
+
+```{r}
+s.type <- "text"  
+```
+
+```{r}
+d1 <- readRDS( here::here( "data/rodeo/LTDB-1990.rds" ) )
+d2 <- readRDS( here::here( "data/rodeo/LTDB-2000.rds" ) )
+md <- readRDS( here::here( "data/rodeo/LTDB-META-DATA.rds" ) )
+
+nrow( d1 ) 
+```
+
+```{r}
+import::here("compare_dfs",
+             "d_sub",
+             "MVH.Hist",
+             "jplot",
+             "mvh_compare",
+             "hg",
+             "gent_var",
+             .from = here::here("labs/wk03/utilities.R"),
+             .character_only = TRUE)
+```
+
+# Part 1
+\
+
+In urban areas, home values experienced a slight increase between the 1990-2000 period and 2000-2010. The median value increased by 2.88% which equates to a median dollar increase of $2,673.
+\
+
+```{r}
+#merge data
+d1 <- select( d1, - year )
+d2 <- select( d2, - year )
+
+d <- merge( d1, d2, by="tractid" )
+d <- merge( d, md, by="tractid" )
+
+nrow( d )
+```
+
+```{r}
+#Only Urban Tracts
+d <- filter( d, urban == "urban" )
+```
+
+
+```{r}
+#Compare shared variables
+vars <- compare_dfs( df1=d1, df2=d2 )
+head(vars)
+```
+
+```{r}
+#Copy of dataset
+d.full <- d
+```
+
+
+```{r}
+#Create subset for the analysis
+d <- d_sub(d)
+head(d)
+```
+
+```{r}
+# adjust 1990 home values for inflation 
+mhv.90 <- d$mhmval90 * 1.28855  
+mhv.00 <- d$mhmval00
+
+mhv.change <- mhv.00 - mhv.90
+
+df <- data.frame( MedianHomeValue1990=mhv.90, 
+                  MedianHomeValue2000=mhv.00, 
+                  Change.90.to.00=mhv.change )
+```
+
+
+```{r}
+#Histogram change in home values
+MVH.Hist()
+```
+
+```{r}
+#Compare 1990 and 2000 mhv distributions
+mvh_compare()
+```
+
+```{r}
+#percent change
+mhv.90[ mhv.90 < 10000 ] <- NA
+pct.change <- mhv.change / mhv.90
+summary( pct.change )
+```
+
+```{r}
+# how many cases had increases above 500%
+sum( pct.change > 5, na.rm=T )
+```
+```{r}
+# preview tracts with large increases in home values 
+# to see if increases make sense 
+
+d %>% 
+  filter( pct.change > 5 ) %>% 
+  head()
+```
+
+
+```{r}
+#Plot the percent change variable
+hg()
+```
+
+```{r}
+#Group Growth Rates By Metro Area
+d$mhv.change <- mhv.change 
+d$pct.change <- pct.change
+d$mhv.00 <- mhv.00
+d$mhv.90 <- mhv.90
+
+d %>%
+  group_by( cbsaname ) %>%
+  summarize( ave.change = median( mhv.change, na.rm=T ),
+             ave.change.d = dollar( round(ave.change,0) ),
+             growth = 100 * median( pct.change, na.rm=T ) ) %>%
+  ungroup() %>%
+  arrange( - growth ) %>%
+  select( - ave.change ) %>% 
+  head( 25 ) %>%
+  pander()
+```
+
+# Part 2
+\
+
+Between the 1990-2000 period and 2000-2010 there were 17,670 candidates for gentrification, and of those 40 transitioned into the advanced stages of gentrification. The candidates were determined if there was a lower than average home value and higher than average diversity. These criteria were selected as gentrification historically takes place in these poorer areas inhabited largely by marginalized racial groups. Of the candidates, the number that were determined to have transitioned into the advanced stages of gentrification experienced above average rise in home values, growth rate, and a loss of diversity. This criteria was selected as in gentrified areas home values would go from the low end of the spectrum to the higher end at a rate that would not otherwise occur in that relatively short amount of time. Growth rate would follow a similar trend to home values as development is more likely to in a less impoverished area. Loss of diversity would indicate the marginalized groups that previously lived there were displaced by whites who have become the more predominant ethnic group.   
+\
+
+```{r}
+d.full$mhv.90 <- mhv.90
+d.full$mhv.00 <- mhv.00
+d.full$mhv.change <- mhv.change
+d.full$pct.change <- pct.change
+```
+
+
+```{r}
+d3 <- gent_var()
+```
+
+
+```{r}
+d3 <- data.frame(d3)
+stargazer( d3, 
+           type=s.type, 
+           digits=0, 
+           summary.stat = c("min", "p25","median","mean","p75","max") )
+```
+
+```{r}
+# home value in lower than average home in a metro in 1990
+poor.1990 <- d3$metro.mhv.pct.90 < 45  
+
+# above average diversity for metro
+diverse.1990 <- d3$metro.race.rank.90 > 45 
+
+# home values increased more than overall city gains 
+# change in percentile rank within the metro
+mhv.pct.increase <- d3$metro.mhv.pct.change > 0
+
+# faster than average growth  
+# 2.88% growth in value is median for the country
+home.val.rise <- d3$pct.change > 2.88 
+
+# proportion of whites increases by more than mean 
+# measured by increase in white
+loss.diversity <- d3$race.change > -8
+
+d3$g.can <- poor.1990 & diverse.1990
+d3$g.flag <- poor.1990 & diverse.1990 & mhv.pct.increase & home.val.rise & loss.diversity
+
+num.candidates <-  sum( poor.1990 & diverse.1990, na.rm=T )
+num.gentrified <- sum( d3$g.flag, na.rm=T )
+```
+
+```{r}
+num.gentrified
+```
+```{r}
+num.candidates
+```
+
+# Part 3
+\
+
+```{r}
+library( geojsonio )  # read geoJSON map files from GitHub
+library( sp )         # spatial data class sp for shapefiles
+library( cartogram )  # spatial maps w/ tract size bias reduction
+library( tmap )       # thematic maps
+library( maptools )   # spatial object manipulation 
+library( sf )         # 'simple features' flavor of shapefiles
+```
+
+```{r}
+github.url <- "https://raw.githubusercontent.com/DS4PS/cpp-529-master/master/data/phx_dorling.geojson"
+phx <- geojson_read( x=github.url,  what="sp" )
+plot( phx )
+```
+
+```{r}
+# create small dataframe for the merge
+df <- data.frame(  tractid=d$tractid, 
+        mhv.90,  mhv.00,  mhv.change,  pct.change, d3$g.can, d3$g.flag )
+
+# create GEOID that matches GIS format
+
+# create a geoID for merging by tract 
+df$GEOID <- substr( df$tractid, 6, 18 )  # extract codes
+df$GEOID <- gsub( "-", "", df$GEOID )    # remove hyphens
+class( df$GEOID )
+```
+```{r}
+nrow( phx )
+```
+```{r}
+phx <- merge( phx, df, by.x="GEOID", by.y="GEOID" )
+
+# make sure they have not changed or 
+# you are missing rows in your data frame
+# or merging with the wrong ID
+nrow( phx )
+```
+## Question 1
+\
+
+In 1990 the high-value tracts are located on the outskirts of the city, nearly surrounding the low-value tracts located in the city center and smaller pockets moving outward. 
+```{r}
+#Homes Values 1990
+phx <- spTransform( phx, CRS("+init=epsg:3395") )
+
+bb <- st_bbox( c( xmin = -12519146, xmax = -12421368, 
+                 ymax = 3965924, ymin = 3899074 ), 
+               crs = st_crs("+init=epsg:3395")) 
+
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="mhv.90", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Homes Values 1990", title.position=c("right","top") )
+```
+
+```{r}
+#Homes Values 2000
+phx <- spTransform( phx, CRS("+init=epsg:3395") )
+
+bb <- st_bbox( c( xmin = -12519146, xmax = -12421368, 
+                 ymax = 3965924, ymin = 3899074 ), 
+               crs = st_crs("+init=epsg:3395")) 
+
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="mhv.00", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Homes Values 2000", title.position=c("right","top") )
+```
+
+## Question 2
+\
+
+In 2000 the high-value tracts expanded to adjoining tracts. The largest gains were in these high-value adjacent tracts, although there were some tracts towards the city center that saw similar gains.   
+```{r}
+#Home Value Change
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="mhv.change", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Home Value Change", title.position=c("right","top") )
+```
+
+```{r}
+#Home Value Percent Change
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="pct.change", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Home Value Percent Change", title.position=c("right","top") )
+```
+
+## Question 3
+\
+
+There was no meaningful pattern to where gentrification occurs. It is likely no tract met the established criteria for advanced stages of gentrification.
+```{r}
+#Gentrification Candidates
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="d3.g.can", n=10, style="cat", palette="Spectral" ) +
+  tm_layout( "Gentrification Candidates", title.position=c("right","top") )
+```
+
+```{r}
+#Gentrified Areas
+tm_shape( phx, bbox=bb ) + 
+  tm_polygons( col="d3.g.flag", n=10, style="cat", palette="Spectral" ) +
+  tm_layout( "Gentrified Areas", title.position=c("right","top") )
+```
+
