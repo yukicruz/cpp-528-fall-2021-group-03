@@ -52,7 +52,7 @@ import::here("compare_dfs",
 # Part 1
 \
 
-In urban areas, home values experienced a slight increase between the 1990-2000 period and 2000-2010. The median value increased by 2.88% which equates to a median dollar increase of $2,673.
+In urban areas, home values experienced a slight increase between the 1990-2000 period and 2000-2010. The median value increased by 0.58% which equates to a median dollar increase of $592.
 \
 
 ```{r}
@@ -91,8 +91,13 @@ head(d)
 ```
 
 ```{r}
+#1990-2000 Inflation Rate
+(1.028)^10
+```
+
+```{r}
 # adjust 1990 home values for inflation 
-mhv.90 <- d$mhmval90 * 1.28855  
+mhv.90 <- d$mhmval90 * 1.318048  
 mhv.00 <- d$mhmval00
 
 mhv.change <- mhv.00 - mhv.90
@@ -161,7 +166,7 @@ d %>%
 # Part 2
 \
 
-Between the 1990-2000 period and 2000-2010 there were 17,670 candidates for gentrification, and of those 40 transitioned into the advanced stages of gentrification. The candidates were determined if there was a lower than average home value and higher than average diversity. These criteria were selected as gentrification historically takes place in these poorer areas inhabited largely by marginalized racial groups. Of the candidates, the number that were determined to have transitioned into the advanced stages of gentrification experienced above average rise in home values, growth rate, and a loss of diversity. This criteria was selected as in gentrified areas home values would go from the low end of the spectrum to the higher end at a rate that would not otherwise occur in that relatively short amount of time. Growth rate would follow a similar trend to home values as development is more likely to in a less impoverished area. Loss of diversity would indicate the marginalized groups that previously lived there were displaced by whites who have become the more predominant ethnic group.   
+Between the 1990-2000 period and 2000-2010 there were 17,670 candidates for gentrification, and of those 871 transitioned into the advanced stages of gentrification. The candidates were determined if there was a lower than average home value and higher than average diversity. These criteria were selected as gentrification historically takes place in these poorer areas inhabited largely by marginalized racial groups. Of the candidates, the number that were determined to have transitioned into the advanced stages of gentrification experienced above average rise in home values, growth rate, and a loss of diversity. This criteria was selected as in gentrified areas home values would go from the low end of the spectrum to the higher end at a rate that would not otherwise occur in that relatively short amount of time. Growth rate would follow a similar trend to home values as development is more likely to in a less impoverished area. Loss of diversity would indicate the marginalized groups that previously lived there were displaced by whites who have become the more predominant ethnic group.   
 \
 
 ```{r}
@@ -197,8 +202,8 @@ diverse.1990 <- d3$metro.race.rank.90 > 45
 mhv.pct.increase <- d3$metro.mhv.pct.change > 0
 
 # faster than average growth  
-# 2.88% growth in value is median for the country
-home.val.rise <- d3$pct.change > 2.88 
+# 0.58% growth in value is median for the country
+home.val.rise <- d3$pct.change > 0.58 
 
 # proportion of whites increases by more than mean 
 # measured by increase in white
@@ -310,7 +315,7 @@ tm_shape( phx, bbox=bb ) +
 ## Question 3
 \
 
-There was no meaningful pattern to where gentrification occurs. It is likely no tract met the established criteria for advanced stages of gentrification.
+Where gentrification occurs appears to relate to a tract's proximity to tracts with higher home values. The tracts where gentrification occur tend to be on the outskirts of the city and either adjacent to or surrounded by tracts with a higher initial home value.
 ```{r}
 #Gentrification Candidates
 tm_shape( phx, bbox=bb ) + 
