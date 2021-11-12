@@ -37,7 +37,7 @@ Follow the steps from the tutorial to create a dataset that includes 2000 and 20
 
 ### Load necessary packages:
 
-```{r}
+```{r, message = F, warning = F}
 
 library( dplyr )
 library( here )
@@ -50,7 +50,7 @@ library(evaluate)
 ```
 
 
-```{r}
+```{r, message = F, warning = F}
 # set randomization seed ----
 set.seed( 1234 )
 
@@ -74,10 +74,10 @@ import::here("S_TYPE",
              "cbsa_stats_df",
              # notice the use of here::here() that points to the .R file
              # where all these R objects are created
-             .from = here::here("utilities-kh.R"),
+             .from = here::here("labs/wk04/utilities-kh.R"),
              .character_only = TRUE)
 
-S_TYPE <- "text"
+S_TYPE <- "html"
 
 ```
 
@@ -90,7 +90,7 @@ df %>% head()
 
 ### Descriptives
 
-```{r}
+```{r, results = 'asis'}
 stargazer( df, 
            type=S_TYPE, 
            digits=0, 
@@ -216,7 +216,7 @@ jplot( d3$p.vacant, d3$pct.change, ylim=c(-50,100),
 
 
 
-```{r}
+```{r, results = 'asis'}
 d.reg <- d
 d.reg$pct.change[ d.reg$pct.change > 200 ] <- NA
 d.reg$p.unemp <- log10( d.reg$p.unemp + 1 )
@@ -322,9 +322,9 @@ fixed <- plm(pct.change ~ p.unemp, data=d5,
 ### What are the results? Which factor was most important? Did it meet your expectations? Were there any variables that were not significant that you expected to be?
 
 
-```{r}
+```{r, results = 'asis'}
 stargazer( R, RDummy, fixed, 
-           type = "text", 
+           type = "html", 
            dep.var.labels = ("pct.change"),
            column.labels = c("OLS", "OLS with Dummy", "FE"),
            covariate.labels = c("p.unemp","Tyler, TX",
