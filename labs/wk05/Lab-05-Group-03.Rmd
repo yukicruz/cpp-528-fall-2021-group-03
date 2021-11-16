@@ -1,0 +1,121 @@
+---
+title: "Lab 05 - Modeling the Intervention"
+author: "Group 03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+``` 
+
+
+# Library
+
+```{r, message = F, warning = F}
+library( here )
+library( import )
+library( tidyverse )
+library( pander )
+library( dplyr )
+library( knitr )
+library( stargazer )
+library( scales )
+```
+
+# Load Functions
+
+```{r}
+import::here("S_TYPE",
+             "d",
+             "df",
+             "d3",
+             "PLOTS",
+             "%>%",
+             .from = here::here("labs/wk05/lab_05_source.R"), # here::here() points to the .R file where all these R objects are created
+             .character_only = TRUE)
+
+detach("package:import", unload = TRUE)
+```
+
+# Rodeo Data Set
+
+```{r}
+# Save data set to rodeo folder
+saveRDS(d, here("data/rodeo/rodeo-data-rn.rds"))
+
+# Load data set
+readRDS(file = here("data/rodeo/rodeo-data-rn.rds"))
+```
+
+# Data Manifest
+
+```{r}
+ltdb.raw.2000s <- read.csv( here("data/raw/ltdb_std_2000_sample.csv") )
+ltdb.raw.2000f <- read.csv( here("data/raw/ltdb_std_2000_fullcount.csv") )
+ltdb.rodeo.2000 <- readRDS( file = here("data/rodeo/ltdb-2000.rds") )
+
+ltdb.raw.2010s <- read.csv( here("data/raw/ltdb_std_2010_sample.csv") )
+ltdb.raw.2010f <- read.csv( here("data/raw/ltdb_std_2010_fullcount.csv") )
+ltdb.rodeo.2010 <- readRDS( file = here("data/rodeo/ltdb-2010.rds") )
+
+complete.rodeo <- readRDS( file = here("data/rodeo/rodeo-data-rn.rds") )
+```
+
+```{r}
+nrow( ltdb.raw.2000s ) # 72,693
+nrow( ltdb.raw.2000f ) # 72,693
+nrow( ltdb.rodeo.2000 ) # 72,693
+
+nrow( ltdb.raw.2010s ) # 73,056
+nrow( ltdb.raw.2010f ) # 74,002
+nrow( ltdb.rodeo.2010 ) #74,022
+```
+
+# Explain why the number of rows is less
+
+
+
+```{r}
+nrow( complete.rodeo )
+```
+
+# Diff-In-Diff Model for NMTC Program
+
+```{r, warning = F, results = 'asis'}
+d3 %>% head()
+
+m <- lm( y ~ treat + post + treat*post, data = d3 )
+
+# Display model results
+stargazer( m,
+           type = S_TYPE,
+           digits = 2 )
+```
+
+
+# Diff-In-Diff Model for LIHTC Program
+
+```{r, warning = F, results = 'asis', eval = F}
+d3 %>% head()
+
+m <- lm( y ~ treat + post + treat*post, data = d3 )
+
+# Display model results
+stargazer( m,
+           type = S_TYPE,
+           digits = 2 )
+```
+
+# Reflection
+
+How can we test the parallel lines assumption in this model? We know that growth rates change significantly between periods. The market for urban homes from 1990-2000 looks very different from the market in 2000 to 2010.
+
+
+<br>
+<br>
+
