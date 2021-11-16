@@ -251,12 +251,16 @@ y1 <- log( d$mhv.00 )
 y2 <- log( d$mhv.10 )
 
 # create a variable that identifies if a tract received NMTC funding
-treat <- as.numeric( d$num.nmtc > 0 )
+treat.nmtc <- as.numeric( d$num.nmtc > 0 )
+
+# create a variable that identifies if a tract received LIHTC funding
+treat.lihtc <- as.numeric( d$num.lihtc > 0 )
 
 # store the year 2000 data
-d1 <- data.frame( y=y1, treat=treat, post=0 )
+d1 <- data.frame( y=y1, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, post=0 )
+
 # store the year 2010 data
-d2 <- data.frame( y=y2, treat=treat, post=1 )
+d2 <- data.frame( y=y2, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, post=1 )
 
 # stack the two time periods together
 d3 <- rbind( d1, d2 )

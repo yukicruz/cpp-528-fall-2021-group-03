@@ -89,11 +89,11 @@ nrow( complete.rodeo )
 ```{r, warning = F, results = 'asis'}
 d3 %>% head()
 
-m <- lm( y ~ treat + post + treat*post, data = d3 )
+m.nmtc <- lm( y ~ treat.nmtc + post + treat.nmtc*post, data = d3 )
 
 # Display model results
-stargazer( m,
-           type = S_TYPE,
+stargazer( m.nmtc,
+           type = "text", # change to S_TYPE
            digits = 2 )
 ```
 
@@ -101,13 +101,11 @@ stargazer( m,
 # Diff-In-Diff Model for LIHTC Program
 
 ```{r, warning = F, results = 'asis', eval = F}
-d3 %>% head()
-
-m <- lm( y ~ treat + post + treat*post, data = d3 )
+m.lihtc <- lm( y ~ treat.lihtc + post + treat.lihtc*post, data = d3 )
 
 # Display model results
-stargazer( m,
-           type = S_TYPE,
+stargazer( m.lihtc,
+           type = "text", #change to S_TYPE
            digits = 2 )
 ```
 
