@@ -87,25 +87,47 @@ nrow( complete.rodeo )
 # Diff-In-Diff Model for NMTC Program
 
 ```{r, warning = F, results = 'asis'}
-d3 %>% head()
+# set randomization seed
+set.seed( 1234 )
 
-m.nmtc <- lm( y ~ treat.nmtc + post + treat.nmtc*post, data = d3 )
+m1.nmtc <- lm( y ~ p.prof + treat.nmtc + post + treat.nmtc*post, data = d3 )
+m2.nmtc <- lm( y ~ pov.rate + treat.nmtc + post + treat.nmtc*post, data = d3 )
+m3.nmtc <- lm( y ~ p.unemp + treat.nmtc + post + treat.nmtc*post, data = d3 )
 
 # Display model results
-stargazer( m.nmtc,
-           type = "text", # change to S_TYPE
+stargazer( m1.nmtc, m2.nmtc, m3.nmtc, 
+           type = S_TYPE, 
+           column.labels = c("Model 1", "Model 2", "Model 3"),
+           dep.var.labels = c("Median House Value"),
+           covariate.labels = c("Percent Professionals",
+                                "Poverty Rate",
+                                "Percent Unemployment",
+                                "Treatment - NMTC",
+                                "Post-NMTC Time Period",
+                                "Treatment - NMTC x Post"),
            digits = 2 )
 ```
 
 
 # Diff-In-Diff Model for LIHTC Program
 
-```{r, warning = F, results = 'asis', eval = F}
-m.lihtc <- lm( y ~ treat.lihtc + post + treat.lihtc*post, data = d3 )
+```{r, warning = F, results = 'asis'}
+
+m1.lihtc <- lm( y ~ p.prof + treat.lihtc + post + treat.lihtc*post, data = d3 )
+m2.lihtc <- lm( y ~ pov.rate + treat.lihtc + post + treat.lihtc*post, data = d3 )
+m3.lihtc <- lm( y ~ p.unemp + treat.lihtc + post + treat.lihtc*post, data = d3 )
 
 # Display model results
-stargazer( m.lihtc,
-           type = "text", #change to S_TYPE
+stargazer( m1.lihtc, m2.lihtc, m3.lihtc, 
+           type = S_TYPE, 
+           column.labels = c("Model 1", "Model 2", "Model 3"),
+           dep.var.labels = c("Median House Value"),
+           covariate.labels = c("Percent Professionals",
+                                "Poverty Rate",
+                                "Percent Unemployment",
+                                "Treatment - LIHTC",
+                                "Post-LIHTC Time Period",
+                                "Treatment - LIHTC x Post"),
            digits = 2 )
 ```
 

@@ -256,11 +256,23 @@ treat.nmtc <- as.numeric( d$num.nmtc > 0 )
 # create a variable that identifies if a tract received LIHTC funding
 treat.lihtc <- as.numeric( d$num.lihtc > 0 )
 
+# create a variable for percent professional
+p.prof.00 <- d$p.prof.00
+p.prof.10 <- d$p.prof.10
+
+# create a variable for poverty rate
+pov.rate.00 <- d$pov.rate.00
+pov.rate.10 <- d$pov.rate.10
+
+# create a variable for percent unemployment
+p.unemp.00 <- d$p.unemp.00
+p.unemp.10 <- d$p.unemp.10
+
 # store the year 2000 data
-d1 <- data.frame( y=y1, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, post=0 )
+d1 <- data.frame( y = y1, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.prof = p.prof.00, pov.rate = pov.rate.00, p.unemp = p.unemp.00, post=0 )
 
 # store the year 2010 data
-d2 <- data.frame( y=y2, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, post=1 )
+d2 <- data.frame( y = y2, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.prof = p.prof.10, pov.rate = pov.rate.10, p.unemp = p.unemp.10, post=1 )
 
 # stack the two time periods together
 d3 <- rbind( d1, d2 )

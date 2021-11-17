@@ -11,7 +11,7 @@
 
 <meta name="author" content="Group 03" />
 
-<meta name="date" content="2021-11-15" />
+<meta name="date" content="2021-11-16" />
 
 <title>Lab 05 - Modeling the Intervention</title>
 
@@ -447,7 +447,7 @@ pre code {
 
 <h1 class="title toc-ignore">Lab 05 - Modeling the Intervention</h1>
 <h4 class="author">Group 03</h4>
-<h4 class="date">November 15, 2021</h4>
+<h4 class="date">November 16, 2021</h4>
 
 </div>
 
@@ -547,57 +547,101 @@ pre code {
 </div>
 <div id="diff-in-diff-model-for-nmtc-program" class="section level1">
 <h1>Diff-In-Diff Model for NMTC Program</h1>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a>d3 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span></code></pre></div>
-<pre><code>     y treat post</code></pre>
-<p>1 11.49987 0 0 2 11.45036 0 0 3 11.54205 0 0 4 11.65886 0 0 5 11.91997 0 0 6 11.41547 0 0</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1"></a>m &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>treat <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
-<span id="cb22-2"><a href="#cb22-2"></a></span>
-<span id="cb22-3"><a href="#cb22-3"></a><span class="co"># Display model results</span></span>
-<span id="cb22-4"><a href="#cb22-4"></a><span class="kw">stargazer</span>( m,</span>
-<span id="cb22-5"><a href="#cb22-5"></a>           <span class="dt">type =</span> S_TYPE,</span>
-<span id="cb22-6"><a href="#cb22-6"></a>           <span class="dt">digits =</span> <span class="dv">2</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1"></a><span class="co"># set randomization seed</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="kw">set.seed</span>( <span class="dv">1234</span> )</span>
+<span id="cb20-3"><a href="#cb20-3"></a></span>
+<span id="cb20-4"><a href="#cb20-4"></a>m1.nmtc &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>p.prof <span class="op">+</span><span class="st"> </span>treat.nmtc <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat.nmtc<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
+<span id="cb20-5"><a href="#cb20-5"></a>m2.nmtc &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>pov.rate <span class="op">+</span><span class="st"> </span>treat.nmtc <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat.nmtc<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
+<span id="cb20-6"><a href="#cb20-6"></a>m3.nmtc &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>p.unemp <span class="op">+</span><span class="st"> </span>treat.nmtc <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat.nmtc<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
+<span id="cb20-7"><a href="#cb20-7"></a></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="co"># Display model results</span></span>
+<span id="cb20-9"><a href="#cb20-9"></a><span class="kw">stargazer</span>( m1.nmtc, m2.nmtc, m3.nmtc, </span>
+<span id="cb20-10"><a href="#cb20-10"></a>           <span class="dt">type =</span> S_TYPE, </span>
+<span id="cb20-11"><a href="#cb20-11"></a>           <span class="dt">column.labels =</span> <span class="kw">c</span>(<span class="st">&quot;Model 1&quot;</span>, <span class="st">&quot;Model 2&quot;</span>, <span class="st">&quot;Model 3&quot;</span>),</span>
+<span id="cb20-12"><a href="#cb20-12"></a>           <span class="dt">dep.var.labels =</span> <span class="kw">c</span>(<span class="st">&quot;Median House Value&quot;</span>),</span>
+<span id="cb20-13"><a href="#cb20-13"></a>           <span class="dt">covariate.labels =</span> <span class="kw">c</span>(<span class="st">&quot;Percent Professionals&quot;</span>,</span>
+<span id="cb20-14"><a href="#cb20-14"></a>                                <span class="st">&quot;Poverty Rate&quot;</span>,</span>
+<span id="cb20-15"><a href="#cb20-15"></a>                                <span class="st">&quot;Percent Unemployment&quot;</span>,</span>
+<span id="cb20-16"><a href="#cb20-16"></a>                                <span class="st">&quot;Treatment - NMTC&quot;</span>,</span>
+<span id="cb20-17"><a href="#cb20-17"></a>                                <span class="st">&quot;Post-NMTC Time Period&quot;</span>,</span>
+<span id="cb20-18"><a href="#cb20-18"></a>                                <span class="st">&quot;Treatment - NMTC x Post&quot;</span>),</span>
+<span id="cb20-19"><a href="#cb20-19"></a>           <span class="dt">digits =</span> <span class="dv">2</span> )</span></code></pre></div>
 <table style="text-align:center">
 <tr>
-<td colspan="2" style="border-bottom: 1px solid black">
+<td colspan="4" style="border-bottom: 1px solid black">
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
-<td>
+<td colspan="3">
 <em>Dependent variable:</em>
 </td>
 </tr>
 <tr>
 <td>
 </td>
-<td colspan="1" style="border-bottom: 1px solid black">
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+Median House Value
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-y
-</td>
-</tr>
-<tr>
-<td colspan="2" style="border-bottom: 1px solid black">
-</td>
-</tr>
-<tr>
-<td style="text-align:left">
-treat
+Model 1
 </td>
 <td>
--0.26<sup>***</sup>
+Model 2
+</td>
+<td>
+Model 3
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 </td>
 <td>
-(0.02)
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Percent Professionals
+</td>
+<td>
+0.03<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.0001)
+</td>
+<td>
+</td>
+<td>
 </td>
 </tr>
 <tr>
@@ -605,17 +649,136 @@ treat
 </td>
 <td>
 </td>
-</tr>
-<tr>
-<td style="text-align:left">
-post
+<td>
 </td>
 <td>
-0.23<sup>***</sup>
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
+Poverty Rate
+</td>
+<td>
+</td>
+<td>
+-0.02<sup>***</sup>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.0001)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Percent Unemployment
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+-0.04<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.0003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Treatment - NMTC
+</td>
+<td>
+-0.02
+</td>
+<td>
+0.11<sup>***</sup>
+</td>
+<td>
+-0.03<sup>*</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.01)
+</td>
+<td>
+(0.01)
+</td>
+<td>
+(0.01)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Post-NMTC Time Period
+</td>
+<td>
+0.18<sup>***</sup>
+</td>
+<td>
+0.31<sup>***</sup>
+</td>
+<td>
+0.39<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.003)
+</td>
+<td>
+(0.003)
 </td>
 <td>
 (0.004)
@@ -626,17 +789,33 @@ post
 </td>
 <td>
 </td>
-</tr>
-<tr>
-<td style="text-align:left">
-treat:post
+<td>
 </td>
 <td>
-0.10<sup>***</sup>
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
+Treatment - NMTC x Post
+</td>
+<td>
+0.03
+</td>
+<td>
+0.08<sup>***</sup>
+</td>
+<td>
+0.03
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.02)
+</td>
+<td>
+(0.02)
 </td>
 <td>
 (0.02)
@@ -647,17 +826,33 @@ treat:post
 </td>
 <td>
 </td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr>
 <td style="text-align:left">
 Constant
 </td>
 <td>
-11.96<sup>***</sup>
+11.05<sup>***</sup>
+</td>
+<td>
+12.25<sup>***</sup>
+</td>
+<td>
+12.20<sup>***</sup>
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
+</td>
+<td>
+(0.004)
+</td>
+<td>
+(0.003)
 </td>
 <td>
 (0.003)
@@ -668,14 +863,24 @@ Constant
 </td>
 <td>
 </td>
+<td>
+</td>
+<td>
+</td>
 </tr>
 <tr>
-<td colspan="2" style="border-bottom: 1px solid black">
+<td colspan="4" style="border-bottom: 1px solid black">
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 Observations
+</td>
+<td>
+118,132
+</td>
+<td>
+118,132
 </td>
 <td>
 118,132
@@ -686,7 +891,13 @@ Observations
 R<sup>2</sup>
 </td>
 <td>
-0.04
+0.42
+</td>
+<td>
+0.24
+</td>
+<td>
+0.16
 </td>
 </tr>
 <tr>
@@ -694,34 +905,52 @@ R<sup>2</sup>
 Adjusted R<sup>2</sup>
 </td>
 <td>
-0.04
+0.42
+</td>
+<td>
+0.24
+</td>
+<td>
+0.16
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
-Residual Std. Error
+Residual Std. Error (df = 118127)
 </td>
 <td>
-0.64 (df = 118128)
+0.49
+</td>
+<td>
+0.57
+</td>
+<td>
+0.60
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
-F Statistic
+F Statistic (df = 4; 118127)
 </td>
 <td>
-1,432.34<sup>***</sup> (df = 3; 118128)
+21,824.84<sup>***</sup>
+</td>
+<td>
+9,084.28<sup>***</sup>
+</td>
+<td>
+5,567.03<sup>***</sup>
 </td>
 </tr>
 <tr>
-<td colspan="2" style="border-bottom: 1px solid black">
+<td colspan="4" style="border-bottom: 1px solid black">
 </td>
 </tr>
 <tr>
 <td style="text-align:left">
 <em>Note:</em>
 </td>
-<td style="text-align:right">
+<td colspan="3" style="text-align:right">
 <sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
 </td>
 </tr>
@@ -729,14 +958,411 @@ F Statistic
 </div>
 <div id="diff-in-diff-model-for-lihtc-program" class="section level1">
 <h1>Diff-In-Diff Model for LIHTC Program</h1>
-<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1"></a>d3 <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">head</span>()</span>
-<span id="cb23-2"><a href="#cb23-2"></a></span>
-<span id="cb23-3"><a href="#cb23-3"></a>m &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>treat <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
-<span id="cb23-4"><a href="#cb23-4"></a></span>
-<span id="cb23-5"><a href="#cb23-5"></a><span class="co"># Display model results</span></span>
-<span id="cb23-6"><a href="#cb23-6"></a><span class="kw">stargazer</span>( m,</span>
-<span id="cb23-7"><a href="#cb23-7"></a>           <span class="dt">type =</span> S_TYPE,</span>
-<span id="cb23-8"><a href="#cb23-8"></a>           <span class="dt">digits =</span> <span class="dv">2</span> )</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1"></a>m1.lihtc &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>p.prof <span class="op">+</span><span class="st"> </span>treat.lihtc <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat.lihtc<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
+<span id="cb21-2"><a href="#cb21-2"></a>m2.lihtc &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>pov.rate <span class="op">+</span><span class="st"> </span>treat.lihtc <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat.lihtc<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
+<span id="cb21-3"><a href="#cb21-3"></a>m3.lihtc &lt;-<span class="st"> </span><span class="kw">lm</span>( y <span class="op">~</span><span class="st"> </span>p.unemp <span class="op">+</span><span class="st"> </span>treat.lihtc <span class="op">+</span><span class="st"> </span>post <span class="op">+</span><span class="st"> </span>treat.lihtc<span class="op">*</span>post, <span class="dt">data =</span> d3 )</span>
+<span id="cb21-4"><a href="#cb21-4"></a></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="co"># Display model results</span></span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="kw">stargazer</span>( m1.lihtc, m2.lihtc, m3.lihtc, </span>
+<span id="cb21-7"><a href="#cb21-7"></a>           <span class="dt">type =</span> S_TYPE, </span>
+<span id="cb21-8"><a href="#cb21-8"></a>           <span class="dt">column.labels =</span> <span class="kw">c</span>(<span class="st">&quot;Model 1&quot;</span>, <span class="st">&quot;Model 2&quot;</span>, <span class="st">&quot;Model 3&quot;</span>),</span>
+<span id="cb21-9"><a href="#cb21-9"></a>           <span class="dt">dep.var.labels =</span> <span class="kw">c</span>(<span class="st">&quot;Median House Value&quot;</span>),</span>
+<span id="cb21-10"><a href="#cb21-10"></a>           <span class="dt">covariate.labels =</span> <span class="kw">c</span>(<span class="st">&quot;Percent Professionals&quot;</span>,</span>
+<span id="cb21-11"><a href="#cb21-11"></a>                                <span class="st">&quot;Poverty Rate&quot;</span>,</span>
+<span id="cb21-12"><a href="#cb21-12"></a>                                <span class="st">&quot;Percent Unemployment&quot;</span>,</span>
+<span id="cb21-13"><a href="#cb21-13"></a>                                <span class="st">&quot;Treatment - LIHTC&quot;</span>,</span>
+<span id="cb21-14"><a href="#cb21-14"></a>                                <span class="st">&quot;Post-LIHTC Time Period&quot;</span>,</span>
+<span id="cb21-15"><a href="#cb21-15"></a>                                <span class="st">&quot;Treatment - LIHTC x Post&quot;</span>),</span>
+<span id="cb21-16"><a href="#cb21-16"></a>           <span class="dt">digits =</span> <span class="dv">2</span> )</span></code></pre></div>
+<table style="text-align:center">
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+<em>Dependent variable:</em>
+</td>
+</tr>
+<tr>
+<td>
+</td>
+<td colspan="3" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td colspan="3">
+Median House Value
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+Model 1
+</td>
+<td>
+Model 2
+</td>
+<td>
+Model 3
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(1)
+</td>
+<td>
+(2)
+</td>
+<td>
+(3)
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Percent Professionals
+</td>
+<td>
+0.03<sup>***</sup>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.0001)
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Poverty Rate
+</td>
+<td>
+</td>
+<td>
+-0.02<sup>***</sup>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+(0.0001)
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Percent Unemployment
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+-0.04<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+(0.0003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Treatment - LIHTC
+</td>
+<td>
+-0.04<sup>***</sup>
+</td>
+<td>
+-0.01<sup>*</sup>
+</td>
+<td>
+-0.09<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.01)
+</td>
+<td>
+(0.01)
+</td>
+<td>
+(0.01)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Post-LIHTC Time Period
+</td>
+<td>
+0.18<sup>***</sup>
+</td>
+<td>
+0.30<sup>***</sup>
+</td>
+<td>
+0.39<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.003)
+</td>
+<td>
+(0.004)
+</td>
+<td>
+(0.004)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Treatment - LIHTC x Post
+</td>
+<td>
+0.01
+</td>
+<td>
+0.03<sup>***</sup>
+</td>
+<td>
+0.0001
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.01)
+</td>
+<td>
+(0.01)
+</td>
+<td>
+(0.01)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Constant
+</td>
+<td>
+11.05<sup>***</sup>
+</td>
+<td>
+12.25<sup>***</sup>
+</td>
+<td>
+12.21<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+(0.004)
+</td>
+<td>
+(0.003)
+</td>
+<td>
+(0.003)
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Observations
+</td>
+<td>
+118,132
+</td>
+<td>
+118,132
+</td>
+<td>
+118,132
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+R<sup>2</sup>
+</td>
+<td>
+0.43
+</td>
+<td>
+0.23
+</td>
+<td>
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Adjusted R<sup>2</sup>
+</td>
+<td>
+0.43
+</td>
+<td>
+0.23
+</td>
+<td>
+0.16
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+Residual Std. Error (df = 118127)
+</td>
+<td>
+0.49
+</td>
+<td>
+0.57
+</td>
+<td>
+0.60
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+F Statistic (df = 4; 118127)
+</td>
+<td>
+21,849.45<sup>***</sup>
+</td>
+<td>
+9,006.72<sup>***</sup>
+</td>
+<td>
+5,666.11<sup>***</sup>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="border-bottom: 1px solid black">
+</td>
+</tr>
+<tr>
+<td style="text-align:left">
+<em>Note:</em>
+</td>
+<td colspan="3" style="text-align:right">
+<sup><em></sup>p&lt;0.1; <sup><strong></sup>p&lt;0.05; <sup></strong></em></sup>p&lt;0.01
+</td>
+</tr>
+</table>
 </div>
 <div id="reflection" class="section level1">
 <h1>Reflection</h1>
