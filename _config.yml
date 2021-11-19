@@ -36,4 +36,4 @@ plugins:
  - jekyll-paginate
  - jekyll-default-layout
 
-theme: jekyll-theme-cayman
+theme: jekyll-theme-slate
