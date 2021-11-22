@@ -15,6 +15,57 @@ S_TYPE <- "html"
 # inflation rate
 INFLATION_RATE <- 1.28855 
 
+# load custom functions ----
+
+# Helper functions for the **pairs()** correlation table 
+panel.cor <- function(x, y, digits=2, prefix="", cex.cor)
+{
+  usr <- par("usr"); on.exit(par(usr))
+  par(usr = c(0, 1, 0, 1))
+  r <- abs(cor(x, y))
+  txt <- format(c(r, 0.123456789), digits=digits)[1]
+  txt <- paste(prefix, txt, sep="")
+  if(missing(cex.cor)) cex <- 0.8/strwidth(txt)
+  
+  test <- cor.test(x,y)
+  # borrowed from printCoefmat
+  Signif <- symnum(test$p.value, corr = FALSE, na = FALSE,
+                   cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                   symbols = c("***", "**", "*", ".", " "))
+  
+  text(0.5, 0.5, txt, cex = 1.5 )
+  text(.7, .8, Signif, cex=cex, col=2)
+}
+
+panel.smooth <- function (x, y, col = par("col"), bg = NA, pch = par("pch"), 
+                          cex = 0.5, col.smooth = "red", span = 2/3, iter = 3, ...) 
+{
+  points(x, y, pch = 19, col = gray(0.7,0.2), bg = bg, cex = cex)
+  ok <- is.finite(x) & is.finite(y)
+  if (any(ok)) 
+    lines(stats::lowess(x[ok], y[ok], f = span, iter = iter), 
+          col = col.smooth, lwd=2, ...)
+}
+
+# custom plot
+jplot <- function( x1, x2, lab1="", lab2="", draw.line=T, ... )
+{
+  
+  plot( x1, x2,
+        pch=19, 
+        col=gray(0.6, alpha = 0.2), 
+        cex=0.5,  
+        bty = "n",
+        xlab=lab1, 
+        ylab=lab2, cex.lab=1.5,
+        ... )
+  
+  if( draw.line==T ){ 
+    ok <- is.finite(x1) & is.finite(x2)
+    lines( lowess(x2[ok]~x1[ok]), col="red", lwd=3 ) }
+  
+}
+
 # load necessary data ----
 
 # remember to use here::here() when importing data
@@ -142,6 +193,9 @@ d <- dplyr::select( d,
              pop00.x, nhwht00, nhblk00, hisp00, asian00,   # race
              pop10, nhwht10, nhblk10, hisp10, asian10,
              
+             vac00, hu00,                     # vacancy
+             vac10, hu10,
+             
              num.nmtc, nmtc.total,              # tax policy data
              num.lihtc, lihtc.total             # aggregated by census tract
              
@@ -162,6 +216,7 @@ d <-
     p.prof.00 = 100 * prof00 / empclf00,
     p.unemp.00 = 100 * unemp00 / clf00,
     pov.rate.00 = 100 * npov00 / dpov00,
+    p.vacant.00 = 100 * vac00 / hu00,
     
     # 2010 variables
     p.white.10 = 100 * nhwht10 / pop10,
@@ -172,7 +227,8 @@ d <-
     p.col.edu.10 = 100 * col12 / ag25up12,
     p.prof.10 = 100 * prof12 / empclf12,
     p.unemp.10 = 100 * unemp12 / clf12,
-    pov.rate.10 = 100 * npov12 / dpov12 ) %>%
+    pov.rate.10 = 100 * npov12 / dpov12,
+    p.vacant.10 = 100 * vac10 / hu10 )%>%
   # remove any NA or Inf values
   na.omit(use = "everything")
 
@@ -207,6 +263,14 @@ d <-
     # increase in the proportion of whites in tract 
     increase.p.white = p.white.10 - p.white.00  )
 
+# average growth in median home value for the city ----
+cbsa_stats_df <- 
+  d %>%
+  dplyr::group_by( cbsaname ) %>%
+  dplyr::summarize( metro.mhv.change = median( mhv.change, na.rm=T ),
+                    metro.mhv.growth = 100 * median( mhv.growth, na.rm=T ) ) %>%
+  dplyr::ungroup() 
+
 # Create a true/false code for recipient tracts ----
 d$LIHTC <- ifelse( d$num.lihtc > 0, "YES", "NO" )
 d$NMTC <- ifelse( d$num.nmtc > 0, "YES", "NO" )
@@ -214,6 +278,10 @@ d$NMTC <- ifelse( d$num.nmtc > 0, "YES", "NO" )
 # create a growth column within the data frame ----
 d$growth <- d$mhv.growth
 d$growth[ d$growth > 200 ] <- NA
+
+
+# rename growth column as percent change ----
+colnames(d)[which(names(d) == "growth")] <- "pct.change"
 
 # store plots in a list for easy access ----
 PLOTS <-
@@ -268,11 +336,15 @@ pov.rate.10 <- d$pov.rate.10
 p.unemp.00 <- d$p.unemp.00
 p.unemp.10 <- d$p.unemp.10
 
+# create a variable for percent unemployment
+p.vacant.00 <- d$p.vacant.00
+p.vacant.10 <- d$p.vacant.10
+
 # store the year 2000 data
-d1 <- data.frame( y = y1, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.prof = p.prof.00, pov.rate = pov.rate.00, p.unemp = p.unemp.00, post=0 )
+d1 <- data.frame( y = y1, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.prof = p.prof.00, pov.rate = pov.rate.00, p.unemp = p.unemp.00, p.vacant = p.vacant.00, post=0 )
 
 # store the year 2010 data
-d2 <- data.frame( y = y2, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.prof = p.prof.10, pov.rate = pov.rate.10, p.unemp = p.unemp.10, post=1 )
+d2 <- data.frame( y = y2, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.prof = p.prof.10, pov.rate = pov.rate.10, p.unemp = p.unemp.10, p.vacant = p.vacant.10, post=1 )
 
 # stack the two time periods together
 d3 <- rbind( d1, d2 )

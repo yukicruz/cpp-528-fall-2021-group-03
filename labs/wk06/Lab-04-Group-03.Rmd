@@ -74,7 +74,7 @@ import::here("S_TYPE",
              "cbsa_stats_df",
              # notice the use of here::here() that points to the .R file
              # where all these R objects are created
-             .from = here::here("labs/wk04/utilities-kh.R"),
+             .from = here::here("labs/wk06/source_file_rn.R"),
              .character_only = TRUE)
 
 S_TYPE <- "html"
@@ -116,8 +116,7 @@ cbsa_stats_df %>% head()
 ### Median Home value
 
 ```{r}
-mhv.00 <- d$mhmval00 * 1.28855  
-hist( mhv.00, breaks=200, xlim=c(0,500000), 
+hist( d$mhv.00, breaks=200, xlim=c(0,500000), 
       col="gray20", border="white",
       axes=F, 
       xlab="MHV (median = $138k)",
@@ -127,7 +126,7 @@ hist( mhv.00, breaks=200, xlim=c(0,500000),
 axis( side=1, at=seq(0,500000,100000), 
       labels=c("$0","$100k","$200k","$300k","$400k","$500k") )
 
-abline( v=median( mhv.00, na.rm=T ), col="orange", lwd=3 )
+abline( v=median( d$mhv.00, na.rm=T ), col="orange", lwd=3 )
 
 ```
 
