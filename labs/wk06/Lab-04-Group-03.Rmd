@@ -1,0 +1,375 @@
+---
+title: "Lab 04 - Predicting MHV Change"
+author: "Group 03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  bookdown::html_document2:
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+``` 
+
+
+This lab is designed to help you build your baseline model of neighborhood change before adding the policy variables in the next lab.
+
+
+<br>
+<br>
+
+# Part 1 - Data
+
+Follow the steps from the tutorial to create a dataset that includes 2000 and 2010 census variables and make sure to:
+
+* Drop all rural census tracts. 
+* Create a variable that measures the growth of median home value from 2000 to 2010.
+* Omit cases that have a median home value less than $10,000 in 2000. 
+* Omit cases with growth rates above 200%.
+
+
+  <br>
+  <br>
+
+
+### Load necessary packages:
+
+```{r, message = F, warning = F}
+
+library( dplyr )
+library( here )
+library( knitr )
+library( pander )
+library( stargazer )
+library( scales )
+library(plm)
+library(evaluate)
+```
+
+
+```{r, message = F, warning = F}
+# set randomization seed ----
+set.seed( 1234 )
+
+```
+
+<br>
+<br>
+
+### Load your wrangled datasets and prepare your variables for analysis:
+
+```{r}
+
+# load necessary functions and objects ----
+# note: all of these are R objects that will be used throughout this .rmd file
+import::here("S_TYPE",
+             "panel.cor",
+             "panel.smooth",
+             "jplot",
+             "d",
+             "df",
+             "cbsa_stats_df",
+             # notice the use of here::here() that points to the .R file
+             # where all these R objects are created
+             .from = here::here("labs/wk04/utilities-kh.R"),
+             .character_only = TRUE)
+
+S_TYPE <- "html"
+
+```
+
+### A few columns from the full data set
+
+```{r}
+df %>% head()
+```
+
+
+### Descriptives
+
+```{r, results = 'asis'}
+stargazer( df, 
+           type=S_TYPE, 
+           digits=0, 
+           summary.stat = c("min", "p25","median","mean","p75","max") )
+```
+
+### Metro Level Statistics
+
+
+Both changes within a census tract and changes within a city can affect the price of a home. Since our policy of interest focuses on changes made within a tract (new business and new housing created through NMTC and LIHTC), we want to control for things happening at the metro level to ensure we are not inferring that programs that target the tract are driving outcomes when it is actually broad metro-level trends.
+
+You might want to calculate several metro-level statistics for your model (growth in population in the city, changes in demographics, changes in industry structure and wealth, for example). You can calculate a metro level statistic by aggregating up (population count) or averaging across census tracts. For example:
+
+
+```{r}
+# view results
+cbsa_stats_df %>% head()
+```
+
+<br>
+<br>
+
+### Median Home value
+
+```{r}
+mhv.00 <- d$mhmval00 * 1.28855  
+hist( mhv.00, breaks=200, xlim=c(0,500000), 
+      col="gray20", border="white",
+      axes=F, 
+      xlab="MHV (median = $138k)",
+      ylab="",
+      main="Median Home Value in 2000 (2010 US dollars)" )
+
+axis( side=1, at=seq(0,500000,100000), 
+      labels=c("$0","$100k","$200k","$300k","$400k","$500k") )
+
+abline( v=median( mhv.00, na.rm=T ), col="orange", lwd=3 )
+
+```
+
+<br>
+
+### Change in MHV 2000-2010
+
+The change in value variable only reports absolute change, but does not provide a sense of whether that is a big or small amount for the census tract.
+
+```{r}
+hist( df$MHV.Change.00.to.10/1000, breaks=500, 
+      xlim=c(-100,500), yaxt="n", xaxt="n",
+      xlab="Thousand of US Dollars (adjusted to 2010)", cex.lab=1.5,
+      ylab="", main="Change in Median Home Value 2000 to 2010",
+      col="gray20", border="white" )
+axis( side=1, at=seq( from=-100, to=500, by=100 ), 
+      labels=paste0( "$", seq( from=-100, to=500, by=100 ), "k" ) )
+        
+mean.x <- mean( df$MHV.Change.00.to.10/1000, na.rm=T )
+abline( v=mean.x, col="darkorange", lwd=2, lty=2 )
+text( x=200, y=1500, 
+      labels=paste0( "Mean = ", dollar( round(1000*mean.x,0)) ), 
+      col="darkorange", cex=1.8, pos=3 )
+median.x <- median( df$MHV.Change.00.to.10/1000, na.rm=T )
+abline( v=median.x, col="dodgerblue", lwd=2, lty=2 )
+text( x=200, y=2000, 
+      labels=paste0( "Median = ", dollar( round(1000*median.x,0)) ), 
+      col="dodgerblue", cex=1.8, pos=3 )
+```
+
+<br>
+<br>
+
+# Part 2 - Predict MHV Change
+
+  <br>
+  
+  
+
+Select at least three census variables that you feel will be good predictors of change in MHV between 2000 and 2010.
+
+
+```{r}
+colnames(d)[which(names(d) == "mhv.growth")] <- "pct.change"
+# create subset to visualize in correlation matrix 
+d2 <- select( d, pct.change, p.vacant, p.prof,  pov.rate, p.unemp )
+
+```
+
+
+```{r}
+set.seed( 1234 )
+d3 <- sample_n( d2, 10000 ) %>% na.omit()
+# correlation plots
+pairs( d3, upper.panel=panel.cor, lower.panel=panel.smooth )
+```
+
+
+After applying log transformations note that the bivariate correlations increase except for relationship between MHV and (pct.change) vacancy rates (p.vacant):
+
+
+```{r}
+set.seed( 1234 )
+d2 <- select( d, pct.change, p.vacant, p.prof,  pov.rate, p.unemp )
+# recode some vars to remove outliers and skew
+d2$pct.change[ d2$pct.change > 200 ] <- NA
+d2$p.unemp <- log10( d2$p.unemp + 1 )
+d2$p.vacant <- log10( d2$p.vacant + 1 )
+d2$p.prof <- log10( d2$p.prof + 1  )
+d2$pov.rate <- log10( d2$pov.rate + 1 )
+d4 <- sample_n( d2, 5000 ) %>% na.omit()
+pairs( d4, upper.panel=panel.cor, lower.panel=panel.smooth )
+```
+
+The correlation between the transformed version of median home value change and vacancy rates falls, but is that a bad thing? The non-transformed version contains a statistically-significant correlation, but take a look at the scatterplot:
+
+```{r}
+jplot( d3$p.vacant, d3$pct.change, ylim=c(-50,100),
+       lab1="Vacancy Rates", lab2="MHV Growth" )
+```
+
+<br>
+<br>
+
+### Run the model while including metro-level fixed effects (cbsa name or FIPS). Make sure you check for variable skew and multicollinearity and adjust accordingly.
+
+
+
+```{r, results = 'asis'}
+d.reg <- d
+d.reg$pct.change[ d.reg$pct.change > 200 ] <- NA
+d.reg$p.unemp <- log10( d.reg$p.unemp + 1 )
+# average growth in median home value for the city
+d.reg <- 
+  d.reg %>%
+  group_by( cbsaname ) %>%
+  mutate( metro.mhv.growth = 100 * median( pct.change, na.rm=T ) ) %>%
+  ungroup() 
+m1 <- lm( pct.change ~ p.unemp, data=d.reg )
+m2 <- lm( pct.change ~ p.unemp + metro.mhv.growth, data=d.reg )
+m3 <- lm( pct.change ~ p.unemp + cbsa, data=d.reg )
+stargazer( m1, m2, m3, 
+           type=S_TYPE, digits=2,
+           omit.stat = c("rsq","f"),
+           omit="cbsa",
+           add.lines = list(c("Metro Fixed Effects:", "NO", "NO","YES")) )
+
+```
+
+
+```{r}
+d5 <- filter( d, cbsaname %in% 
+                c("Tyler, TX",
+                  "Minneapolis-St. Paul-Bloomington, MN-WI",
+                  "San Francisco-San Mateo-Redwood City,CA") )
+d5$cbsaname <- factor( d5$cbsaname, labels=c("MSP-MN","SF-CA","Tyler-TX") )
+par( mar=c(4,6,4,6), mfrow=c(1,2) )
+plot( d5$cbsaname,  d5$mhv.00, las=1, frame.plot=F, outline=F,
+      xlab="", ylab="", main="Home Values in 2000" )
+abline( h=seq(0,1200000,100000), lty=3, col=gray(0.5,0.3) )
+axis( side=4, las=1 )
+plot( d5$cbsaname,  d5$p.unemp, las=1, frame.plot=F, outline=F,
+      xlab="", ylab="", main="Unemployment Rates in 2000" )
+abline( h=seq(0,15,1), lty=3, col=gray(0.5,0.3) )
+axis( side=4, las=1 )
+```
+
+
+
+```{r}
+d5 <- filter( d, cbsaname %in%
+                c("Tyler, TX",
+                  "Youngstown-Warren-Boardman, OH-PA",
+                  "Syracuse, NY") )
+d5$pct.change[ d5$pct.change > 200 ] <- NA
+d5$p.unemp <- log10( d5$p.unemp + 1 )
+x <- rnorm( nrow(d5), 0, 0.1 ) +
+     as.numeric( d5$cbsaname == "Tyler, TX" ) + 
+     2 * as.numeric( d5$cbsaname == "Youngstown-Warren-Boardman, OH-PA" ) + 
+     3* as.numeric( d5$cbsaname == "Syracuse, NY" ) 
+par( mfrow=c(1,2) )
+plot( x, d5$pct.change, 
+      pch=19, cex=1.5, bty = "n",  
+        col=factor(d5$cbsa),
+      ylim=c(-50,50),
+      xaxt="n", 
+      ylab="", xlab="",
+      main="PCT Change")
+axis( side=1, at=1:3, labels=c("Tyler","Youngstown","Syracuse"), 
+      tick=F, col.axis="gray60", cex.axis=1.3 )
+plot( x, d5$p.unemp, 
+      pch=19, cex=1.5, bty = "n",  
+        col=factor(d5$cbsa),
+      # ylim=c(0,40),
+      xaxt="n", 
+      ylab="", xlab="",
+      main="Unemployment (logged)")
+axis( side=1, at=1:3, labels=c("Tyler","Youngstown","Syracuse"), 
+      tick=F, col.axis="gray60", cex.axis=1.3 )
+```
+
+
+### A fixed effect model
+
+
+
+```{r}
+R <- lm( pct.change ~ p.unemp, data=d5 )
+```
+
+
+```{r}
+RDummy <- lm( pct.change ~ factor(cbsaname) + p.unemp - 1, data=d5 )
+```
+
+We can use the plm package to estimate the fixed effects model. In the output table, we compare results across the OLS, the OLS with dummies, and the fixed effect model.
+
+
+
+```{r}
+## The model is specified as a OLS model, 
+## but we need to indicate the "index" - 
+## i.e. the group variable in the model 
+fixed <- plm(pct.change ~ p.unemp, data=d5, 
+              index=c("cbsaname"), model="within" ) 
+
+```
+
+<br>
+<br>
+
+### What are the results? Which factor was most important? Did it meet your expectations? Were there any variables that were not significant that you expected to be?
+
+
+```{r, results = 'asis'}
+stargazer( R, RDummy, fixed, 
+           type = "html", 
+           dep.var.labels = ("pct.change"),
+           column.labels = c("OLS", "OLS with Dummy", "FE"),
+           covariate.labels = c("p.unemp","Tyler, TX",
+                  "Minneapolis-St. Paul-Bloomington, MN-WI",
+                  "San Francisco-San Mateo-Redwood City,CA"),
+           omit.stat = "all", 
+           digits = 2, intercept.bottom = FALSE )
+
+```
+
+As in the model with the dummy variables, the coefficient of the fixed effect model indicates, on average, how much the outcome (pct.change) changes per cbsaname for a one unit increases of x (p.unemp).
+
+Note that the fixed effect model estimated using plm does not have an intercept. When estimating the model with plm, we can retrieve each cbsaname’ intercept by using the command fixef.The intercept for cbsaname A is the intercept in the dummy model.
+
+
+```{r}
+fixef(fixed)
+```
+
+
+The fixed effect model has no intercept. We can retrieve the intercept for each cbsaname using the command fixef.
+
+The plm package also allows us to test whether the fixed effect model is a better choice compared to the OLS model with the pFtest command. If the p-value is lower than 0.05, than the fixed effect model is a better choice.
+
+
+
+
+```{r}
+pFtest(fixed, R) 
+```
+
+We can compare OLS and fixed effect results using the pFtest command. Remember if the p-value < 0.05, the fixed effect model is a better choice than the OLS model.We will use a panel dataset of 381 observational units from 2000 to 2010 collected.
+
+<br>
+<br>
+
+## Research question:
+
+Hypothesis:
+
+Note that model 2 and model 3 produce different slopes for unemployment, similar R-squares, and similar standard error of the regression (labeled Residual Std. Error here). Recall that we can run a fixed-effect model by demeaning our data using group-level means. Adding a metro-level control will achieve a similar result.
+
+The metro-level fixed effect is preferable because it will anchor the dependent variable as well. But when not possible adding a group-level mean of the dependent variable is a feasible alternative.
+
+<br>
+<br>
+<br>
+

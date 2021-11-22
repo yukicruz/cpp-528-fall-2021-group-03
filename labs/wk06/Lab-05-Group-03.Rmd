@@ -1,5 +1,5 @@
 ---
-title: "Lab 06 - Bringing It All Together"
+title: "Lab 05 - Modeling the Intervention"
 author: "Group 03"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
