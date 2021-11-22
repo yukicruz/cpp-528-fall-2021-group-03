@@ -1,6 +1,6 @@
-title: "CPP 528 Template Website"
-author: "Blog Author"
-description: "This is short description of the CPP 528 Template Website"
+title: "Evaluating Neighborhood Change"
+author: "CPP 528 Fall 2021 - Group 03"
+description: "This website walks through the data processing and modeling steps to evaluate neighborhood change relating to the NMTC and LIHTC federal programs."
 
 # Jekyll settings
 permalink: /:title/          # see https://jekyllrb.com/docs/permalinks/
