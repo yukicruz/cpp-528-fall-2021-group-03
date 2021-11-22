@@ -1,0 +1,191 @@
+---
+title: "Lab 06 - Bringing It All Together"
+author: "Group 03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+``` 
+
+
+# Library
+
+```{r, message = F, warning = F}
+library( here )
+library( import )
+library( tidyverse )
+library( pander )
+library( dplyr )
+library( knitr )
+library( stargazer )
+library( scales )
+```
+
+# Load Functions
+
+```{r}
+import::here("S_TYPE",
+             "d",
+             "df",
+             "d3",
+             "PLOTS",
+             "%>%",
+             .from = here::here("labs/wk05/lab_05_source.R"), # here::here() points to the .R file where all these R objects are created
+             .character_only = TRUE)
+
+detach("package:import", unload = TRUE)
+```
+
+# Rodeo Dataset
+
+```{r}
+# Save data set to rodeo folder
+saveRDS(d, here("data/rodeo/rodeo-data-rn.rds"))
+
+# Load data set
+readRDS(file = here("data/rodeo/rodeo-data-rn.rds"))
+```
+
+# Data Manifest
+
+```{r}
+ltdb.raw.2000s <- read.csv( here("data/raw/ltdb_std_2000_sample.csv") )
+ltdb.raw.2000f <- read.csv( here("data/raw/ltdb_std_2000_fullcount.csv") )
+ltdb.rodeo.2000 <- readRDS( file = here("data/rodeo/ltdb-2000.rds") )
+
+ltdb.raw.2010s <- read.csv( here("data/raw/ltdb_std_2010_sample.csv") )
+ltdb.raw.2010f <- read.csv( here("data/raw/ltdb_std_2010_fullcount.csv") )
+ltdb.rodeo.2010 <- readRDS( file = here("data/rodeo/ltdb-2010.rds") )
+
+complete.rodeo <- readRDS( file = here("data/rodeo/rodeo-data-rn.rds") )
+```
+
+```{r, eval = F}
+nrow( ltdb.raw.2000s ) # 72,693
+nrow( ltdb.raw.2000f ) # 72,693
+nrow( ltdb.rodeo.2000 ) # 72,693
+
+nrow( ltdb.raw.2010s ) # 73,056
+nrow( ltdb.raw.2010f ) # 74,002
+nrow( ltdb.rodeo.2010 ) #74,022
+
+nrow( complete.rodeo ) # 59,066
+```
+
+# Explain why the number of rows is less
+
+**Answer: The rodeo data were trimmed to remove rural districts and tracts with home values below $10,000 in 2000.**
+
+# Descriptive Statistics
+```{r, results = 'asis'}
+stargazer( df,
+           type = S_TYPE,
+           digits = 0,
+           summary.stat = c("min", "p25","median","mean","p75","max") )
+```
+
+# Plots
+```{r, warning = F}
+### POVERTY RATES
+gridExtra::grid.arrange( PLOTS$pov_rate_2000$nmtc, 
+                         PLOTS$pov_rate_2000$lihtc, 
+                         nrow = 1 )
+
+### HOME VALUES
+gridExtra::grid.arrange( PLOTS$mhv_2000$nmtc, 
+                         PLOTS$mhv_2000$lihtc, 
+                         nrow = 1 )
+
+### MHV Growth Rates (DV in Model)
+gridExtra::grid.arrange( PLOTS$mhv_growth$lihtc, 
+                         PLOTS$mhv_growth$nmtc, 
+                         nrow = 1 )
+```
+
+# Diff-In-Diff Model for NMTC Program
+
+```{r, warning = F, results = 'asis'}
+# set randomization seed
+set.seed( 1234 )
+
+m0.nmtc <- lm( y ~ treat.nmtc + post + treat.nmtc*post, data = d3 )
+m1.nmtc <- lm( y ~ p.prof + treat.nmtc + post + treat.nmtc*post, data = d3 )
+m2.nmtc <- lm( y ~ pov.rate + treat.nmtc + post + treat.nmtc*post, data = d3 )
+m3.nmtc <- lm( y ~ p.unemp + treat.nmtc + post + treat.nmtc*post, data = d3 )
+
+# Display model results
+stargazer( m0.nmtc, m1.nmtc, m2.nmtc, m3.nmtc, 
+           type = S_TYPE, 
+           column.labels = c("Model (w/o Control)","Model 1", "Model 2", "Model 3"),
+           dep.var.labels = c("Median House Value (log)"),
+           covariate.labels = c("Percent Professionals",
+                                "Poverty Rate",
+                                "Percent Unemployment",
+                                "Treatment - NMTC",
+                                "Post-NMTC Time Period",
+                                "Treatment - NMTC x Post"),
+           digits = 2 )
+
+b0 <- m0.nmtc$coefficients[1] 
+b1 <- m0.nmtc$coefficients[2]
+b2 <- m0.nmtc$coefficients[3]
+b3 <- m0.nmtc$coefficients[4]
+
+T2 <- exp( b0+b1+b2+b3 )
+
+T2 # 166,560.5 
+```
+
+
+# Diff-In-Diff Model for LIHTC Program
+
+```{r, warning = F, results = 'asis'}
+
+m0.lihtc <- lm( y ~ treat.lihtc + post + treat.lihtc*post, data = d3 )
+m1.lihtc <- lm( y ~ p.prof + treat.lihtc + post + treat.lihtc*post, data = d3 )
+m2.lihtc <- lm( y ~ pov.rate + treat.lihtc + post + treat.lihtc*post, data = d3 )
+m3.lihtc <- lm( y ~ p.unemp + treat.lihtc + post + treat.lihtc*post, data = d3 )
+
+# Display model results
+stargazer( m0.lihtc, m1.lihtc, m2.lihtc, m3.lihtc, 
+           type = S_TYPE, 
+           column.labels = c("Model (w/o Control)", "Model 1", "Model 2", "Model 3"),
+           dep.var.labels = c("Median House Value (log)"),
+           covariate.labels = c("Percent Professionals",
+                                "Poverty Rate",
+                                "Percent Unemployment",
+                                "Treatment - LIHTC",
+                                "Post-LIHTC Time Period",
+                                "Treatment - LIHTC x Post"),
+           digits = 2 )
+
+b0 <- m0.lihtc$coefficients[1] 
+b1 <- m0.lihtc$coefficients[2]
+b2 <- m0.lihtc$coefficients[3]
+b3 <- m0.lihtc$coefficients[4]
+
+T2 <- exp( b0+b1+b2+b3 )
+
+T2 # 164,796.4 
+```
+
+
+# Are the programs effective at catalyzing neighborhood improvement?
+
+**Answer: The New Market Tax Credit (NMTC) program is effective at catalyzing neighborhood improvement, measured by median home value (MHV) growth rate. According to the models above, the NMTC program had a larger, significant growth rate than the LIHTC program in both the M0 (no control variable) and M2 (Poverty Rate Control). $B_3$ (the growth rate of the treatment group above the secular growth rate) is significant for both the NMTC and LIHTC programs. Poverty Rate is a good predictor of MHV growth because the $B_3$ value was closest to that of the M0 model for both programs.**
+
+# Reflection
+
+How can we test the parallel lines assumption in this model? We know that growth rates change significantly between periods. The market for urban homes from 1990-2000 looks very different from the market in 2000 to 2010.
+
+**Answer: A linear diff-in-diff approach measures the slopes from a one-unit change in the independent variable to a change in the median house value. Given that growth rates (slopes) change significantly between time periods for this evaluation, a linear approach would fail the parallel lines assumption. Instead, we use a log-linear approach where one-unit change change in the independent variable is associated with the growth rate of median house values.**  
+
+<br>
+<br>
+
