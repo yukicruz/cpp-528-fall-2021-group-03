@@ -1,6 +1,6 @@
 ---
 title: "Lab 05 - Modeling the Intervention"
-author: "Group 03"
+author: "Rachael Nicely"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
@@ -36,7 +36,7 @@ import::here("S_TYPE",
              "d3",
              "PLOTS",
              "%>%",
-             .from = here::here("labs/wk05/lab_05_source.R"), # here::here() points to the .R file where all these R objects are created
+             .from = here::here("labs/wk06/source_file_rn.R"), # here::here() points to the .R file where all these R objects are created
              .character_only = TRUE)
 
 detach("package:import", unload = TRUE)
@@ -92,14 +92,19 @@ stargazer( df,
 
 # Plots
 ```{r, warning = F}
+### PERCENT PROFESSIONAL
+gridExtra::grid.arrange( PLOTS$p_prof_2000$nmtc, 
+                         PLOTS$p_prof_2000$lihtc, 
+                         nrow = 1 )
+
 ### POVERTY RATES
 gridExtra::grid.arrange( PLOTS$pov_rate_2000$nmtc, 
                          PLOTS$pov_rate_2000$lihtc, 
                          nrow = 1 )
 
-### HOME VALUES
-gridExtra::grid.arrange( PLOTS$mhv_2000$nmtc, 
-                         PLOTS$mhv_2000$lihtc, 
+### PERCENT UNEMPLOYED
+gridExtra::grid.arrange( PLOTS$p_unemp_2000$nmtc, 
+                         PLOTS$p_unemp_2000$lihtc, 
                          nrow = 1 )
 
 ### MHV Growth Rates (DV in Model)

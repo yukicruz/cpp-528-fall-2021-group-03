@@ -171,6 +171,10 @@ d$mhv.10 <- mhv.10
 d$mhv.change <- mhv.change
 d$mhv.growth <- mhv.growth 
 
+
+#Omit cases with growth rates above 200% ----
+d$mhv.growth[ d$mhv.growth > 200 ] <- NA
+
 # select a few variables ----
 d <- dplyr::select( d, 
              
@@ -275,10 +279,6 @@ cbsa_stats_df <-
 d$LIHTC <- ifelse( d$num.lihtc > 0, "YES", "NO" )
 d$NMTC <- ifelse( d$num.nmtc > 0, "YES", "NO" )
 
-# create a growth column within the data frame ----
-d$pct.change <- d$mhv.growth
-d$pct.change[ d$growth > 200 ] <- NA
-
 # store plots in a list for easy access ----
 PLOTS <-
   list(
@@ -290,6 +290,22 @@ PLOTS <-
         ggplot2::geom_density(alpha=0.4) +
         ggplot2::ggtitle("2000 Poverty Rate Comparison of \nRecipient and Non-Recipient Communities")
     ),
+    "p_prof_2000" = list(
+      "nmtc" = ggplot2::ggplot( d, ggplot2::aes(x=p.prof.00, fill=NMTC )) +
+        ggplot2::geom_density(alpha=0.4) + 
+        ggplot2::ggtitle("2000 Percent Professional Comparison of \nRecipient and Non-Recipient Communities"),
+      "lihtc" = ggplot2::ggplot( d, ggplot2::aes(x=p.prof.00, fill=LIHTC)) +
+        ggplot2::geom_density(alpha=0.4) +
+        ggplot2::ggtitle("2000 Percent Professional Comparison of \nRecipient and Non-Recipient Communities")
+    ),
+    "p_unemp_2000" = list(
+      "nmtc" = ggplot2::ggplot( d, ggplot2::aes(x=p.unemp.00, fill=NMTC )) +
+        ggplot2::geom_density(alpha=0.4) + 
+        ggplot2::ggtitle("2000 Percent Unemployment Comparison of \nRecipient and Non-Recipient Communities"),
+      "lihtc" = ggplot2::ggplot( d, ggplot2::aes(x=p.unemp.00, fill=LIHTC)) +
+        ggplot2::geom_density(alpha=0.4) +
+        ggplot2::ggtitle("2000 Percent Unemployment Comparison of \nRecipient and Non-Recipient Communities")
+    ),
     "mhv_2000" = list(
       "nmtc" = ggplot2::ggplot( d, ggplot2::aes(x=log10(mhv.00), fill=NMTC )) +
         ggplot2::geom_density( alpha=0.4 ) +
@@ -299,10 +315,10 @@ PLOTS <-
         ggplot2::ggtitle("2000 Median Home Value Comparison of \nRecipient and Non-Recipient Communities")
     ),
     "mhv_growth" = list(
-      "nmtc" = ggplot2::ggplot( d, ggplot2::aes(x=growth, fill=NMTC )) +
+      "nmtc" = ggplot2::ggplot( d, ggplot2::aes(x=mhv.growth, fill=NMTC )) +
         ggplot2::geom_density( alpha=0.4 )  +
         ggplot2::ggtitle("Comparision of MHV Growth 2000 to 2010: \nRecipients vs Non-Recipients"),
-      "lihtc" = ggplot2::ggplot( d, ggplot2::aes(x=growth, fill=LIHTC )) +
+      "lihtc" = ggplot2::ggplot( d, ggplot2::aes(x=mhv.growth, fill=LIHTC )) +
         ggplot2::geom_density( alpha=0.4 )  +
         ggplot2::ggtitle("Comparision of MHV Growth 2000 to 2010: \nRecipients vs Non-Recipients")
     )
