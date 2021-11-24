@@ -276,12 +276,8 @@ d$LIHTC <- ifelse( d$num.lihtc > 0, "YES", "NO" )
 d$NMTC <- ifelse( d$num.nmtc > 0, "YES", "NO" )
 
 # create a growth column within the data frame ----
-d$growth <- d$mhv.growth
-d$growth[ d$growth > 200 ] <- NA
-
-
-# rename growth column as percent change ----
-colnames(d)[which(names(d) == "growth")] <- "pct.change"
+d$pct.change <- d$mhv.growth
+d$pct.change[ d$growth > 200 ] <- NA
 
 # store plots in a list for easy access ----
 PLOTS <-
@@ -348,3 +344,5 @@ d2 <- data.frame( y = y2, treat.nmtc = treat.nmtc, treat.lihtc = treat.lihtc, p.
 
 # stack the two time periods together
 d3 <- rbind( d1, d2 )
+
+
