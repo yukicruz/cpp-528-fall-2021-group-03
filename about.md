@@ -24,7 +24,7 @@ team:
     github: https://github.com/cenuno
     twitter: https://twitter.com/cenuno_
   - name: Asia Woods
-    img: ../assets/img/about/nelli_and_fermi.jpg
+    img: ../assets/img/about/A_Woods_Headshot.JPG
     desc: Asia Woods is completing a Master of Science degree in Program Evaluation and Data Analytics. Her anticipated graduation is December of 2021. 
     url: 
     website: 
