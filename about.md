@@ -2,34 +2,34 @@
 title: About
 subtitle: The humans behind this project
 team:
-  - name: Romi and Phoebe
+  - name: Khaled Hussain
     img: ../assets/img/about/romi_and_phoebe.jpg
     desc: Two excellent rescue hounds who bring much joy to our family.
     url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     github: https://github.com/cenuno
     twitter: https://twitter.com/cenuno_
-  - name: Nelli and Fermi
+  - name: Rachael Nicely
     img: ../assets/img/about/nelli_and_fermi.jpg
     desc: Two incredible rescue dogs who bring much joy to our family.
     url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     github: https://github.com/cenuno
     twitter: https://twitter.com/cenuno_
-  - name: Romi and Phoebe
+  - name: Nick Rea
     img: ../assets/img/about/romi_and_phoebe.jpg
     desc: Two excellent rescue hounds who bring much joy to our family.
     url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     github: https://github.com/cenuno
     twitter: https://twitter.com/cenuno_
-  - name: Nelli and Fermi
+  - name: Asia Woods
     img: ../assets/img/about/nelli_and_fermi.jpg
-    desc: Two incredible rescue dogs who bring much joy to our family.
-    url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    github: https://github.com/cenuno
-    twitter: https://twitter.com/cenuno_ 
+    desc: Asia Woods is completing a Master of Science degree in Program Evaluation and Data Analytics. Her anticipated graduation is December of 2021. 
+    url: 
+    website: 
+    github: https://github.com/aawoods97
+    twitter: 
 ---
 
 ## Meet the team
