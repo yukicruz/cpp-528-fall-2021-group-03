@@ -1,17 +1,19 @@
 ---
-title: "Lab-03"
-author: "Group-03"
+title: "Lab 03 - Descriptive Analysis"
+author: "Group 03"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 output:
   html_document:
-    df_print: paged
+    theme: flatly
+    highlight: tango
+    toc: true
 ---
 
-```{r}
+```{r, include = F}
 knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE)
 ```
 
-```{r}
+```{r, warning = F, message = F}
 library( dplyr )
 library( knitr )
 library( pander )
@@ -26,7 +28,7 @@ library( here )
 ```
 
 ```{r}
-s.type <- "text"  
+s.type <- "html"  
 ```
 
 ```{r}
@@ -182,7 +184,7 @@ d3 <- gent_var()
 ```
 
 
-```{r}
+```{r, results = 'asis'}
 d3 <- data.frame(d3)
 stargazer( d3, 
            type=s.type, 
