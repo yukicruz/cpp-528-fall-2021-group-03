@@ -10,12 +10,12 @@ team:
     github: https://github.com/cenuno
     twitter: https://twitter.com/cenuno_
   - name: Rachael Nicely
-    img: ../assets/img/about/nelli_and_fermi.jpg
-    desc: Two incredible rescue dogs who bring much joy to our family.
-    url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    github: https://github.com/cenuno
-    twitter: https://twitter.com/cenuno_
+    img: ../assets/img/about/avatar-icon.png
+    desc: Rachael is currently completing her M.S. in Program Evaluation and Data Analytics at Arizona State University.
+    url: https://www.linkedin.com/in/rachael-nicely
+    website: https://www.linkedin.com/in/rachael-nicely
+    github: https://github.com/RachNicely
+    twitter: 
   - name: Nick Rea
     img: ../assets/img/about/romi_and_phoebe.jpg
     desc: Two excellent rescue hounds who bring much joy to our family.
