@@ -218,11 +218,11 @@ home.val.rise <- d3$pct.change > 0.58
 # measured by increase in white
 loss.diversity <- d3$race.change > -8
 
-d3$g.can <- poor.1990 & diverse.1990
-d3$g.flag <- poor.1990 & diverse.1990 & mhv.pct.increase & home.val.rise & loss.diversity
+d$g.can <- poor.1990 & diverse.1990
+d$g.flag <- poor.1990 & diverse.1990 & mhv.pct.increase & home.val.rise & loss.diversity
 
 num.candidates <-  sum( poor.1990 & diverse.1990, na.rm=T )
-num.gentrified <- sum( d3$g.flag, na.rm=T )
+num.gentrified <- sum( d$g.flag, na.rm=T )
 ```
 
 ```{r}
@@ -234,15 +234,6 @@ num.candidates
 
 # Part 3 - Spatial Patterns
 /
-
-```{r, include = F}
-key <- "761a6bbcd1807223968ec06d79e3fef3696fe574"
-```
-
-## Library
-```{r}
-census_api_key( key ) # load census api key
-```
 
 ## Data
 
@@ -268,7 +259,7 @@ sant.pop <- get_acs( geography = "tract", variables = "B01003_001",
            rename( POP = estimate )
 
 # Load rodeo data set
-census.dat <- readRDS(here("data/rodeo/ltdb-2010.rds"))
+census.dat <- d #census data has already been imported from source file
 
 # Extract state codes
 census.dat$GEOID <- substr( census.dat$tractid, 6, 18 )  # extract codes
@@ -292,18 +283,55 @@ sant.sp <- as_Spatial( sant )
 # Check that it is a SpatialPolygonsDataFrame
 class( sant.sp )
 
-# Use RColorBrewer to create color pallette to show median home value distribution
-my_colors <- brewer.pal(9, "Blues") 
-my_colors <- colorRampPalette(my_colors)(10)
- 
-# Attribute the appropriate color to each tract of the Philadelphia area based on median home value in 2010
-class_of_city <- cut(sant.sp@data$mhmval12, 10)
-my_colors <- my_colors[as.numeric(class_of_city)]
+# project map and remove empty tracts
+sant.sp <- spTransform( sant.sp, CRS("+init=epsg:3395"))
+sant.sp <- sant.sp[ sant.sp$POP != 0 & (! is.na( sant.sp$POP )) , ]
 
-# Plot to view, can change bg color code: https://txwes.libguides.com/c.php?g=978475&p=7075536
-plot(sant.sp, col=my_colors ,  bg = "#FFFFFF")
+# convert census tract polygons to dorling cartogram
+# no idea why k=0.03 works, but it does - default is k=5
+sant.sp$pop.w <- sant.sp$POP / 9000 
+sant_dorling <- cartogram_dorling( x=sant.sp, weight="pop.w", k=0.05 )
 
-# Use zoom library package to enlarge and save image
-# zm()
+# user-defined bounding box to move slocer to subjects 
+bb <- st_bbox( c( xmin =  -10998490, xmax = -10890275, 
+                  ymax = 3356190, ymin = 3478288 ), 
+               crs = st_crs("+init=epsg:3395"))
+
+tm_shape( sant_dorling, bbox=bb ) + 
+  tm_polygons( col="mhmval00", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Dorling Cartogram", title.position=c("right","top") )
 ```
 
+## Question 1: Describe the distribution of home values in 1990 - where are high and low-value tracts located in the city/cities?
+  
+**Answer: The highest values homes are located in the northern part of the San Antonio MSA.**
+    
+## Question 2: Compare values in 2000 to changes in values from 1990-2000. Do the largest gains occur in tracts with above or below-average home prices in 2000?
+
+**Answer: In 2000 the high-value tracts expanded going further into the metro area center. The largest gains were in these high-value adjacent tracts, although there were some tracts towards the city center that saw similar gains.**  
+
+```{r, warning = F, message = F}
+#Home Value Change
+tm_shape( sant_dorling, bbox=bb ) + 
+  tm_polygons( col="mhv.change", n=10, style="quantile", palette="Spectral" ) +
+  tm_layout( "Home Value Change", title.position=c("right","top") )
+```
+
+
+## Question 3: Create a map that highlights tracts that are candidates for gentrification in 2000 and tracts that gentrify between 1990 and 2000. Do you find any meaningful patterns in where gentrification occurs?
+
+**Answer: Where gentrification occurs appears to relate to a tract's proximity to tracts with higher home values. The tracts where gentrification occur tend to be on the outskirts of the city and either adjacent to or surrounded by tracts with a higher initial home value.**
+
+```{r}
+#Gentrification Candidates
+tm_shape( sant_dorling, bbox=bb ) + 
+  tm_polygons( col="g.can", n=10, style="cat", palette="Spectral" ) +
+  tm_layout( "Gentrification Candidates", title.position=c("right","top") )
+```
+
+```{r}
+#Gentrified Areas
+tm_shape( sant_dorling, bbox=bb ) + 
+  tm_polygons( col="g.flag", n=10, style="cat", palette="Spectral" ) +
+  tm_layout( "Gentrified Areas", title.position=c("right","top") )
+```
