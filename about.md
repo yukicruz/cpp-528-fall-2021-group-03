@@ -4,11 +4,11 @@ subtitle: The humans behind this project
 team:
   - name: Khaled Hussain
     img: ../assets/img/about/IMG-2705.JPG
-    desc: Two excellent rescue hounds who bring much joy to our family.
-    url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    github: https://github.com/cenuno
-    twitter: https://twitter.com/cenuno_
+    desc: Khaled is completing a Master of Science degree in Program Evaluation and Data Analytics.
+    url: https://www.linkedin.com/in/khaledova
+    website: https://www.linkedin.com/in/khaledova
+    github: https://github.com/kahussai
+    twitter: 
   - name: Rachael Nicely
     img: ../assets/img/about/avatar-icon.png
     desc: Rachael is currently completing her M.S. in Program Evaluation and Data Analytics at Arizona State University.
