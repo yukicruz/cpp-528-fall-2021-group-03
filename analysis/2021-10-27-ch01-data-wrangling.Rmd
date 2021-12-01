@@ -1,0 +1,79 @@
+---
+title: "Lab 02 - Data Wrangling"
+author: "Group 03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output:
+  html_document:
+    theme: flatly
+    highlight: tango
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+``` 
+
+# Library
+```{r, echo = T, message = F, warning = F}
+#Library
+library( tidyverse )
+library( here )
+library( pander )
+```
+
+# Load Data
+```{r, message = F, warning = F}
+# Data
+
+# store data dictionary file path
+DD_FILEPATH <- here::here( "data/rodeo/ltdb_data_dictionary.csv" )
+
+# import data dictionary
+dd <- read.csv( DD_FILEPATH, stringsAsFactors=F)
+
+# Longitudinal Tract Database 2010 Sample file path
+LTDB_FILEPATH <- here::here( "data/raw/ltdb_std_2010_sample.csv" )
+
+# Import Longitudinal Tract Database 2010 Sample 
+ltdb.data <- read_csv( LTDB_FILEPATH, col_names = TRUE )
+
+# Rename columns to lower case
+ltdb.data <- as.data.frame( sapply( ltdb.data, tolower ) )
+
+```
+
+# Load Functions
+```{r}
+# Load function source file
+import::here("filter_category",
+             "var_description",
+             "filter_time",
+             .from = here::here("analysis/source_file_rn.R"),
+             .character_only = TRUE)
+```
+
+# Test Functions
+```{r}
+# filter data where the category contains "race"
+filter_category(dd, "race") %>% 
+  pander()
+```
+
+```{r}
+# search for variables containing the description "60 years and older"
+var_description(dd, "60 years and older")
+```
+
+```{r}
+# create a vector containing the time period (start, end)
+time_period <- c("1990","2000")
+
+# filter data to show all variables available for the time period 
+filter_time( dd, time_period) %>% pander()
+
+time_period <- c("1980")
+
+filter_time( dd, time_period) %>% pander()
+
+```
+

@@ -54,7 +54,7 @@ import::here("compare_dfs",
              "mvh_compare",
              "hg",
              "gent_var",
-             .from = here::here("labs/wk06/source_file_rn.R"),
+             .from = here::here("analysis/source_file_rn.R"),
              .character_only = TRUE)
 ```
 
