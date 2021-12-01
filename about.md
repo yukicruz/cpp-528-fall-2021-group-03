@@ -3,7 +3,7 @@ title: About
 subtitle: The humans behind this project
 team:
   - name: Khaled Hussain
-    img: ../assets/img/about/romi_and_phoebe.jpg
+    img: ../assets/img/about/IMG-2705.jpg
     desc: Two excellent rescue hounds who bring much joy to our family.
     url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
