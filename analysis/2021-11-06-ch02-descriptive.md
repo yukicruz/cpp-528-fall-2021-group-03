@@ -1,5 +1,7 @@
-Descriptive Analysis
-==============================
+---
+layout: page
+title: Descriptive Analysis
+---
 
 Library
 ==============================
