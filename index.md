@@ -1,6 +1,8 @@
 ---
 layout: page
-title: "Table Of Contents"
+title: Evaluating Neighborhood Change
+subtitle: Final Project for CPP 528 Fall 2021
+use-site-title: true
 ---
 
 - [Executive Summary](https://github.com/R-Class/cpp-528-fall-2021-group-03/blob/main/exec.md)
