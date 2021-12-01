@@ -1,5 +1,7 @@
-Data Wrangling
-==============
+---
+layout: page
+title: Data Wrangling
+---
 
 Library
 =======
