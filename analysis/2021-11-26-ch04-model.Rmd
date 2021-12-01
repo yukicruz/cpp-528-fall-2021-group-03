@@ -1,0 +1,172 @@
+---
+title: "Lab 05 - Modeling the Intervention"
+author: "Group 03"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: md_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+``` 
+
+
+# Library
+
+```{r, message = F, warning = F}
+library( here )
+library( import )
+library( tidyverse )
+library( pander )
+library( dplyr )
+library( knitr )
+library( stargazer )
+library( scales )
+```
+
+# Load Functions
+
+```{r}
+import::here("S_TYPE",
+             "d",
+             "df",
+             "d3",
+             "PLOTS",
+             "%>%",
+             .from = here::here("labs/wk06/source_file_rn.R"), # here::here() points to the .R file where all these R objects are created
+             .character_only = TRUE)
+
+detach("package:import", unload = TRUE)
+```
+
+# Rodeo Dataset
+
+```{r}
+# Save data set to rodeo folder
+saveRDS(d, here("data/rodeo/rodeo-data-rn.rds"))
+
+# Load data set
+readRDS(file = here("data/rodeo/rodeo-data-rn.rds"))
+```
+
+# Data Manifest
+
+```{r}
+ltdb.raw.2000s <- read.csv( here("data/raw/ltdb_std_2000_sample.csv") )
+ltdb.raw.2000f <- read.csv( here("data/raw/ltdb_std_2000_fullcount.csv") )
+ltdb.rodeo.2000 <- readRDS( file = here("data/rodeo/ltdb-2000.rds") )
+
+ltdb.raw.2010s <- read.csv( here("data/raw/ltdb_std_2010_sample.csv") )
+ltdb.raw.2010f <- read.csv( here("data/raw/ltdb_std_2010_fullcount.csv") )
+ltdb.rodeo.2010 <- readRDS( file = here("data/rodeo/ltdb-2010.rds") )
+
+complete.rodeo <- readRDS( file = here("data/rodeo/rodeo-data-rn.rds") )
+```
+
+```{r, eval = F}
+nrow( ltdb.raw.2000s ) # 72,693
+nrow( ltdb.raw.2000f ) # 72,693
+nrow( ltdb.rodeo.2000 ) # 72,693
+
+nrow( ltdb.raw.2010s ) # 73,056
+nrow( ltdb.raw.2010f ) # 74,002
+nrow( ltdb.rodeo.2010 ) #74,022
+
+nrow( complete.rodeo ) # 59,066
+```
+
+# Explain why the number of rows is less
+
+**Answer: The rodeo data were trimmed to remove rural districts and tracts with home values below $10,000 in 2000.**
+
+# Descriptive Statistics
+```{r, results = 'asis'}
+stargazer( df,
+           type = S_TYPE,
+           digits = 0,
+           summary.stat = c("min", "p25","median","mean","p75","max") )
+```
+
+# Plots
+```{r, warning = F}
+### PERCENT PROFESSIONAL
+gridExtra::grid.arrange( PLOTS$p_prof_2000$nmtc, 
+                         PLOTS$p_prof_2000$lihtc, 
+                         nrow = 1 )
+
+### POVERTY RATES
+gridExtra::grid.arrange( PLOTS$pov_rate_2000$nmtc, 
+                         PLOTS$pov_rate_2000$lihtc, 
+                         nrow = 1 )
+
+### PERCENT UNEMPLOYED
+gridExtra::grid.arrange( PLOTS$p_unemp_2000$nmtc, 
+                         PLOTS$p_unemp_2000$lihtc, 
+                         nrow = 1 )
+
+### MHV Growth Rates (DV in Model)
+gridExtra::grid.arrange( PLOTS$mhv_growth$lihtc, 
+                         PLOTS$mhv_growth$nmtc, 
+                         nrow = 1 )
+```
+
+# Diff-In-Diff Models
+
+```{r, warning = F, results = 'asis'}
+# set randomization seed
+set.seed( 1234 )
+
+# Model with NMTC data and control variables
+m.nmtc <- lm( y ~ treat.nmtc + post + p.prof + pov.rate + p.unemp + treat.nmtc*post, data = d3 )
+
+# Model with LIHTC data and control variables
+m.lihtc <- lm( y ~ treat.lihtc + post + p.prof + pov.rate + p.unemp + treat.lihtc*post, data = d3 )
+
+# Display model results
+stargazer( m.nmtc, m.lihtc,
+           type = S_TYPE, 
+           column.labels = c("NMTC Model"),
+           dep.var.labels = c("Median House Value (log)"),
+           covariate.labels = c("Treatment - NMTC",
+                                "Treatment - LIHTC",
+                                "Post Time Period",
+                                "Percent Professionals",
+                                "Poverty Rate",
+                                "Percent Unemployment",
+                                "Treatment x Post - NMTC",
+                                "Treatment x Post - LIHTC"),
+           digits = 2 )
+
+# NMTC Coefficients
+b0.nmtc <- m.nmtc$coefficients[1] 
+b1.nmtc <- m.nmtc$coefficients[2]
+b2.nmtc <- m.nmtc$coefficients[3]
+b3.nmtc <- m.nmtc$coefficients[4]
+
+# LIHTC Coefficients
+b0.lihtc <- m.lihtc$coefficients[1] 
+b1.lihtc <- m.lihtc$coefficients[2]
+b2.lihtc <- m.lihtc$coefficients[3]
+b3.lihtc <- m.lihtc$coefficients[4]
+
+# calculated post-treatment home values
+T2.nmtc <- exp( b0.nmtc + b1.nmtc + b2.nmtc + b3.nmtc )
+T2.lihtc <- exp( b0.lihtc + b1.lihtc + b2.lihtc + b3.lihtc )
+
+T2.nmtc # 108074.8 
+T2.lihtc # 99068.66 
+```
+
+
+# Are the programs effective at catalyzing neighborhood improvement?
+
+**Answer: The New Market Tax Credit (NMTC) program is effective at catalyzing neighborhood improvement, measured by median home value (MHV) growth rate. According to the models above, the NMTC program had a larger, significant growth rate than the LIHTC program . $B_3$ (the growth rate of the treatment group above the secular growth rate) is significant for both the NMTC and LIHTC programs.**
+
+# Reflection
+
+How can we test the parallel lines assumption in this model? We know that growth rates change significantly between periods. The market for urban homes from 1990-2000 looks very different from the market in 2000 to 2010.
+
+**Answer: A linear diff-in-diff approach measures the slopes from a one-unit change in the independent variable to a change in the median house value. Given that growth rates (slopes) change significantly between time periods for this evaluation, a linear approach would fail the parallel lines assumption. Instead, we use a log-linear approach where one-unit change change in the independent variable is associated with the growth rate of median house values.**  
+
+<br>
+<br>
+
