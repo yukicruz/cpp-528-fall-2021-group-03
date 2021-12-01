@@ -1,5 +1,7 @@
-Predicting MHV Change
-=====================
+---
+layout: page
+title: Predicting Median Home Value Change
+---
 
 Part 1 - Data
 =============
