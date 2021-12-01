@@ -29,9 +29,7 @@ comments:                    # embed disqus or isso comments
 #  disqus: "disqus-contrast"
 #  isso: "comments.mysite.org"
 
-#remote_theme: niklasbuschmann/contrast
-
-remote_theme: pages-themes/slate@v0.2.0
+remote_theme: niklasbuschmann/contrast
 
 plugins: 
  - jekyll-remote-theme
@@ -39,4 +37,4 @@ plugins:
  - jekyll-paginate
  - jekyll-default-layout
 
-theme: jekyll-theme-slate
+# theme: jekyll-theme-slate
