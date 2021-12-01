@@ -8,7 +8,7 @@ use-site-title: true
 - [Executive Summary](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/exec/)
 - Part I: Neighborhood Change:
   - [Data Wrangling](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-10-27-ch01-data-wrangling/)
-  - [Descriptive Analysis]
+  - [Descriptive Analysis](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-06-ch02-descriptive/)
   - [Predicting MHV Change]
 - [Part II: Evaluation of Tax Credits]
 - [Part III: Results and Conculsion](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/results/)
