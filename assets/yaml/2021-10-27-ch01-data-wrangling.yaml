@@ -1,0 +1,4 @@
+---
+title: Data Wrangling
+subtitle: "This chapter demonstrates a very minor redesign of the Longitudinal Tracts Database files to make the rest of the project smoother. Variable names are standardized, files combined, meta-data on tracts made accessible, and a harmonization file is created to make it much faster and easier to use variables within the ten datasets."
+---
