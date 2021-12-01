@@ -11,3 +11,14 @@ use-site-title: true
 - [Part III: Results and Conculsion](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/results/)
  - [Sub list?]
 
+# GitHub Repository
+
+Add link to files on the GitHub repo with description of content
+
+# Replication Instructions 
+
+(software needed, how to access files, etc)
+
+# License Information
+
+Licenses Info
