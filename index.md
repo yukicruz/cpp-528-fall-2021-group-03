@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Home
+title: Table of Contents
 subtitle: Final Project for CPP 528 Fall 2021
 use-site-title: true
 ---
