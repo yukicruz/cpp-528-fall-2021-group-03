@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Evaluating Neighborhood Change
+title: Home
 subtitle: Final Project for CPP 528 Fall 2021
 use-site-title: true
 ---
