@@ -3,8 +3,15 @@ layout: page
 title: Chapter 2 - Descriptive Analysis of Neighborhood Change
 ---
 
-This chapter focuses on describing and visualizing tract data, primarily using Median Home Value as an indicator of neighborhood change. According to Baum-Snow and Hartley (2016), "Estimation of a neighborhood choice model shows that changes in choices to live in central neighborhoods primarily reflect a shifting balance between rising home prices and valuations of local amenities..." This indicates a metric such as Median Home value is a meaningful predictor on neighborhood change. 
+This chapter focuses on describing and visualizing tract data, primarily using Median Home Value as an indicator of neighborhood change. According to [Baum-Snow and Hartley (2016)](https://raw.githubusercontent.com/DS4PS/cpp-528-spr-2020/master/articles/home-value-change/economic-model-central-city-neighborhoods-white-flight-white-return.pdf), "Estimation of a neighborhood choice model shows that changes in choices to live in central neighborhoods primarily reflect a shifting balance between rising home prices and valuations of local amenities..." This indicates a metric such as Median Home value (MHV) is a meaningful predictor on neighborhood change. Spatial analysis is introduced further in the chapter, adding a visual to support the descriptive summaries. 
 
+Metrics & Data Sources
+==============================
+- Median Home Value (referred to as MHV) is the primary variable in this chapter. 
+- Gentrification is the latent construct for which MHV is used to conceptualize.
+
+Data used in this chapter are cleaned and processed in the [`source_file_rn.R`](analysis/source_file_rn.R) script.
+ 
 Library
 ==============================
 
