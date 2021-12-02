@@ -123,7 +123,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 <br>
 
-## Citations
+## BibTeX Citation
 ```yaml
 
 @software{rachnicely_2021_5749095,
