@@ -17,7 +17,7 @@ team:
     github: https://github.com/RachNicely
     twitter: 
   - name: Nick Rea
-    img: ../assets/img/about/generic-avatar-icon.jpg
+    img: ../assets/img/about/IMG_5357.jpg
     desc: Nick is completing a Master of Science degree in Program Evaluation and Data Analytics.
     url: 
     website: 
