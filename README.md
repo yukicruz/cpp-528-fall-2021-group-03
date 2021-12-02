@@ -23,9 +23,7 @@ Asia Woods - [@aawoods97](https://github.com/aawoods97)
 
 ### Required Packages and Installation
 
-To install this package, start R (version "4.1") and enter: 
-
-`– renv` helps manage library paths (and other project-specific state) to help isolate your project’s R dependencies, and the existing tools you’ve used for managing R packages (e.g. `install.packages()`, `remove.packages()`) should work as they did before.
+To install this package, start R [Download R 4.1.2 for Windows](https://cran.r-project.org/bin/windows/base/) 
 
 >R and RStudio software are required to reproduce the analyses presented in this report. In order to replicate the chapters featured in this report, the necessary packages must be installed using the `renv` package. To restore the project's dependencies from the renv.lock file, run the following code: `renv::restore(here::here())`.
 
