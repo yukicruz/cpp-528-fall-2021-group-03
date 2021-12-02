@@ -127,7 +127,7 @@ subtitle: Evaluating Neighborhood Change
 team:
   - name: Khaled Hussain , Rachael Nicely , Nick Rea & Asia Woods
     img: 
-    desc: Two excellent rescue hounds who bring much joy to our family.
+    desc: 
     url: 
     website: 
     github: 
