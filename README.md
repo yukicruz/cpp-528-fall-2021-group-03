@@ -73,6 +73,8 @@ Each week you will work on one step of the analysis as a lab. These labs should 
 
 As a team, you’ll collaborate to synthesize the work from each other into one concrete project. Together, you will primarily focus on the integration of content into a static website which makes all of the steps in your research transparent and easily reproducible.
 
+<img width="674" alt="r1" src="https://user-images.githubusercontent.com/69828067/144348850-3c3ee4a9-8e11-48a2-9473-6e634b19c6b5.PNG">
+
 <br>
 
 ## Executive Summary
