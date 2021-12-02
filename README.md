@@ -18,7 +18,7 @@ Watts College of Public Service and Community Solutions
 ## Team Members
 Khaled Hussain - [@Kahussai](https://github.com/kahussai)  
 Rachael Nicely - [@RachNicely](https://github.com/RachNicely)  
-Nick Rea - [@nerea88](https://github.com/nerea88)  
+Nicholas Rea - [@nerea88](https://github.com/nerea88)  
 Asia Woods - [@aawoods97](https://github.com/aawoods97) 
 
 <br>
@@ -126,7 +126,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
 ## Citations
 
 ```yaml
-
+---
 @software{rachnicely_2021_5749095,
   author       = {RachNicely and
                   aawoods97 and
@@ -142,6 +142,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
   doi          = {10.5281/zenodo.5749095},
   url          = {https://doi.org/10.5281/zenodo.5749095}
 }
+---
 ---
 
 
