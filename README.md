@@ -3,7 +3,7 @@
 ## Evaluating Neighborhood Change  
 Arizona State University  
 Watts College of Public Service and Community Solutions 
-Program Evaluation and Data Analytics
+
 
 ## Team Members
 Khaled Hussain - [@Kahussai](https://github.com/kahussai)  
