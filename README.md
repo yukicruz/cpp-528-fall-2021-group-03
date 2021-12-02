@@ -19,21 +19,7 @@ Asia Woods - [@aawoods97](https://github.com/aawoods97)
 <br>
 
 
-## Instructions & Data Steps
 
-### Required Packages and Installation
-
-To install this package, start R [Download R 4.1.2 for Windows](https://cran.r-project.org/bin/windows/base/) 
-
->R and RStudio software are required to reproduce the analyses presented in this report. In order to replicate the chapters featured in this report, the necessary packages must be installed using the `renv` package. To restore the project's dependencies from the renv.lock file, run the following code: `renv::restore(here::here())`.
-
-For more information on how to install the `renv` package, please the [`renv` package website](https://rstudio.github.io/renv/).
-
-All data files are stored in [`data`](data) folder on this site's [GitHub repository](https://github.com/R-Class/cpp-528-fall-2021-group-03). This report uses Longitudinal Database (LTDB) data which are found in the [`raw`](data/raw) folder and as .RDS files (native to R) in [`rodeo`](data/rodeo). Federal tax credit program data are also included in the same files.
-
-All data clean up and tranformation steps as well as necessary functions and plots are provided in the [`source_file_rn.R`](analysis/source_file_rn.R) script in the [`analysis`](analysis) folder.
-
-<br>
 
 ## Table of Contents
 
@@ -110,6 +96,24 @@ in-difference approach measures the slopes from a one-unit change in the indepen
 a change in the median house value. Given that growth rates change significantly between time
 periods for this evaluation, a log-linear approach where a one-unit change in the independent
 variable is associated with the growth rate of median house values.
+
+
+<br>
+
+
+## Instructions & Data Steps
+
+### Required Packages and Installation
+
+To install this package, start R [Download R 4.1.2 for Windows](https://cran.r-project.org/bin/windows/base/) 
+
+>R and RStudio software are required to reproduce the analyses presented in this report. In order to replicate the chapters featured in this report, the necessary packages must be installed using the `renv` package. To restore the project's dependencies from the renv.lock file, run the following code: `renv::restore(here::here())`.
+
+For more information on how to install the `renv` package, please the [`renv` package website](https://rstudio.github.io/renv/).
+
+All data files are stored in [`data`](data) folder on this site's [GitHub repository](https://github.com/R-Class/cpp-528-fall-2021-group-03). This report uses Longitudinal Database (LTDB) data which are found in the [`raw`](data/raw) folder and as .RDS files (native to R) in [`rodeo`](data/rodeo). Federal tax credit program data are also included in the same files.
+
+All data clean up and tranformation steps as well as necessary functions and plots are provided in the [`source_file_rn.R`](analysis/source_file_rn.R) script in the [`analysis`](analysis) folder.
 
 
 <br>
