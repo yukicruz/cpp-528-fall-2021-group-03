@@ -3,7 +3,7 @@
   doi = {10.5281/zenodo.5748917},
   month = {12},
   title = {{Evaluating Neighborhood Change}},
-  url = {https://github.com/R-Class/cpp-528-fall-2021-group-03},
+  url = {https://doi.org/10.5281/zenodo.5748917},
   version = {0.1.0},
   year = {2021}
 }
