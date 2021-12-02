@@ -6,11 +6,8 @@ Watts College of Public Service and Community Solutions
  
 <br>
 
-## Abstract 
->In this project, we are interested in building models to explain neighborhood change between 1990 and 2010. To accomplish this, census data from the Longitudinal Tracts Data Base was analyzed. Two models were made to determine if the New Market Tax Credit (NMTC) program or Low-Income Housing Tax Credit (LIHTC) program resulted in the greatest neighborhood improvement. The impact of the poverty rate, percent unemployment, and percent professional variables was evaluated in relation to both models. In both programs, the variable evaluating the growth rate of the treatment group above the control growth rate was found to be significant. The NMTC program had a larger, significant growth rate in comparison to the LIHTC program when both the no control variable and the poverty rate control were examined. It was found that the poverty rate was a good predictor of Median House Value growth as the variable value was closest to that of the no control variable model for both programs.
 
 
-<br>
 
 
 ## Team Members
@@ -56,7 +53,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 ## Executive Summary
 
-In this project, we are interested in building models to explain neighborhood change between
+>In this project, we are interested in building models to explain neighborhood change between
 1990 and 2010. To accomplish this, census data from the Longitudinal Tracts Data Base was
 analyzed. Two models were made to determine if the New Market Tax Credit (NMTC) program
 or Low-Income Housing Tax Credit (LIHTC) program resulted in the greatest neighborhood
@@ -72,7 +69,7 @@ closest to that of the no control variable model for both programs.
 
 ## Results
 
-A study of the impact of gentrification on a neighborhood occurred. Between the 1990-2000
+>A study of the impact of gentrification on a neighborhood occurred. Between the 1990-2000
 period and 2000-2010, there were 17, 670 candidates for gentrification, and of those 871
 transitioned into the advanced stages of gentrification. Gentrification typically occurred on the
 outskirts of the city and either adjacent to or surrounded by tracts with a higher initial home
@@ -98,7 +95,7 @@ improvement.
 
 ## Conclusion
 
-The developed models determined if the New Market Tax Credit (NMTC) program or Low-
+>The developed models determined if the New Market Tax Credit (NMTC) program or Low-
 Income Housing Tax Credit (LIHTC) program resulted in the greatest neighborhood
 improvement. The impact of the poverty rate, percent unemployment, and percent professional
 variables was evaluated in relation to both models. The New Market Tax Credit (NMTC)
