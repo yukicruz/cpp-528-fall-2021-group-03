@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Predicting Median Home Value Change
+title: Chapter 3: Predicting Median Home Value Change
 ---
 
 Part 1 - Data
