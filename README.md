@@ -144,7 +144,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 ```yaml
 ---
-
+}
 
 <br>
 
