@@ -17,8 +17,8 @@ team:
     github: https://github.com/RachNicely
     twitter: 
   - name: Nick Rea
-    img: ../assets/img/about/romi_and_phoebe.jpg
-    desc: Two excellent rescue hounds who bring much joy to our family.
+    img: ../assets/img/about/generic-avatar-icon.jpg
+    desc: TNick is currently a graduate student at Arizona State University.
     url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
     github: https://github.com/cenuno
