@@ -32,7 +32,7 @@ comments:                    # embed disqus or isso comments
 
 # remote_theme: niklasbuschmann/contrast
 
-remote_theme: pages-themes/slate@v0.2.0
+remote_theme: pages-themes/slate@v0.2.0 # Jekyll-theme-slate
 
 plugins: 
  - jekyll-remote-theme
