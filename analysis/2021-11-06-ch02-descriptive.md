@@ -1305,3 +1305,9 @@ adjacent to or surrounded by tracts with a higher initial home value.**
       tm_layout( "Gentrified Areas", title.position=c("right","top") )
 
 ![](2021-11-06-ch02-descriptive_files/figure-markdown_strict/unnamed-chunk-30-1.png)
+
+### Chapter References
+
+- Baum-Snow, Nathaniel; Hartley, Daniel (2016) : Accounting for central neighborhood change, 1980-2010, Working Paper, No. 2016-09, Federal Reserve Bank of Chicago, Chicago, IL
+
+Code in this chapter was adapted from lab designs by Dr. Jesse Lecy and Professors Courtney Stowers and Christian Nuno at Arizona State University.
