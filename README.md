@@ -1,7 +1,9 @@
 
 # CPP528 Foundations of Data Science Part III
-## Evaluating Neighborhood Change  
 [![DOI](https://zenodo.org/badge/415142245.svg)](https://zenodo.org/badge/latestdoi/415142245)
+
+
+## Evaluating Neighborhood Change  
 
 Arizona State University  
 Watts College of Public Service and Community Solutions 
