@@ -4,12 +4,13 @@
 Arizona State University  
 Watts College of Public Service and Community Solutions 
  
-
+<br>
 
 ## Abstract 
 >In this project, we are interested in building models to explain neighborhood change between 1990 and 2010. To accomplish this, census data from the Longitudinal Tracts Data Base was analyzed. Two models were made to determine if the New Market Tax Credit (NMTC) program or Low-Income Housing Tax Credit (LIHTC) program resulted in the greatest neighborhood improvement. The impact of the poverty rate, percent unemployment, and percent professional variables was evaluated in relation to both models. In both programs, the variable evaluating the growth rate of the treatment group above the control growth rate was found to be significant. The NMTC program had a larger, significant growth rate in comparison to the LIHTC program when both the no control variable and the poverty rate control were examined. It was found that the poverty rate was a good predictor of Median House Value growth as the variable value was closest to that of the no control variable model for both programs.
 
 
+<br>
 
 
 ## Team Members
@@ -18,6 +19,7 @@ Rachael Nicely - [@RachNicely](https://github.com/RachNicely)
 Nick Rea - [@nerea88](https://github.com/nerea88)  
 Asia Woods - [@aawoods97](https://github.com/aawoods97) 
 
+<br>
 
 
 ## Instructions & Data Steps
@@ -43,6 +45,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
   - [Chapter 5: Predictive Models After Adding Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-27-ch05-model/)
 - [Results and Conculsion](https://r-class.github.io/cpp-528-fall-2021-group-03/results/)
 
+<br>
 
 ## Context
 
@@ -84,6 +87,8 @@ brew install ruby@2.7
 ```bash
 sudo gem install jekyll bundler
 ```
+<br>
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://github.com/R-Class/cpp-528-fall-2021-group-03/blob/main/LICENSE) file for details.
