@@ -5,7 +5,7 @@
 
 Arizona State University  
 Watts College of Public Service and Community Solutions 
-[![DOI](https://zenodo.org/badge/434009018.svg)](https://zenodo.org/badge/latestdoi/434009018)
+
 
 <br>
 
