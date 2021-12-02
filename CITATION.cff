@@ -1,13 +1,9 @@
-@software{kbelita_2021_5748917,
-  author       = {kbelita and
-                  Tony Ojeda},
-  title        = {kahussai/neighborhood-change: Initial Release},
-  month        = {12},
-  year         = 2021,
-  publisher    = {Zenodo},
-  doi          = {10.5281/zenodo.5748917},
-  url          = {https://doi.org/10.5281/zenodo.5748917}
-  version      = {0.1.0},
-  year         = {2021}
+@software{Evaluating_Neighborhood_Change_2021,
+  author = {Khaled, Rachael, Nick and Asia},
+  doi = {10.5281/zenodo.5748917},
+  month = {12},
+  title = {{Evaluating Neighborhood Change}},
+  url = {https://github.com/R-Class/cpp-528-fall-2021-group-03},
+  version = {0.1.0},
+  year = {2021}
 }
-
