@@ -38,4 +38,4 @@ plugins:
  - jekyll-paginate
  - jekyll-default-layout
 
-# theme: jekyll-theme-slate
+theme: jekyll-theme-slate
