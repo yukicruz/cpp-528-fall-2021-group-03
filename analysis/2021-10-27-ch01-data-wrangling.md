@@ -2507,3 +2507,5 @@ Sample Functions
 </tr>
 </tbody>
 </table>
+
+Code in this chapter was adapted from lab designs by Dr. Jesse Lecy and Professors Courtney Stowers and Christian Nuno at Arizona State University.
