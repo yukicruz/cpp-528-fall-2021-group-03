@@ -67,7 +67,7 @@ more likely in a less impoverished area. Finally, a loss of diversity would indi
 marginalized groups that previously lived there were displaced by whites who have become the
 more predominant ethnic group.
 
-The relationship between the Median Home Value (MHV) and three independent variables:
+>The relationship between the Median Home Value (MHV) and three independent variables:
 poverty rate, percent unemployment, and percent professional was examined. Multicollinearity
 was found between all variables as they are all factors of the neighborhood home value construct.
 While all variables significantly affect MHV growth, the poverty rate has the largest effect. The
