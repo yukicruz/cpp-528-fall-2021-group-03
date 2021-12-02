@@ -7,12 +7,12 @@ use-site-title: true
 
 - [Executive Summary](https://r-class.github.io/cpp-528-fall-2021-group-03/exec/)
 - Part I: Neighborhood Change:
-  - [Ch01: Data Wrangling](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-10-27-ch01-data-wrangling/)
-  - [Ch02: Descriptive Analysis](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-06-ch02-descriptive/)
-  - [Ch03: Predicting MHV Change](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-13-ch03-predicting/)
+  - [Chapter 1: Data Wrangling](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-10-27-ch01-data-wrangling/)
+  - [Chapter 2: Descriptive Analysis](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-06-ch02-descriptive/)
+  - [Chapter 3: Predicting MHV Change](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-13-ch03-predicting/)
 - Part II: Evaluation of Tax Credits:
-  - [Ch04: Overview of Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-26-ch04-overview/) 
-  - [Ch05: Predictive Models After Adding Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-27-ch05-model/)
+  - [Chapter 4: Overview of Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-26-ch04-overview/) 
+  - [Chapter 5: Predictive Models After Adding Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-27-ch05-model/)
 - [Results and Conculsion](https://r-class.github.io/cpp-528-fall-2021-group-03/results/)
 
 # GitHub Repository
