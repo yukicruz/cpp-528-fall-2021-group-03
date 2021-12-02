@@ -3,6 +3,8 @@ layout: page
 title: Chapter 2 - Descriptive Analysis of Neighborhood Change
 ---
 
+This chapter focuses on describing and visualizing tract data, primarily using Median Home Value as an indicator of neighborhood change. According to Baum-Snow and Hartley (2016), "Estimation of a neighborhood choice model shows that changes in choices to live in central neighborhoods primarily reflect a shifting balance between rising home prices and valuations of local amenities..." This indicates a metric such as Median Home value is a meaningful predictor on neighborhood change. 
+
 Library
 ==============================
 
