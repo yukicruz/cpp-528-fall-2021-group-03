@@ -3,6 +3,8 @@ layout: page
 title: Chapter 1 - Data Wrangling
 ---
 
+This chapter introduces some helper functions to query the Longitudinal Tracts Database (LTDB) to search for the variables you need for your analysis.
+
 Library
 =======
 
@@ -11,8 +13,8 @@ Library
     library( here )
     library( pander )
 
-Load Data
-=========
+Load LTDB Data
+==============
 
     # Data
 
@@ -31,8 +33,8 @@ Load Data
     # Rename columns to lower case
     ltdb.data <- as.data.frame( sapply( ltdb.data, tolower ) )
 
-Load Functions
-==============
+Load Helper Functions
+=====================
 
     # Load function source file
     import::here("filter_category",
@@ -41,8 +43,8 @@ Load Functions
                  .from = here::here("analysis/source_file_rn.R"),
                  .character_only = TRUE)
 
-Test Functions
-==============
+Sample Functions
+================
 
     # filter data where the category contains "race"
     filter_category(dd, "race") %>% 
