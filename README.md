@@ -118,6 +118,26 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 <br>
 
+## Citations
+
+```yaml
+---
+title: CPP528 Foundations of Data Science Part III
+subtitle: Evaluating Neighborhood Change
+team:
+  - name: Khaled Hussain , Rachael Nicely , Nick Rea & Asia Woods
+    img: ../assets/img/about/romi_and_phoebe.jpg
+    desc: Two excellent rescue hounds who bring much joy to our family.
+    url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
+    website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
+    github: https://github.com/cenuno
+    twitter: https://twitter.com/cenuno_
+---
+```
+
+As your team grows, be sure to update this file accordingly, specifically the `team` sub-section.
+
+
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://github.com/R-Class/cpp-528-fall-2021-group-03/blob/main/LICENSE) file for details.
