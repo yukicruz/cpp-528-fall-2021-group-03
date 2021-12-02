@@ -127,16 +127,21 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 ```yaml
 ---
-title: CPP528 Foundations of Data Science Part III
-subtitle: Evaluating Neighborhood Change
-team:
-  - name: Khaled Hussain , Rachael Nicely , Nick Rea & Asia Woods
-    img: 
-    desc: 
-    url: 
-    website: 
-    github: 
-    twitter: 
+@software{rachnicely_2021_5749095,
+  author       = {RachNicely and
+                  aawoods97 and
+                  kahussai and
+                  nerea88 and
+                  Courtney Stowers},
+  title        = {{R-Class/cpp-528-fall-2021-group-03: Initial 
+                   Release}},
+  month        = dec,
+  year         = 2021,
+  publisher    = {Zenodo},
+  version      = {0.1.0},
+  doi          = {10.5281/zenodo.5749095},
+  url          = {https://doi.org/10.5281/zenodo.5749095}
+}
 ---
 ```
 
