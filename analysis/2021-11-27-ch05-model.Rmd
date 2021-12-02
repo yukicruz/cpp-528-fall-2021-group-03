@@ -109,6 +109,20 @@ gridExtra::grid.arrange( PLOTS$mhv_growth$lihtc,
                          nrow = 1 )
 ```
 
+# Aggregate credits given between 2000 and 2010
+
+Between 2000 and 2010, the NMTC program distributed 16,875,809,298 tax credits. For the same time period, the LIHTC program distributed 5,419,920,959. The NMTC program distributed approximately three times the total amount tax credits distributed by the LIHTC program.
+
+```{r}
+sum(d$nmtc.total) # aggregate nmtc tax credits given during 2000-2010 time period
+
+sum(d$lihtc.total) # aggregate lihtc tax credits given during 2000-2010 time period
+
+ratio.tax.credit <- sum(d$nmtc.total) / sum(d$lihtc.total)
+
+ratio.tax.credit
+```
+
 # Diff-In-Diff Models
 
 ```{r, warning = F, results = 'asis'}

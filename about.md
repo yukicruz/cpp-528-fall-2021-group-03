@@ -18,11 +18,11 @@ team:
     twitter: 
   - name: Nick Rea
     img: ../assets/img/about/generic-avatar-icon.jpg
-    desc: Nick is currently a graduate student at Arizona State University.
-    url: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    website: https://www.aspca.org/adopt-pet/adoptable-dogs-your-local-shelter
-    github: https://github.com/cenuno
-    twitter: https://twitter.com/cenuno_
+    desc: Nick is completing a Master of Science degree in Program Evaluation and Data Analytics.
+    url: 
+    website: 
+    github: https://github.com/nerea88
+    twitter:
   - name: Asia Woods
     img: ../assets/img/about/A_Woods_Headshot.JPG
     desc: Asia Woods is completing a Master of Science degree in Program Evaluation and Data Analytics. Her anticipated graduation is December of 2021. 
