@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Chapter 1: Data Wrangling
+title: Chapter 1 - Data Wrangling
 ---
 
 Library
