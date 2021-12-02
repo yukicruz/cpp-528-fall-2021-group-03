@@ -60,4 +60,6 @@ brew install ruby@2.7
 ```bash
 sudo gem install jekyll bundler
 ```
+## License
 
+This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://github.com/R-Class/cpp-528-fall-2021-group-03/blob/main/LICENSE) file for details.
