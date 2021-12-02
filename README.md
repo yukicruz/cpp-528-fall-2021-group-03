@@ -125,7 +125,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 ## Citations
 ```yaml
----
+
 @software{rachnicely_2021_5749095,
   author       = {RachNicely and
                   aawoods97 and
@@ -142,7 +142,7 @@ All data clean up and tranformation steps as well as necessary functions and plo
   url          = {https://doi.org/10.5281/zenodo.5749095}
 }
 
-```yaml
+```
 
 <br>
 
