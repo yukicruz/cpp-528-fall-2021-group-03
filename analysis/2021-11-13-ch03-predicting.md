@@ -3,15 +3,17 @@ layout: page
 title: Chapter 3 - Predicting Median Home Value Change
 ---
 
+This chapter uses the percent change in Median Home Value (MHV) and introduces three control variables: Percent Professionals (p.prof.00), Poverty Rate (pov.rate.00), Percent Unemployment (p.unemp.00) as potential predictors of MHV change in 2010. The variables are tested for skew and multicollinearity, then transformed (if skew is present). Two Diff-in-Diff models, Ordinary Least Squares (OLS) and Fixed Effects (FE) are presented with the goal of achieving a strong model fit. 
+
 Part 1 - Data
 =============
 
-The following data steps are now completed in the source\_file\_rn.R:
+The following data steps are completed in the source\_file\_rn.R:
 
-    - Similar to your previous lab, create a dataset that includes 2000 and 2010 census variables drop all rural census tracts.
+    - Create a dataset that includes 2000 and 2010 census variables drop all rural census tracts.
     - Create a variable that measures the growth of median home value from 2000 to 2010.
-    - Omit cases that have a median home value less than $10,000 in 2000.
-    - Omit cases with growth rates above 200%.
+    - Omit cases that have a median home value less than $10,000 in 2000. This reduces outliers in the data.
+    - Omit cases with growth rates above 200%. This reduces outliers in the data.
 
 Load necessary packages:
 ------------------------
