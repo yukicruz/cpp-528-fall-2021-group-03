@@ -781,3 +781,6 @@ other. While the variables chosen each contribute to median home value
 growth, Poverty Rate had the largest effect on the MHV Growth.**
 
 <br> <br>
+
+### Chapter References
+Code in this chapter was adapted from lab designs by Dr. Jesse Lecy and Professors Courtney Stowers and Christian Nuno at Arizona State University.
