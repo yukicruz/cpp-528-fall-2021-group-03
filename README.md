@@ -1,6 +1,15 @@
-# CPP 528 Template
 
-Template GitHub repo for CPP 528.
+# CPP528 Foundations of Data Science Part III
+## Evaluating Neighborhood Change  
+Arizona State University  
+Watts College of Public Service and Community Solutions 
+Program Evaluation and Data Analytics
+
+## Team Members
+Khaled Hussain - [@Kahussai](https://github.com/kahussai)  
+Rachael Nicely - [@RachNicely](https://github.com/RachNicely)  
+Nick Rea - [@nerea88](https://github.com/nerea88)  
+Asia Woods - [@aawoods97](https://github.com/aawoods97)  
 
 ## Context
 
