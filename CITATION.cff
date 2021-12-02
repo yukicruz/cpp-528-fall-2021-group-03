@@ -2,10 +2,12 @@
   author       = {kbelita and
                   Tony Ojeda},
   title        = {kahussai/neighborhood-change: Initial Release},
-  month        = dec,
+  month        = {12},
   year         = 2021,
   publisher    = {Zenodo},
-  version      = {0.1.0},
   doi          = {10.5281/zenodo.5748917},
   url          = {https://doi.org/10.5281/zenodo.5748917}
+  version      = {0.1.0},
+  year         = {2021}
 }
+
