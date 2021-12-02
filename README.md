@@ -137,7 +137,12 @@ team:
 
 As your team grows, be sure to update this file accordingly, specifically the `team` sub-section.
 
+## Sources links
 
+Tutorial: [Tutorial on Adding Federal Program Data](https://watts-college.github.io/cpp-528-fall-2021/labs/lab-05-tutorial.html)
+Instruction: [Lab Instructions](https://watts-college.github.io/cpp-528-fall-2021/labs/lab-05-instructions.html)
+Dataset: [Required Data](https://ds4ps.org/cpp-529-spr-2021/LABS/lab-05-tutorial-v2.html#hedonic-housing-models)
+[Code-Through Assignment](https://ds4ps.org/cpp-529-fall-2020/LABS/code-through-assignment.html)
 ## License
 
 This project is licensed under the GNU General Public License v3.0 - see the [LICENSE](https://github.com/R-Class/cpp-528-fall-2021-group-03/blob/main/LICENSE) file for details.
