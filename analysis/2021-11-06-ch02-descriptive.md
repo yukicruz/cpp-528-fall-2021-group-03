@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Descriptive Analysis of Neighborhood Change
+title: Chapter 2: Descriptive Analysis of Neighborhood Change
 ---
 
 Library
