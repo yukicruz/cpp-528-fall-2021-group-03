@@ -42,7 +42,6 @@ All data clean up and tranformation steps as well as necessary functions and plo
 
 ## Table of Contents
 
-- Overview 
 - Part I: Neighborhood Change:
   - [Chapter 1: Data Wrangling](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-10-27-ch01-data-wrangling/)
   - [Chapter 2: Descriptive Analysis](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-06-ch02-descriptive/)
@@ -50,30 +49,8 @@ All data clean up and tranformation steps as well as necessary functions and plo
 - Part II: Evaluation of Tax Credits:
   - [Chapter 4: Overview of Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-26-ch04-overview/) 
   - [Chapter 5: Predictive Models After Adding Tax Credit Programs](https://r-class.github.io/cpp-528-fall-2021-group-03/analysis/2021-11-27-ch05-model/)
+- [Executive Summary](https://docs.google.com/file/d/1EEBnXShAJeq75OBWVLHUvA9srGB6jlxo/edit?filetype=msword)
 - [Results and Conculsion](https://r-class.github.io/cpp-528-fall-2021-group-03/results/)
-
-<br>
-
-
-## Overview
-
-The project for this course is designed as an opportunity to practice project management skills by showing your research on a static website hosted on GitHub Pages. Overall, this project is worth 100 points and makes up the bulk of your final grade.
-
-
-It is broken into six steps, leaving one week at the end of the semester for a final round of revisions, documenting the process, and house-cleaning in your GitHub repo.
-   - Week 01: Introduction to project management
-   - Week 02: Introduction to data management
-   - Week 03: Descriptive analysis of neighborhood change
-   - Week 04: Predicting median home value change, 2000 to 2010
-   - Week 05: Adding federal program data to your predictive models
-   - Week 06: Test reproducible work flow with a parameter change
-   - Week 07: Finalize project website and project requirements
-
-Each week you will work on one step of the analysis as a lab. These labs should be completed and submitted individually (you are still allowed to collaborate on labs but submit your labs individually).
-
-As a team, you’ll collaborate to synthesize the work from each other into one concrete project. Together, you will primarily focus on the integration of content into a static website which makes all of the steps in your research transparent and easily reproducible.
-
-<img width="674" alt="r1" src="https://user-images.githubusercontent.com/69828067/144348850-3c3ee4a9-8e11-48a2-9473-6e634b19c6b5.PNG">
 
 <br>
 
@@ -139,7 +116,6 @@ a change in the median house value. Given that growth rates change significantly
 periods for this evaluation, a log-linear approach where a one-unit change in the independent
 variable is associated with the growth rate of median house values.
 
-[Documentation](https://docs.google.com/file/d/1EEBnXShAJeq75OBWVLHUvA9srGB6jlxo/edit?filetype=msword)
 
 <br>
 
