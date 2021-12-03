@@ -1,5 +1,5 @@
 
-# CPP528 Foundations of Data Science Part III
+# CPP 528 Foundations of Data Science Part III
 [![DOI](https://zenodo.org/badge/415142245.svg)](https://zenodo.org/badge/latestdoi/415142245)
 
 
