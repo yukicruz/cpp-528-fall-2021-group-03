@@ -29,6 +29,8 @@ All data files are stored in [`data`](data) folder on this site's [GitHub reposi
 
 All data clean up and tranformation steps as well as necessary functions and plots are provided in the [`source_file_rn.R`](analysis/source_file_rn.R) script in the [`analysis`](analysis) folder.
 
+The [`analysis`](analysis) folder consists of the main files with all the procedural code to replicate the entire project. 
+
 # License Information
 
 R-Class/cpp-528-fall-2021-group-03 is licensed under the
