@@ -1,6 +1,6 @@
 # Analysis
 
-This directory stores the source code that is used to migrate your labs as chapters that go onto to be displayed on the website. Each `.rmd` file that lives within this `analysis/` directory serves as a direct input into the eventual `.md` files that go onto live within the `_posts/` directory: the folder that stores the chapters hosted on your website.
+This directory stores the source code that is used to migrate lab files as chapters that go onto to be displayed on the website. Each `.rmd` file that lives within this `analysis/` directory serves as a direct input into the eventual `.md` files that go onto live within the `_posts/` directory: the folder that stores the chapters hosted on your website.
 
 ## Requirements
 
