@@ -2,4 +2,4 @@
 
 This folder contains the submitted documents for lab 05.
 
-lab_05_source.R contains the relevant functions, datasets, and data transformations to run Lab-05-Group-03.Rmd
+source_file_rn.R contains the relevant functions to run Lab-03-Group-03.Rmd. This file is located in the [`analysis`](analysis) folder in the root repository.
