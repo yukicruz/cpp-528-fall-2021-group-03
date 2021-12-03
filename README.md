@@ -5,9 +5,10 @@
 
 ## Evaluating Neighborhood Change  
 
+This repository was created to document the project steps to effectively evaluatie neighborhood change relating to the NMTC and LIHTC federal tax credit programs. This site fulfills the requirements for the CPP 528 Fall 2021 course. 
+
 Arizona State University  
 Watts College of Public Service and Community Solutions 
-
 
 <br>
 
