@@ -1,3 +1,1 @@
-This folder contains the submitted documents for lab 02. 
-
-utilities.R contains the relevant functions to run Lab-02-Group-03.Rmd
+This folder stores any pertinent files to fulfill the week 01 requirements of CPP 528 Fall 2021. 
