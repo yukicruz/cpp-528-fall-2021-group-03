@@ -36,7 +36,7 @@ import::here("S_TYPE",
              "d3",
              "PLOTS",
              "%>%",
-             .from = here::here("labs/wk06/source_file_rn.R"), # here::here() points to the .R file where all these R objects are created
+             .from = here::here("analysis/source_file_rn.R"), # here::here() points to the .R file where all these R objects are created
              .character_only = TRUE)
 
 detach("package:import", unload = TRUE)

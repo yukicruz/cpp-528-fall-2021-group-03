@@ -53,7 +53,7 @@ import::here("S_TYPE",
              "mhv.00",
              # notice the use of here::here() that points to the .R file
              # where all these R objects are created
-             .from = here::here("labs/wk06/source_file_rn.R"),
+             .from = here::here("analysis/source_file_rn.R"),
              .character_only = TRUE)
 ```
 
