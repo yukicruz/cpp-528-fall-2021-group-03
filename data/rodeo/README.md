@@ -1,1 +1,1 @@
-
+The folder contains the wrangled datasets saved in a format native to R. The files are used in the [`source_file_rn.R`](analysis/source_file_rn.R) script located in the [analysis](analysis) folder in the root directory of this repository. 
