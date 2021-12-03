@@ -36,7 +36,7 @@ import::here("S_TYPE",
              "d3",
              "PLOTS",
              "%>%",
-             .from = here::here("labs/wk05/lab_05_source.R"), # here::here() points to the .R file where all these R objects are created
+             .from = here::here("analysis/source_file_rn.R"), # here::here() points to the .R file where all these R objects are created
              .character_only = TRUE)
 
 detach("package:import", unload = TRUE)
@@ -92,14 +92,19 @@ stargazer( df,
 
 # Plots
 ```{r, warning = F}
+### PERCENT PROFESSIONAL
+gridExtra::grid.arrange( PLOTS$p_prof_2000$nmtc, 
+                         PLOTS$p_prof_2000$lihtc, 
+                         nrow = 1 )
+
 ### POVERTY RATES
 gridExtra::grid.arrange( PLOTS$pov_rate_2000$nmtc, 
                          PLOTS$pov_rate_2000$lihtc, 
                          nrow = 1 )
 
-### HOME VALUES
-gridExtra::grid.arrange( PLOTS$mhv_2000$nmtc, 
-                         PLOTS$mhv_2000$lihtc, 
+### PERCENT UNEMPLOYED
+gridExtra::grid.arrange( PLOTS$p_unemp_2000$nmtc, 
+                         PLOTS$p_unemp_2000$lihtc, 
                          nrow = 1 )
 
 ### MHV Growth Rates (DV in Model)
@@ -108,77 +113,57 @@ gridExtra::grid.arrange( PLOTS$mhv_growth$lihtc,
                          nrow = 1 )
 ```
 
-# Diff-In-Diff Model for NMTC Program
+# Diff-In-Diff Models
 
 ```{r, warning = F, results = 'asis'}
 # set randomization seed
 set.seed( 1234 )
 
-m0.nmtc <- lm( y ~ treat.nmtc + post + treat.nmtc*post, data = d3 )
-m1.nmtc <- lm( y ~ p.prof + treat.nmtc + post + treat.nmtc*post, data = d3 )
-m2.nmtc <- lm( y ~ pov.rate + treat.nmtc + post + treat.nmtc*post, data = d3 )
-m3.nmtc <- lm( y ~ p.unemp + treat.nmtc + post + treat.nmtc*post, data = d3 )
+# Model with NMTC data and control variables
+m.nmtc <- lm( y ~ treat.nmtc + post + p.prof + pov.rate + p.unemp + treat.nmtc*post, data = d3 )
+
+# Model with LIHTC data and control variables
+m.lihtc <- lm( y ~ treat.lihtc + post + p.prof + pov.rate + p.unemp + treat.lihtc*post, data = d3 )
 
 # Display model results
-stargazer( m0.nmtc, m1.nmtc, m2.nmtc, m3.nmtc, 
+stargazer( m.nmtc, m.lihtc,
            type = S_TYPE, 
-           column.labels = c("Model (w/o Control)","Model 1", "Model 2", "Model 3"),
+           column.labels = c("NMTC Model"),
            dep.var.labels = c("Median House Value (log)"),
-           covariate.labels = c("Percent Professionals",
-                                "Poverty Rate",
-                                "Percent Unemployment",
-                                "Treatment - NMTC",
-                                "Post-NMTC Time Period",
-                                "Treatment - NMTC x Post"),
-           digits = 2 )
-
-b0 <- m0.nmtc$coefficients[1] 
-b1 <- m0.nmtc$coefficients[2]
-b2 <- m0.nmtc$coefficients[3]
-b3 <- m0.nmtc$coefficients[4]
-
-T2 <- exp( b0+b1+b2+b3 )
-
-T2 # 166,560.5 
-```
-
-
-# Diff-In-Diff Model for LIHTC Program
-
-```{r, warning = F, results = 'asis'}
-
-m0.lihtc <- lm( y ~ treat.lihtc + post + treat.lihtc*post, data = d3 )
-m1.lihtc <- lm( y ~ p.prof + treat.lihtc + post + treat.lihtc*post, data = d3 )
-m2.lihtc <- lm( y ~ pov.rate + treat.lihtc + post + treat.lihtc*post, data = d3 )
-m3.lihtc <- lm( y ~ p.unemp + treat.lihtc + post + treat.lihtc*post, data = d3 )
-
-# Display model results
-stargazer( m0.lihtc, m1.lihtc, m2.lihtc, m3.lihtc, 
-           type = S_TYPE, 
-           column.labels = c("Model (w/o Control)", "Model 1", "Model 2", "Model 3"),
-           dep.var.labels = c("Median House Value (log)"),
-           covariate.labels = c("Percent Professionals",
-                                "Poverty Rate",
-                                "Percent Unemployment",
+           covariate.labels = c("Treatment - NMTC",
                                 "Treatment - LIHTC",
-                                "Post-LIHTC Time Period",
-                                "Treatment - LIHTC x Post"),
+                                "Post Time Period",
+                                "Percent Professionals",
+                                "Poverty Rate",
+                                "Percent Unemployment",
+                                "Treatment x Post - NMTC",
+                                "Treatment x Post - LIHTC"),
            digits = 2 )
 
-b0 <- m0.lihtc$coefficients[1] 
-b1 <- m0.lihtc$coefficients[2]
-b2 <- m0.lihtc$coefficients[3]
-b3 <- m0.lihtc$coefficients[4]
+# NMTC Coefficients
+b0.nmtc <- m.nmtc$coefficients[1] 
+b1.nmtc <- m.nmtc$coefficients[2]
+b2.nmtc <- m.nmtc$coefficients[3]
+b3.nmtc <- m.nmtc$coefficients[4]
 
-T2 <- exp( b0+b1+b2+b3 )
+# LIHTC Coefficients
+b0.lihtc <- m.lihtc$coefficients[1] 
+b1.lihtc <- m.lihtc$coefficients[2]
+b2.lihtc <- m.lihtc$coefficients[3]
+b3.lihtc <- m.lihtc$coefficients[4]
 
-T2 # 164,796.4 
+# calculated post-treatment home values
+T2.nmtc <- exp( b0.nmtc + b1.nmtc + b2.nmtc + b3.nmtc )
+T2.lihtc <- exp( b0.lihtc + b1.lihtc + b2.lihtc + b3.lihtc )
+
+T2.nmtc # 108074.8 
+T2.lihtc # 99068.66 
 ```
 
 
 # Are the programs effective at catalyzing neighborhood improvement?
 
-**Answer: The New Market Tax Credit (NMTC) program is effective at catalyzing neighborhood improvement, measured by median home value (MHV) growth rate. According to the models above, the NMTC program had a larger, significant growth rate than the LIHTC program in both the M0 (no control variable) and M2 (Poverty Rate Control). $B_3$ (the growth rate of the treatment group above the secular growth rate) is significant for both the NMTC and LIHTC programs. Poverty Rate is a good predictor of MHV growth because the $B_3$ value was closest to that of the M0 model for both programs.**
+**Answer: The New Market Tax Credit (NMTC) program is effective at catalyzing neighborhood improvement, measured by median home value (MHV) growth rate. According to the models above, the NMTC program had a larger, significant growth rate than the LIHTC program . $B_3$ (the growth rate of the treatment group above the secular growth rate) is significant for both the NMTC and LIHTC programs.**
 
 # Reflection
 
