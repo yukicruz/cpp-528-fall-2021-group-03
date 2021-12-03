@@ -1,1 +1,1 @@
-
+The files in this folder were created to fulfill the requirements on Lab 06, to combine the source file for both Labs 04 and 05 into a single script. This results script,  `source_file_rn.R` is stored in the [`analysis`](analysis) folder in the root directory of this repository. 
