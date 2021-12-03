@@ -1,3 +1,6 @@
+# ignore renv library files, can be restored using code
+renv/library
+
 # History files
 .Rhistory
 .Rapp.history
